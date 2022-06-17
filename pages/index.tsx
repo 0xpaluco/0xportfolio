@@ -2,7 +2,7 @@ import { ReactElement, ReactNode, useState } from 'react'
 import { GetServerSideProps } from "next";
 import { NextPageWithLayout } from '@/types'
 import { FeedView, HomeView } from '@views/index'
-import WithLayout, { Explore, Simple} from 'src/layouts'
+import WithLayout, { Explore, Simple, Home } from 'src/layouts'
 import { DUMMY_POSTS } from 'lib/dummy'
 import { feedTabs } from '@helpers/routes'
 import { Aside } from '@components/index'
@@ -31,14 +31,14 @@ interface PageProps {
   //children?: ReactNode;
 }
 
-const Home: NextPageWithLayout = ({ posts }: any) => {
+const HomePage: NextPageWithLayout = ({ posts }: any) => {
   return <HomeView/>
 }
 
-Home.getLayout = function getLayout(page: ReactElement) {
-  return <WithLayout layout={Simple} component={page} aside={Aside}/>
+HomePage.getLayout = function getLayout(page: ReactElement) {
+  return <WithLayout layout={Home} component={page} aside={Aside}/>
 }
 
-Home.auth = false;
+HomePage.auth = false;
 
-export default Home
+export default HomePage
