@@ -1,5 +1,5 @@
 {
-  "name": "tbt-community",
+  "name": "@0xpaluco/app",
   "private": true,
   "scripts": {
     "dev": "next dev",
