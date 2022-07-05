@@ -1,16 +1,16 @@
+import { MetaTags } from '@components/index';
 import Head from 'next/head'
-import { Main } from './components';
+import { CTA, Features, Main, Metrics } from './components';
 
 
 const HomeView = () => {
         return (
         <>
-            <Head>
-                <title>0xpaluco | Web3 Development</title>
-                <meta name="description" content="Web3 Research and Development" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <MetaTags title="Web3 Development" description="Web3 Research and Development" />
             <Main/>
+            <Metrics/>
+            <Features/>
+            <CTA/>
         </>
     )
 }

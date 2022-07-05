@@ -22,17 +22,20 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
     <div>
       {/*  Topbar Nav */}
       <Popover as="header" className="relative">
-        <div className="bg-c-bg-light pt-6">
+        <div className="bg-transparent pt-6">
           <nav
             className="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6"
             aria-label="Global"
           >
             <div className="flex items-center flex-1">
               <div className="flex items-center justify-between w-full md:w-auto">
-                <a href="#">
-                  <span className="sr-only">0xpaluco</span>
-                  <h1 className="h-8 w-auto sm:h-10 text-white text-2xl tracking-tight font-extrabold"> 0xpaluco</h1>
-                </a>
+                <Link  href="/">
+                  <a>
+                    <span className="sr-only">0xpaluco</span>
+                    <h1 className="h-8 w-auto sm:h-10 text-white text-2xl tracking-tight font-extrabold"> 0xpaluco</h1>
+                  </a>
+                </Link>
+                
                 <div className="-mr-2 flex items-center md:hidden">
                   <Popover.Button className="bg-gray-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
                     <span className="sr-only">Open main menu</span>
@@ -54,7 +57,7 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
             <div className="hidden md:flex md:items-center md:space-x-6">
               
               <DarkModeToggler themeMode={themeMode} onClick={() => themeToggler()}/>
-              <Account mobile={false}/>
+              
             </div>
           </nav>
         </div>

@@ -5,4 +5,5 @@ export { default as Feed } from './Feed';
 export { default as Blockie } from './shared/Blockie';
 export { default as Footer } from './shared/Footer';
 export { default as WalletModal } from './shared/WalletModal';
+export { default as MetaTags } from './shared/MetaTags';
 
