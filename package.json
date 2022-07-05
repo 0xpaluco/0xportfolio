@@ -1,5 +1,5 @@
 {
-  "name": "@0xpaluco/app",
+  "name": "@0xpaluco/dapp",
   "private": true,
   "scripts": {
     "dev": "next dev",
