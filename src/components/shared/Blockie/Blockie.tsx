@@ -1,5 +1,5 @@
+import { useSession } from "next-auth/react";
 import Blockies from "react-blockies";
-import { useMoralis } from "react-moralis";
 
 interface BlockieProps {
   address: string;
@@ -14,9 +14,10 @@ interface BlockieProps {
  */
 
 const Blockie = (props: BlockieProps) => {
-  const { account, isAuthenticated } = useMoralis();
-  
-  if (!props.address && (!account || !isAuthenticated)){
+  const { data: session, status } = useSession();
+  const user = session?.user
+
+  if (status === "unauthenticated"){
      return (
       <span className="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
         <svg className="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
@@ -26,7 +27,7 @@ const Blockie = (props: BlockieProps) => {
     );
   }
 
-  const acc = (account?.toLowerCase() || "");
+  const acc = (user?.address?.toLowerCase() || "");
   return (
     <Blockies size={8} seed={props.currentWallet ? acc : props.address.toLowerCase() } className={props.className} {...props} />
   );
