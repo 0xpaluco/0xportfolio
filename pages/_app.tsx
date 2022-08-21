@@ -1,15 +1,39 @@
 import '../styles/globals.css'
+import '@rainbow-me/rainbowkit/styles.css';
+
 import { AppPropsWithLayout } from '@/types'
-import { MoralisProvider } from "react-moralis";
-import { useMoralis } from "react-moralis";
-import { useEffect } from 'react';
 import { AuthView } from "@views/index";
 
-const SERVER_URL: string = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL! || "";
-const APP_ID: string = process.env.NEXT_PUBLIC_MORALIS_APPLICATION_ID! || "";
+import { createClient, configureChains, defaultChains, WagmiConfig } from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
+import { SessionProvider, useSession } from 'next-auth/react';
+import { darkTheme, getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { RainbowKitSiweNextAuthProvider, GetSiweMessageOptions } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { useEffect } from 'react';
 
 
 
+const { provider, webSocketProvider, chains } = configureChains(
+  defaultChains,
+  [
+    publicProvider()
+  ]
+);
+
+const { connectors } = getDefaultWallets({
+    appName: '0xPaluco Dapp',
+    chains,
+});
+const client = createClient({
+  provider,
+  webSocketProvider,
+  autoConnect: true,
+  connectors
+});
+
+const getSiweMessageOptions: GetSiweMessageOptions = () => ({
+  statement: 'Sign in to 0xPaluco Dapp',
+});
 
 if (typeof window !== 'undefined') {
   // we only want to call this init function on the frontend, so we check typeof window !== 'undefined'
@@ -21,37 +45,41 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppPropsWithLa
   const getLayout = Component.getLayout ?? ((page) => page)
 
   return (
-    <MoralisProvider 
-      appId={APP_ID} 
-      serverUrl={SERVER_URL} >
-        {Component.auth ? (
-          <Auth>
-            {getLayout( <Component {...pageProps} /> )}
-          </Auth>
-        ) : (
-          getLayout( <Component {...pageProps} /> )
-        )}
-    </MoralisProvider>
+    <WagmiConfig client={client}>
+      <SessionProvider session={pageProps.session} refetchInterval={0}>
+        <RainbowKitSiweNextAuthProvider getSiweMessageOptions={getSiweMessageOptions}>
+          <RainbowKitProvider chains={chains} theme={darkTheme()} >
+            {Component.auth ? (
+              <Auth>
+                {getLayout( <Component {...pageProps} /> )}
+              </Auth>
+            ) : (
+                getLayout( <Component {...pageProps} /> )
+            )}
+          </RainbowKitProvider>
+        </RainbowKitSiweNextAuthProvider>
+      </SessionProvider>
+    </WagmiConfig>
   ) 
 }
 
 function Auth({ children }: any) {
   
-  const { isAuthenticated, isAuthenticating, user, } = useMoralis();
-  
-  useEffect(() => {
-    if (isAuthenticated) {
-      // add your logic here
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated]);
+  const { status } = useSession({ required: true })
+  const isLoading = status === "loading";
+  const isAuthenticated = status === "authenticated";
 
-  if (isAuthenticated && user) {
-    return children
+  useEffect(() => {
+    console.log(`isAuthenticated: ${isAuthenticated}`);
+    console.log(`isLoading: ${isLoading}`);
+  },[isLoading, isAuthenticated])
+
+  if (isLoading) {
+    return <div>Authenticating...</div>
   }
 
-  if (isAuthenticating) {
-    return <div>Authenticating...</div>
+  if (isAuthenticated) {
+    return children
   }
 
   // Session is being fetched, or no user.
