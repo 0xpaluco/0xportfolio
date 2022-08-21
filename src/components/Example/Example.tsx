@@ -1,4 +1,3 @@
-import { NoWalletButton } from "@components/Web3";
 import { classNames } from "@helpers/ui";
 
 interface HeroProps {

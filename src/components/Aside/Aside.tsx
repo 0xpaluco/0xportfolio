@@ -1,4 +1,4 @@
-import { Footer } from "@components/index"
+import { Footer } from "@components/shared"
 
 const messages = [
     {

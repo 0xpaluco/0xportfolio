@@ -1,10 +1,6 @@
 
-import Image from 'next/image'
-import { useState } from 'react'
 import { Switch } from '@headlessui/react'
 import { classNames } from '@helpers/ui';
-import styles from '@styles/Toggler.module.css'
-
 
 interface DarkModeTogglerProps {
     /**
