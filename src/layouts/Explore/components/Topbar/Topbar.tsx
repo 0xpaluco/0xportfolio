@@ -6,7 +6,7 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { classNames } from '@helpers/ui'
 import { navigation, userNavigation } from '@helpers/routes'
 import Link from 'next/link'
-import { useMoralis } from 'react-moralis'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 interface Props {
   className?: string;
@@ -15,10 +15,11 @@ interface Props {
 };
 
 const SignOutButton = () => {
-  const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
+  const { data: session, status } = useSession();
+  const isAuthenticated = status === "authenticated";
 
   const logOut = async () => {
-    await logout();
+    await signOut();
     console.log("logged out");
   }
 
@@ -37,19 +38,12 @@ const SignOutButton = () => {
 
 const ProfileAvatar = () => {
 
-  const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
+  const { data: session, status } = useSession();
+  const isAuthenticated = status === "authenticated";
 
   const login = async () => {
     if (!isAuthenticated) {
-
-      await authenticate({signingMessage: "Log in using Moralis" })
-        .then(function (user) {
-          console.log("logged in user:", user);
-          console.log(user!.get("ethAddress"));
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      await signIn()
     }
   }
 

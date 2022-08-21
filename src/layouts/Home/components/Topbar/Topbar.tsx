@@ -1,13 +1,10 @@
-import {Account} from '@components/Web3';
+import { Account } from '@components/Web3';
 import { DarkModeToggler } from '@components/index'
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { navigation } from '@helpers/routes';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
-
-
 
 interface Props {
   className?: string;
@@ -16,7 +13,6 @@ interface Props {
 };
 
 export default function Topbar({ themeMode, themeToggler, className, ...rest }: Props) {
-  const router = useRouter()
 
   return (
     <div>
@@ -37,11 +33,15 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
                 </Link>
                 
                 <div className="-mr-2 flex items-center md:hidden">
+                  
+                  <Account />
+
                   <Popover.Button className="bg-gray-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
                     <span className="sr-only">Open main menu</span>
                     <MenuIcon className="h-6 w-6" aria-hidden="true" />
                   </Popover.Button>
                 </div>
+                
               </div>
               <div className="hidden space-x-8 md:flex md:ml-10">
                 {navigation.map((item) => (
@@ -55,9 +55,8 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
               </div>
             </div>
             <div className="hidden md:flex md:items-center md:space-x-6">
-              
-              <DarkModeToggler themeMode={themeMode} onClick={() => themeToggler()}/>
-              
+            
+              <Account />
             </div>
           </nav>
         </div>
@@ -71,6 +70,7 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
+          
           <Popover.Panel focus className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top md:hidden">
             <div className="rounded-lg shadow-md bg-c-bg ring-1 ring-black ring-opacity-5 overflow-hidden">
               <div className="px-5 pt-4 flex items-center justify-between">

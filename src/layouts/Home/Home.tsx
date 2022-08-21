@@ -1,4 +1,4 @@
-import { Footer } from '@components/index';
+import { Footer } from '@components/shared';
 import React from 'react';
 import { Topbar } from './components';
 

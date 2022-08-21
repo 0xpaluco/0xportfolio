@@ -1,4 +1,4 @@
-import {Account, Chains} from '@components/Web3';
+import { Account } from '@components/Web3';
 import { DarkModeToggler } from '@components/index'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
@@ -20,10 +20,10 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
   const router = useRouter()
   return (
     <div className="min-h-full">
-    <div className="dark:bg-c-d-primary bg-c-d-secondary pb-32">
+    <div className="bg-c-bg pb-32">
       
       {/*  Topbar Nav */}
-      <Disclosure as="nav" className=" dark:bg-c-d-primary bg-c-d-secondary border-b border-indigo-300 border-opacity-25 lg:border-none">
+      <Disclosure as="nav" className="bg-c-bg border-b border-indigo-300 border-opacity-25 lg:border-none">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
@@ -91,7 +91,7 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
                   <div className="flex items-center">
                     {/* Profile dropdown */}
                     <DarkModeToggler themeMode={themeMode} onClick={() => themeToggler()}/>
-                    <Account mobile={false}/>
+                    <Account />
                     
                   </div>
                 </div>
@@ -125,7 +125,7 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
 
               {/* Account for Mobile*/}
               <div className="pt-4 pb-3 border-t border-indigo-700">
-                <Account mobile={true}/>
+                <Account />
               </div>
 
             </Disclosure.Panel>

@@ -1,4 +1,4 @@
-import { Footer } from '@components/index';
+import { Footer } from '@components/shared';
 import React from 'react';
 import { Topbar } from './components';
 
@@ -13,7 +13,7 @@ interface Props {
 const Simple = ({ themeMode, themeToggler, children, className }: Props): JSX.Element => {
 
   return (
-    <div className={`${themeMode}`}>
+    <div className={`${themeMode} bg-c-bg-light`}>
       <Topbar themeMode={themeMode} themeToggler={themeToggler} className={className} />
       
       <main className="-mt-28">
