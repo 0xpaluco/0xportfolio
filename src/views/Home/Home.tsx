@@ -1,6 +1,6 @@
-import { MetaTags } from '@components/index';
+import { MetaTags } from '@components/shared';
 import Head from 'next/head'
-import { CTA, Features, Main, Metrics } from './components';
+import { CTA, FeaturedWork, Main, Metrics } from './components';
 
 
 const HomeView = () => {
@@ -9,7 +9,7 @@ const HomeView = () => {
             <MetaTags title="Web3 Development" description="Web3 Research and Development" />
             <Main/>
             <Metrics/>
-            <Features/>
+            <FeaturedWork/>
             <CTA/>
         </>
     )

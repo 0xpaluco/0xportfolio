@@ -1,20 +1,22 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { ConnectWallet } from '@components/Web3';
 import { XIcon, ExclamationCircleIcon } from '@heroicons/react/solid'
-import { useMoralis } from 'react-moralis';
+import { useSession, signOut } from 'next-auth/react';
 
 
 export default function AuthView() {
-  const { authenticate, isAuthenticated,  account, logout } = useMoralis();
 
-  if (isAuthenticated) {
+  const { status, data } = useSession();
+
+  if (status === "authenticated") {
     return (
       <>
-        Signed in as {account} <br />
-        <button onClick={logout}>Logout</button>
+        Signed in as {data.user.address} <br />
+        <button onClick={() => signOut()}>Logout</button>
       </>
     )
   }
+
   return (
     <>
     <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8 dark">
@@ -25,7 +27,7 @@ export default function AuthView() {
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <ConnectWallet/>
+            <ConnectWallet />
           </div>
         </div>
       </div>

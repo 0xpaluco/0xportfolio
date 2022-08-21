@@ -1,5 +1,5 @@
 
-import { MetaTags } from "@components/index";
+import { MetaTags } from "@components/shared";
 import { Header, List} from "./components";
 
 const Dao = () => {

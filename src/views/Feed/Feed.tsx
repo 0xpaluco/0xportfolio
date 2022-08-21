@@ -2,10 +2,10 @@ import Head from 'next/head'
 import {
     CalendarIcon
 } from '@heroicons/react/outline'
-import Feed from '@components/Feed';
+import { Feed } from '@components/index';
+import { Loader } from '@components/shared';
 import { feedTabs } from '@helpers/routes';
 import { useState } from 'react';
-import Loader from '@components/shared/Loader';
 
 interface FeedViewProps {
     title: string

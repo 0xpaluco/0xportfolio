@@ -1,20 +1,18 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Blockie, Feed } from '@components/index';
+import { Blockie } from '@components/shared';
 import { classNames } from '@helpers/ui';
 import { getEllipsisTxt, tokenValueTxt } from '@helpers/formater';
 import { UserAddIcon } from '@heroicons/react/solid'
-import Moralis from 'moralis/types';
 import Head from 'next/head';
-import { useEnsAddress, useERC20Balances, useMoralis, useNativeBalance, useNFTBalances } from 'react-moralis';
 
 import { useMemo } from 'react';
 import { ERC20Balance, NFTBalance } from '@components/Web3';
+import { ProfileProps } from 'pages/me';
 
-export default function Profile() {
+export default function Profile(props: ProfileProps) {
 
-  const { authenticate, isAuthenticated, isAuthenticating, user, logout } = useMoralis();
-  const account = user!.get("ethAddress");
-  
+  const address = '0x...';
+
 
     return (
         <div className="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
@@ -24,22 +22,22 @@ export default function Profile() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Banner address={account} logout={logout} />
-            <ERC20Balance address={account} />
-            <NFTBalance address={account} />
+            <Banner address={props.address} ens={props.ens} />
+            <ERC20Balance address={props.address} tokens={props.tokenBalances} />
+            <NFTBalance address={props.address} tokens={props.nftBalances} />
         </div>
     )
 }
 
-interface ProfileProps {
-    address: string
-    logout?: () => Promise<void>
+interface BannerProps {
+  address: string;
+  ens?: string;
 }
 
-function Banner(props: ProfileProps) {
+function Banner(props: BannerProps) {
 
   const account = props.address
-  const { name, isLoading, error} = useEnsAddress(account)
+  const name = props.ens
 
 
   return (
@@ -65,16 +63,6 @@ function Banner(props: ProfileProps) {
         </div>
       </div>
 
-      <div className="mt-6 flex flex-col-reverse justify-stretch space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-x-reverse sm:space-y-0 sm:space-x-3 md:mt-0 md:flex-row md:space-x-3">
-        <button
-          onClick={props.logout}
-          type="button"
-          className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-400 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-red-500"
-        >
-          Logout
-        </button>
-      </div>
-        
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { NoWalletButton } from "@components/Web3";
+import { Account } from "@components/Web3";
 import { classNames } from "@helpers/ui";
 
 interface HeroProps {
@@ -37,7 +37,7 @@ const Hero = ({ isAuthenticated  }: HeroProps) => {
                         
                         { !isAuthenticated && <>
                             <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                                <NoWalletButton />
+                                <Account />
                             </div>
                         </>}
 
