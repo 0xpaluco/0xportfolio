@@ -1,3 +1,4 @@
+import { Icons } from '@components/shared';
 import { UserGroupIcon } from '@heroicons/react/outline'
 
 
@@ -19,8 +20,8 @@ function containPage(this: NavItem, path: string)  {
 
 export const navigation: NavItem[] = [
     { name: 'DAO', href: '/dao', icon: UserGroupIcon, current: currentPage },
+    { name: 'Projects', href: '/projects', icon: UserGroupIcon, current: currentPage },
     { name: 'Tools', href: '/tools', icon: UserGroupIcon, current: currentPage },
-    { name: 'Services', href: '/services', icon: UserGroupIcon, current: currentPage },
 ]
 
 export const secondaryNavigation = [
@@ -39,3 +40,44 @@ export const feedTabs = [
     { name: 'Tab2', href: '#', current: currentPage },
     { name: 'Tab3', href: '#', current: currentPage },
 ]
+
+export const socialNavigation = [
+    {
+      name: 'TestSocial',
+      href: '#',
+      icon: UserGroupIcon,
+    }
+  ]
+
+// export const socialNavigation = [
+//     {
+//       name: 'TikTok',
+//       href: '#',
+//       icon: Icons.tiktok.icon,
+//     },
+//     {
+//       name: 'Instagram',
+//       href: '#',
+//       icon: Icons.insta.icon,
+//     },
+//     {
+//       name: 'Twitter',
+//       href: '#',
+//       icon: Icons.twitter.icon,
+//     },
+//     {
+//       name: 'YouTube',
+//       href: '#',
+//       icon: Icons.youtube.icon,
+//     },
+//     {
+//       name: 'Discord',
+//       href: '#',
+//       icon: Icons.discord.icon,
+//     },
+//     {
+//       name: 'Github',
+//       href: '#',
+//       icon: Icons.github.icon,
+//     },
+//   ]
