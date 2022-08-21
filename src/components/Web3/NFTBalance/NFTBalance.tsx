@@ -1,29 +1,30 @@
 import { Divider, Loader } from "@components/shared";
 import { useEffect, useState } from "react";
-import { useNFTBalances } from "react-moralis";
 import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/outline'
 
 import _ from 'lodash';
 import { classNames } from "@helpers/ui";
+import { EvmNFT } from "@/types";
 
 interface NFTListProps {
     address: string
+    tokens: Array<EvmNFT>
 }
 
 interface NFTsByCollection {
-  [key:string]: Array<any>
+  [key:string]: Array<EvmNFT>
 }
 
 export default function NFTBalance(props: NFTListProps) {
 
     const account = props.address;
-    const { getNFTBalances, data, error, isLoading, isFetching } = useNFTBalances({ address: account });
-    const results = data?.result;
+    const results = props.tokens;
     const [byCollection, setByCollection] = useState<NFTsByCollection>({});
-
-    const x = byCollection["x"];
     
+    console.log(results);
+    
+
     useEffect(() => {
       const c: NFTsByCollection = {}
       _.map(results, (token) => {
@@ -37,29 +38,14 @@ export default function NFTBalance(props: NFTListProps) {
       console.log(byCollection);
       
     },
-    [data])
+    [results])
   
     return (
       <div className="px-4 sm:px-6 lg:px-8">
-        {error && <>{JSON.stringify(error)}</>}
+        
         {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
         <Divider title='NFTs'/>
 
-
-        <div className="sm:flex sm:items-center">
-          <div className="sm:flex-auto">
-            <p className="text-sm text-gray-700">
-              <button onClick={() => getNFTBalances({ params: { chain: "0x1", address: account } })}>Refetch NFTBalances</button>
-            </p>
-          </div>
-          
-        </div>
-
-        {(isLoading || isFetching) && <>
-            <Loader show={isFetching}/>
-        </>}
-  
-        
         
         { _.keysIn(byCollection).map((address) => (
           <dl className="mt-6 space-y-6 divide-y divide-gray-200">
@@ -83,7 +69,7 @@ export default function NFTBalance(props: NFTListProps) {
                         {byCollection[address]?.map((token) => (
                           <li key={token.token_id} className="relative">
                             <div className="group block w-full aspect-w-10 aspect-h-10 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                              <img src={token.image} alt="" className="object-cover pointer-events-none group-hover:opacity-75" />
+                              <img src={token.metadata?.image} alt="" className="object-cover pointer-events-none group-hover:opacity-75" />
                               <button type="button" className="absolute inset-0 focus:outline-none">
                                 <span className="sr-only">View details for {token.name} {token.token_id}</span>
                               </button>
@@ -97,10 +83,6 @@ export default function NFTBalance(props: NFTListProps) {
                   </>
                 )}
               </Disclosure>
-          
-            
-
-
           </dl>
         ))}
 
