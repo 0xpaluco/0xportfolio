@@ -30,7 +30,7 @@ const metrics = [
               Web3 is an evolving ecosystem. 
             </p>
             <p className="mt-5 text-lg text-gray-300">
-              We are only at the beginning and the future of the Web looks bright.
+              We are only at the beginning, and the future of the Web looks bright.
             </p>
             <div className="mt-12 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
               {metrics.map((item) => (
