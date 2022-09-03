@@ -47,7 +47,7 @@ const Account = () => {
   }, [status, isConnected])
 
   return (
-    <div className="px-5 flex items-center">
+    <div className="flex items-center">
       <ConnectButton 
         label={"Connect Wallet"}
         chainStatus={{ smallScreen: 'icon', largeScreen: 'icon' }}
