@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-const Tools = () => {
+const Blog = () => {
 
     const tools = [
         {
           title: 'Token Recovery',
-          href: '/tools/token-recovery',
+          href: '#',
           category: { name: 'Security', href: '#' },
           description:
             'Have a compromised wallet? And need to rescue your tokens?',
@@ -84,7 +84,7 @@ const Tools = () => {
             </div>
             <div className="relative max-w-7xl mx-auto">
                 <div className="text-center">
-                <h2 className="text-3xl tracking-tight font-extrabold text-white sm:text-4xl">Tools</h2>
+                <h2 className="text-3xl tracking-tight font-extrabold text-white sm:text-4xl">From the Blog</h2>
                 <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-400 sm:mt-4">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.
                 </p>
@@ -141,4 +141,4 @@ const Tools = () => {
     )
 }
 
-export default Tools;
+export default Blog;

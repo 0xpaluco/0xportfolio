@@ -21,7 +21,7 @@ function containPage(this: NavItem, path: string)  {
 export const navigation: NavItem[] = [
     { name: 'DAO', href: '/dao', icon: UserGroupIcon, current: currentPage },
     { name: 'Projects', href: '/projects', icon: UserGroupIcon, current: currentPage },
-    { name: 'Tools', href: '/tools', icon: UserGroupIcon, current: currentPage },
+    { name: 'Blog', href: '/blog', icon: UserGroupIcon, current: currentPage },
 ]
 
 export const secondaryNavigation = [
