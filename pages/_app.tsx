@@ -6,17 +6,20 @@ import { AuthView } from "@views/index";
 
 import { createClient, configureChains, defaultChains, WagmiConfig } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
+import { infuraProvider } from 'wagmi/providers/infura'
 import { SessionProvider, useSession } from 'next-auth/react';
-import { darkTheme, getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { darkTheme, getDefaultWallets, RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
 import { RainbowKitSiweNextAuthProvider, GetSiweMessageOptions } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { useEffect } from 'react';
-
+import { ThemeOptions } from '@rainbow-me/rainbowkit/dist/themes/baseTheme';
+import { merge } from 'lodash';
 
 
 const { provider, webSocketProvider, chains } = configureChains(
   defaultChains,
   [
-    publicProvider()
+    infuraProvider({ apiKey: process.env.INFURA_API_KEY, priority: 0 }),
+    publicProvider({ priority: 1})
   ]
 );
 
@@ -24,6 +27,7 @@ const { connectors } = getDefaultWallets({
     appName: '0xPaluco Dapp',
     chains,
 });
+
 const client = createClient({
   provider,
   webSocketProvider,
@@ -35,10 +39,25 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
   statement: 'Sign in to 0xPaluco Dapp',
 });
 
+const themeConfig: ThemeOptions = {
+  accentColor: '#A731C2',
+  accentColorForeground: '#FDFDFD',
+  borderRadius: 'medium',
+  fontStack: 'system',
+  overlayBlur: 'small',
+}
+
+const myTheme = merge(darkTheme(themeConfig), {
+  fonts: {
+    body: ''
+  }
+} as Theme);
+
+
 if (typeof window !== 'undefined') {
   // we only want to call this init function on the frontend, so we check typeof window !== 'undefined'
-  
 }
+
 
 function App({ Component, pageProps: { session, ...pageProps } }: AppPropsWithLayout) {
   
@@ -48,7 +67,8 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppPropsWithLa
     <WagmiConfig client={client}>
       <SessionProvider session={pageProps.session} refetchInterval={0}>
         <RainbowKitSiweNextAuthProvider getSiweMessageOptions={getSiweMessageOptions}>
-          <RainbowKitProvider chains={chains} theme={darkTheme()} >
+          <RainbowKitProvider chains={chains} 
+            theme={myTheme}>
             {Component.auth ? (
               <Auth>
                 {getLayout( <Component {...pageProps} /> )}
