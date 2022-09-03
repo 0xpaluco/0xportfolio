@@ -1,4 +1,3 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: [
@@ -9,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'c-primary': '#b388ff',
+        'c-primary': '#A731C2',
         'c-d-primary': '#8b07a6',
         'c-l-primary': '#e7b9ff',
         'c-secondary': '#ffccbc',
@@ -18,7 +17,6 @@ module.exports = {
         'c-bg-light': '#272f40',
         'c-bg': '#121a2a',
         'c-text': '#FDFDFD',
-        'c-primary': '#A731C2',
         white: '#FDFDFD',
         black: "#121029",
         transparent: 'transparent'
