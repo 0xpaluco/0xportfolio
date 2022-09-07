@@ -5,7 +5,7 @@ import { ReactElement, ReactNode } from 'react'
 type ApiRequest = NextApiRequest & { }
 type ApiResponse = NextApiResponse & { }
 
-type NextPageWithLayout = NextPage & {
+type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: ReactElement) => ReactNode
     auth: boolean
 }
