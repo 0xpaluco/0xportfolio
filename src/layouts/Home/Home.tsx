@@ -13,7 +13,7 @@ interface Props {
 const Home = ({ themeMode, themeToggler, children, className }: Props): JSX.Element => {
 
   return (
-    <div className={`${themeMode} relative overflow-hidden bg-c-bg-light`}>
+    <div className={`${themeMode} relative bg-c-bg-light h-screen overflow-auto`}>
       <Topbar themeMode={themeMode} themeToggler={themeToggler} className={className} />
       {children}
       <Footer/>

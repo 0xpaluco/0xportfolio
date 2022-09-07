@@ -1,40 +1,11 @@
-import { ArrowSmRightIcon } from "@heroicons/react/solid"
+import { Project } from "lib/types/strapi-schema"
 import Link from "next/link"
 
-const products = [
-  {
-    id: 1,
-    name: 'NFT Factory',
-    description: 'Deploy and Manage your own NFT Collection.',
-    href: '#',
-    category: 'NFT',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-05-related-product-01.jpg',
-    imageAlt:
-      'Payment application dashboard screenshot with transaction table, financial highlights, and main clients on colorful purple background.',
-  },
-  {
-    id: 2,
-    name: 'COMP Farmer',
-    description: 'Lend and Borrow to collect rewards in COMP tokens.',
-    href: '#',
-    category: 'DeFi',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-05-related-product-01.jpg',
-    imageAlt:
-      'Payment application dashboard screenshot with transaction table, financial highlights, and main clients on colorful purple background.',
-  },
-  {
-    id: 3,
-    name: 'Token Recovery',
-    description: 'Rescue kidnapped tokens from a compromised wallet.',
-    href: '#',
-    category: 'Security',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-05-related-product-01.jpg',
-    imageAlt:
-      'Payment application dashboard screenshot with transaction table, financial highlights, and main clients on colorful purple background.',
-  }
-]
+interface FeaturedWorkProps {
+  projects: Project[]
+}
 
-export default function FeaturedWork() {
+export default function FeaturedWork({ projects } : FeaturedWorkProps) {
   return (
     <div className="py-12 bg-c-bg-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,34 +25,47 @@ export default function FeaturedWork() {
         <div className="mt-10">
           <dl className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-3">
             
-            {products.map((product) => (
+            {projects.map((product) => (
               <div key={product.id} className="relative group">
                 <div className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100">
-                  <img src={product.imageSrc} alt={product.imageAlt} className="object-center object-cover" />
+                  <img src={`${product.attributes.coverImage.data?.attributes.url}`} alt={product.attributes.coverImage.data?.attributes.alternativeText} className="object-center object-cover" />
                   <div className="flex items-end opacity-0 p-4 group-hover:opacity-100" aria-hidden="true">
-                    <div className="w-full border-c-primary border-2 bg-white bg-opacity-75 backdrop-filter backdrop-blur py-2 px-4 rounded-md text-sm font-medium text-black text-center mx-1">
-                      Code
-                    </div>
-                    <div className="w-full bg-c-primary bg-opacity-75 backdrop-filter backdrop-blur py-2 px-4 rounded-md text-sm font-medium text-white text-center mx-1">
-                      View Project
-                    </div>
+                    
+                    {/* <Link href={product.attributes.repositoryUrl} target="_blank">
+                      <a className="w-full border-c-primary border-2 bg-white bg-opacity-75 backdrop-filter backdrop-blur py-2 px-4 rounded-md text-sm font-medium text-black text-center mx-1">
+                        Code
+                      </a>
+                    </Link> */}
+                    
+                    
+                      <button className="w-full bg-c-primary bg-opacity-75 backdrop-filter backdrop-blur py-2 px-4 rounded-md text-sm font-medium text-white text-center mx-1">
+                        View Project
+                      </button>
+                    
                   </div>
                 </div>
                 <div className="mt-4 flex items-center justify-between text-base font-medium text-white space-x-8">
                   <h3>
-                    <a href="#">
+                  <Link href={product.attributes.appUrl}>
+                    <a>
                       <span aria-hidden="true" className="absolute inset-0" />
-                      {product.name}
+                      {product.attributes.title}
                     </a>
+                  </Link>
+
                   </h3>
-                  <p>
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-c-l-primary text-c-d-primary">
-                      {product.category}
-                    </span>
-                  </p>
+                  <div>
+                    <p >
+                      {product.attributes.categories.data.map((cat) => (
+                        <span className="inline-flex items-center px-2.5 mx-1 py-0.5 rounded text-xs font-medium bg-c-l-primary text-c-d-primary">
+                          {cat.attributes.name}
+                        </span> 
+                      ))}
+                    </p>
+                  </div>
                   
                 </div>
-                <p className="mt-1 text-sm text-gray-400">{product.description}</p>
+                <p className="mt-1 text-sm text-gray-400">{product.attributes.description}</p>
               </div>
             ))}
 
