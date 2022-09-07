@@ -1,41 +1,44 @@
-import { ReactElement, ReactNode, useState } from 'react'
-import { GetServerSideProps } from "next";
+import { ReactElement } from 'react'
+import { GetStaticProps } from "next";
 import { NextPageWithLayout } from '@/types'
-import { FeedView, HomeView, BlogView } from '@views/index'
-import WithLayout, { Explore, Simple, Home } from 'src/layouts'
-import { DUMMY_POSTS } from 'lib/dummy'
-import { feedTabs } from '@helpers/routes'
+import { BlogView } from '@views/index'
+import WithLayout, { Home } from 'src/layouts'
 import { Aside } from '@components/index'
 import { catchPromise } from '@helpers/utils';
+import { Meta, StrapiArticleData } from 'lib/types/strapi-schema';
+import { articles } from '@helpers/strapi';
 
+interface PageProps {
+  articleData: StrapiArticleData
+  error?: Error
+  //children?: ReactNode;
+}
 
-const LIMIT = 1;
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-
-  const [data, error] = [[], null] //await catchErrors(listPostForFeed());
+  const [articleData, error] = await catchPromise(articles());
   if(error){
-    console.log(error);
+    return {
+      props: {
+        articleData: { data: [], meta: {} as Meta} as StrapiArticleData,
+        error: JSON.parse(JSON.stringify(error))
+      } // will be passed to the page component as props
+    }
   }
 
-  console.log(data);
   return {
     props: {
-      posts: data,
+      articleData,
     } // will be passed to the page component as props
   }
 }
 
-interface PageProps {
-  posts: any[]
-  //children?: ReactNode;
+
+const BlogPage: NextPageWithLayout<PageProps> = ({ articleData }) => {
+  return <BlogView articleData={articleData}></BlogView>
 }
 
-const BlogPage: NextPageWithLayout = ({ posts }: any) => {
-  return <BlogView></BlogView>
-}
-
-BlogPage.getLayout = function getLayout(page: ReactElement) {
+BlogPage.getLayout = function getLayout(page: ReactElement<PageProps>) {
   return <WithLayout layout={Home} component={page} aside={Aside}/>
 }
 
