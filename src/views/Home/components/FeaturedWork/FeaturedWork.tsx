@@ -12,7 +12,7 @@ export default function FeaturedWork({ projects } : FeaturedWorkProps) {
         <div className="lg:text-center">
           <h2 className="text-base text-c-l-primary font-semibold tracking-wide uppercase">My Work</h2>
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
-            Some Things I've Built
+            Some Things I’ve Built
           </p>
           <p className="mt-4 max-w-2xl text-lg text-gray-300 lg:mx-auto">
             <Link href={"/projects"} >
