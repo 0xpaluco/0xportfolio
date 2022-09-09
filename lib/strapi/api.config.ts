@@ -12,7 +12,7 @@ export const apiConfig = {
     returnRejectedPromiseOnError: true,
     withCredentials: true,
     timeout: 30000,
-    baseURL: process.env.STRAPI_HOST_URL,
+    baseURL: process.env.STRAPI_HOST_URL || "http://localhost:5000",
     headers: {
         "Cache-Control": "no-cache, no-store, must-revalidate",
         Pragma: "no-cache",
