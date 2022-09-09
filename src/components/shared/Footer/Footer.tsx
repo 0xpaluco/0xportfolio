@@ -1,5 +1,6 @@
 import { secondaryNavigation, socialNavigation } from '@helpers/routes'
 import Link from 'next/link'
+import { SocialIcon } from 'react-social-icons'
 
 
 const Footer = () => {
@@ -20,11 +21,15 @@ const Footer = () => {
           </nav>
           <div className="mt-8 flex justify-center space-x-6">
             {socialNavigation.map((item) => (
+
               <Link key={item.name} href={item.href}>
-                <a className="text-white hover:text-gray-400">
-                  <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-6 w-6" aria-hidden="true" />
-                </a>
+                <SocialIcon 
+                    network={item.name} 
+                    className="h-6 w-6" 
+                    aria-hidden="true" 
+                    bgColor='#FDFDFD' 
+                    style={{ height: 32, width: 32 }}
+                    />
               </Link>
               
             ))}

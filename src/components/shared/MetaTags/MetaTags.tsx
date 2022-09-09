@@ -8,7 +8,7 @@ interface MetaProps {
 const MetaTags = (props: MetaProps) => {
     return (
         <Head>
-            <title>0xpaluco | {props.title}</title>
+            <title>{`0xpaluco | ${props.title}`}</title>
             <meta name="description" content={props.description} />
             <meta name="robots" content="noindex,nofollow"/>
             <meta name="keywords" content="Web3, Development, NFT, Crypto"/>
