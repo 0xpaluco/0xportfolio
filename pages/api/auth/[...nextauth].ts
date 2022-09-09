@@ -74,7 +74,7 @@ export default async function auth(req: ApiRequest, res: ApiResponse) {
     // https://next-auth.js.org/configuration/providers/oauth
     providers,
     pages: {
-      signIn: "/",
+      signIn: "/connect",
     },
     session: {
       strategy: "jwt",

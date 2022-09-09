@@ -10,6 +10,7 @@ export interface Project {
 
 export interface Attributes {
     title:       string;
+    slug:        string;
     description: string;
     repositoryUrl:        string;
     appUrl:         string;
@@ -132,3 +133,20 @@ export interface Large {
     size:   number;
     url:    string;
 }
+
+
+// #########
+export interface CategoryContent {
+    id: string;
+    attributes: {
+      title: string;
+      slug: string;
+      description: string;
+      categories: { data: Category[]}
+      type: 'article' | 'project'
+      repositoryUrl?: string;
+      appUrl?: string;
+      articleUrl?: string;
+    }
+  }
+  
