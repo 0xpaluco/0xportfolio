@@ -42,42 +42,30 @@ export const feedTabs = [
 ]
 
 export const socialNavigation = [
+    
     {
-      name: 'TestSocial',
+      name: 'tiktok',
       href: '#',
-      icon: UserGroupIcon,
-    }
+    },
+    {
+      name: 'instagram',
+      href: '#',
+    },
+    {
+      name: 'twitter',
+      href: '#',
+    },
+    {
+      name: 'youtube',
+      href: '#',
+    },
+    {
+      name: 'discord',
+      href: '#',
+    },
+    {
+        name: 'github',
+        href: '#',
+    },
+    
   ]
-
-// export const socialNavigation = [
-//     {
-//       name: 'TikTok',
-//       href: '#',
-//       icon: Icons.tiktok.icon,
-//     },
-//     {
-//       name: 'Instagram',
-//       href: '#',
-//       icon: Icons.insta.icon,
-//     },
-//     {
-//       name: 'Twitter',
-//       href: '#',
-//       icon: Icons.twitter.icon,
-//     },
-//     {
-//       name: 'YouTube',
-//       href: '#',
-//       icon: Icons.youtube.icon,
-//     },
-//     {
-//       name: 'Discord',
-//       href: '#',
-//       icon: Icons.discord.icon,
-//     },
-//     {
-//       name: 'Github',
-//       href: '#',
-//       icon: Icons.github.icon,
-//     },
-//   ]
