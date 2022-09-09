@@ -15,17 +15,17 @@ const Main = () => {
                       <span className="px-3 py-0.5 text-white text-xs font-semibold leading-5 uppercase tracking-wide bg-c-primary rounded-full">
                         Hey there 👋
                       </span>
-                      <span className="ml-4 text-sm">Let's work together</span>
+                      <span className="ml-4 text-sm">Let’s work together</span>
                       <ChevronRightIcon className="ml-2 w-5 h-5 text-gray-500" aria-hidden="true" />
                     </a>
                   </Link>
                   
                   <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-                    <span className="block">Hi, I'm Paluco</span>
+                    <span className="block">Hi, I’m Paluco</span>
                     <span className="block text-c-l-primary">I build things for the future of the web.</span>
                   </h1>
                   <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                    I'm a software engineer <span className="font-bold">specializing in building</span>{' '} exceptional <span className="font-bold">Web3 experiences.</span>{' '}
+                    I’m a software engineer <span className="font-bold">specializing in building</span>{' '} exceptional <span className="font-bold">Web3 experiences.</span>{' '}
                   </p>
                   
                   <Form/>

@@ -14,7 +14,7 @@ const Header = () => {
             <div className="flex-1 min-w-0">
               
               <h1 className="mt-2 text-2xl font-bold leading-7 text-white sm:text-3xl sm:truncate">
-                0xPaluco's DAO
+                0xGovernance DAO
               </h1>
               <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-8">
                 <div className="mt-2 flex items-center text-sm text-gray-500">

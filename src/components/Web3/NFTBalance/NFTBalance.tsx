@@ -47,8 +47,8 @@ export default function NFTBalance(props: NFTListProps) {
         <Divider title='NFTs'/>
 
         
-        { _.keysIn(byCollection).map((address) => (
-          <dl className="mt-6 space-y-6 divide-y divide-gray-200">
+        { _.keysIn(byCollection).map((address, i) => (
+          <dl className="mt-6 space-y-6 divide-y divide-gray-200" key={i}>
 
           <Disclosure as="div" key={address} defaultOpen={true} className="pt-6">
                 {({ open }) => (

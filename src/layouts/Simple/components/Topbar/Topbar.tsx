@@ -41,7 +41,7 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
                   <div className="hidden lg:block lg:ml-10">
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
-                        <Link href={item.href}>
+                        <Link href={item.href} key={item.name}>
                         <a key={item.name} className={classNames(
                             item.current(router.asPath)
                               ? 'bg-indigo-700 text-white'

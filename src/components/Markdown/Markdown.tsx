@@ -42,10 +42,8 @@ const Markdown = (props: MarkdownProp) => {
         <>
             <ReactMarkdown 
                 remarkPlugins={[remarkGfm]} 
-                children={props.children} 
                 rehypePlugins={[rehypeHighlight]}
-                components={mdxComponents}
-            />
+                components={mdxComponents}>{props.children}</ReactMarkdown>
         </>
     )
 }

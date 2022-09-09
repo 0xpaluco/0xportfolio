@@ -20,7 +20,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
               ...
             </span>
             {article.attributes.categories.data.map((cat) => (
-              <Link href={`/c/${cat.attributes.slug}`}>
+              <Link href={`/c/${cat.attributes.slug}`} key={cat.id}>
                 <a className="hover:underline mr-2 before:mr-1 before:text-slate-400 before:content-['/']">
                   {cat.attributes.slug}
                 </a>

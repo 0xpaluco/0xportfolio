@@ -40,7 +40,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               </span>
 
               {project.attributes.categories?.data.map((cat) => (
-                <Link href={`/c/${cat.attributes.slug}`}>
+                <Link href={`/c/${cat.attributes.slug}`} key={cat.id}>
                   <a className="hover:underline mr-1 inline-flex items-center rounded text-sm font-medium text-c-l-primary before:mr-1 before:text-slate-400 before:content-['/']">
                     {cat.attributes.slug}
                   </a>
@@ -87,7 +87,7 @@ const ProjectGrid = ({ projects }: ProjectGridProps) => {
   return (
     <div className="mt-12 overflow-hidden shadow divide-y divide-c-bg sm:divide-y-0 sm:grid sm:grid-cols-3 sm:gap-2">
       {projects.map((project) => (
-        <ProjectCard project={project}></ProjectCard>
+        <ProjectCard project={project} key={project.id}></ProjectCard>
       ))}
     </div>
   )

@@ -20,7 +20,7 @@ const Contact = () => {
             <div className="relative py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto lg:py-32 lg:grid lg:grid-cols-2">
                 <div className="lg:pr-8">
                 <div className="max-w-md mx-auto sm:max-w-lg lg:mx-0">
-                    <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-white">Let's work together</h2>
+                    <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-white">Lets work together</h2>
                     <p className="mt-4 text-lg text-gray-400 sm:mt-3">
                         We’d love to hear from you! Schedule a meeting and tell us how we can help you. 
                     </p>

@@ -146,7 +146,7 @@ const ArticleView = ({ article }: ArticleViewProps) => {
                         </span>
                         <div className='inline-flex items-center align-middle w-full justify-center mt-4'>   
                             {article.attributes.categories.data.map((cat) => (
-                                <span className="inline-flex items-center rounded bg-c-l-primary px-2 py-0.5 text-xs font-bold text-c-d-primary mx-2">
+                                <span key={cat.id} className="inline-flex items-center rounded bg-c-l-primary px-2 py-0.5 text-xs font-bold text-c-d-primary mx-2">
                                     <Link href={`/c/${cat.attributes.slug}`}>
                                         <a>{cat.attributes.slug}</a>
                                     </Link>  

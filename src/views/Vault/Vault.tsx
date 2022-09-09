@@ -64,7 +64,7 @@ const Vault = ({ safes }: HeroProps) => {
                 <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-gray-200 shadow-inner rounded-lg px-2">
                     {!isAuthenticated && <>
                         <div className="flow-root mt-6 text-center">
-                            <NoSafe />
+                            NoSafe - Empty
                         </div>
                     </>}
 
@@ -135,7 +135,7 @@ const SafeList = (props: SafeListProp) => {
     if (safes.length == 0) {
         return (
             <div className="flow-root mt-6 text-center">
-                <NoSafe />
+                Empty - No Safe
             </div>
         )
     }
@@ -148,8 +148,8 @@ const SafeList = (props: SafeListProp) => {
                     <span className="block dark:text-c-d-primary text-c-d-secondary xl:inline">Access your safes</span>{' '}
                 </h1>
                 <ul role="list" className="mx-1 divide-y divide-gray-200">
-                    {safes.map((safe: any) => (
-                        <SafeItem safe={safe} />
+                    {safes.map((safe: any, i: number) => (
+                        <SafeItem safe={safe} key={i}/>
                     ))}
                 </ul>
             </div>
@@ -157,23 +157,23 @@ const SafeList = (props: SafeListProp) => {
     )
 }
 
-const NoSafe = () => {
-    return (
-        <div
-            className="relative block w-full h-full border-2 border-gray-300 border-dashed rounded-lg p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title" aria-describedby="desc" role="img" className="mx-auto h-12 w-12 text-gray-400">
-                <title>Vault</title>
-                <desc>A line styled icon from Orion Icon Library.</desc>
-                <rect data-name="layer1" x="2" y="2" width="60" height="60" rx="3" ry="3" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2"></rect>
-                <path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" d="M10 16v-6h44v44H10v-6m0-8V24"></path>
-                <circle data-name="layer2" cx="34" cy="32" r="8" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2"></circle>
-                <path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" d="M34 20v4m0 16v4M22 32h4m16 0h4m-20.5-8.5l2.8 2.8m11.4 11.4l2.8 2.8m-17 0l2.8-2.8m11.4-11.4l2.8-2.8"></path>
-                <path data-name="layer1" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" d="M8 16h4v8H8zm0 24h4v8H8z"></path>
-            </svg>
-            <span className="mt-2 block text-sm font-medium text-gray-900">You have 0 safes.</span>
-        </div>
-    )
-}
+// const NoSafe = () => {
+//     return (
+//         <div
+//             className="relative block w-full h-full border-2 border-gray-300 border-dashed rounded-lg p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+//         >
+//             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title" aria-describedby="desc" role="img" className="mx-auto h-12 w-12 text-gray-400">
+//                 <title>Vault</title>
+//                 <desc>A line styled icon from Orion Icon Library.</desc>
+//                 <rect data-name="layer1" x="2" y="2" width="60" height="60" rx="3" ry="3" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2"></rect>
+//                 <path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" d="M10 16v-6h44v44H10v-6m0-8V24"></path>
+//                 <circle data-name="layer2" cx="34" cy="32" r="8" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2"></circle>
+//                 <path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" d="M34 20v4m0 16v4M22 32h4m16 0h4m-20.5-8.5l2.8 2.8m11.4 11.4l2.8 2.8m-17 0l2.8-2.8m11.4-11.4l2.8-2.8"></path>
+//                 <path data-name="layer1" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" d="M8 16h4v8H8zm0 24h4v8H8z"></path>
+//             </svg>
+//             <span className="mt-2 block text-sm font-medium text-gray-900">You have 0 safes.</span>
+//         </div>
+//     )
+// }
 
 export default Vault

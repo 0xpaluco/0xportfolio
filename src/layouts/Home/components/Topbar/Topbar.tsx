@@ -114,7 +114,7 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
                       href="#"
                       className="block text-center w-full py-3 px-4 rounded-md shadow bg-c-primary text-white font-medium hover:bg-c-l-primary"
                     >
-                      Let's Work together
+                      Lets Work together
                     </a>
                   </Link>
                   

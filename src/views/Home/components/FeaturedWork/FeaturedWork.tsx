@@ -55,7 +55,7 @@ export default function FeaturedWork({ projects } : FeaturedWorkProps) {
                   </h3>
                   <p className="">
                     {product.attributes.categories.data.map((cat) => (
-                        <span className="inline-flex items-center px-2.5 mx-1 py-0.5 rounded text-xs font-medium bg-c-l-primary text-c-d-primary">
+                        <span key={cat.id} className="inline-flex items-center px-2.5 mx-1 py-0.5 rounded text-xs font-medium bg-c-l-primary text-c-d-primary">
                           {cat.attributes.name}
                         </span> 
                       ))}

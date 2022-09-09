@@ -48,7 +48,7 @@ const Card = ({ content }: CardProps) => {
               </span>
 
               {content.attributes.categories?.data.map((cat) => (
-                <Link href={`/c/${cat.attributes.slug}`}>
+                <Link key={cat.id} href={`/c/${cat.attributes.slug}`}>
                   <a className="hover:underline mr-1 inline-flex items-center rounded text-sm font-medium text-c-l-primary before:mr-1 before:text-slate-400 before:content-['/']">
                     {cat.attributes.slug}
                   </a>
@@ -100,7 +100,7 @@ const Grid = ({ contentList }: GridProps) => {
   return (
     <div className="mt-12 overflow-hidden shadow divide-y divide-c-bg sm:divide-y-0 sm:grid sm:grid-cols-3 sm:gap-2">
       {contentList.map((content) => (
-        <Card content={content}></Card>
+        <Card content={content}  key={content.id}></Card>
       ))}
     </div>
   )

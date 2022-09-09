@@ -35,7 +35,7 @@ const metrics = [
                 <a
                   className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-c-primary hover:bg-c-d-primary"
                 >
-                  Let's Work together
+                  Let’s Work together
                 </a>
               </Link>
               
