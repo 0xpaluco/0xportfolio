@@ -10,7 +10,7 @@ import { infuraProvider } from 'wagmi/providers/infura'
 import { SessionProvider, useSession } from 'next-auth/react';
 import { darkTheme, getDefaultWallets, RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
 import { RainbowKitSiweNextAuthProvider, GetSiweMessageOptions } from '@rainbow-me/rainbowkit-siwe-next-auth';
-import { useEffect } from 'react';
+import { useEffect, ReactElement, ReactNode } from 'react';
 import { ThemeOptions } from '@rainbow-me/rainbowkit/dist/themes/baseTheme';
 import { merge } from 'lodash';
 
@@ -59,19 +59,19 @@ if (typeof window !== 'undefined') {
 }
 
 
-function App({ Component, pageProps: { session, ...pageProps } }: AppPropsWithLayout) {
+function App({ Component, session, pageProps: {  ...pageProps } }: AppPropsWithLayout) {
   
   const getLayout = Component.getLayout ?? ((page) => page)
 
   return (
     <WagmiConfig client={client}>
-      <SessionProvider session={pageProps.session} refetchInterval={0}>
+      <SessionProvider session={session} refetchInterval={0}>
         <RainbowKitSiweNextAuthProvider getSiweMessageOptions={getSiweMessageOptions}>
           <RainbowKitProvider chains={chains} 
             theme={myTheme}>
             {Component.auth ? (
               <Auth>
-                {getLayout( <Component {...pageProps} /> )}
+                {getLayout( <Component { ...pageProps } /> )}
               </Auth>
             ) : (
                 getLayout( <Component {...pageProps} /> )
@@ -83,7 +83,10 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppPropsWithLa
   ) 
 }
 
-function Auth({ children }: any) {
+interface AuthProps {
+  children: any
+}
+function Auth({ children }: AuthProps) {
   
   const { status } = useSession({ required: true })
   const isLoading = status === "loading";
@@ -99,7 +102,7 @@ function Auth({ children }: any) {
   }
 
   if (isAuthenticated) {
-    return children
+    return children;
   }
 
   // Session is being fetched, or no user.

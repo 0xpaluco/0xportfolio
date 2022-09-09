@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse, NextPage } from 'next'
-import { AppProps } from 'next/app'
+import { Session } from 'next-auth'
+import { SessionContextValue } from 'next-auth/react'
+import { AppInitialProps, AppProps } from 'next/app'
 import { ReactElement, ReactNode } from 'react'
 
 type ApiRequest = NextApiRequest & { }
@@ -9,9 +11,10 @@ type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: ReactElement) => ReactNode
     auth: boolean
 }
-  
+
 type AppPropsWithLayout = AppProps & {
     Component: NextPageWithLayout
+    session: Session
 }
 
 type ERC20Token = {
