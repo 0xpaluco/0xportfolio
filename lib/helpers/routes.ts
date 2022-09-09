@@ -1,4 +1,3 @@
-import { Icons } from '@components/shared';
 import { UserGroupIcon } from '@heroicons/react/outline'
 
 
