@@ -15,7 +15,7 @@ export default function FeaturedWork({ projects } : FeaturedWorkProps) {
             Some Things I've Built
           </p>
           <p className="mt-4 max-w-2xl text-lg text-gray-300 lg:mx-auto">
-            <Link href="/projects" >
+            <Link href={"/projects"} >
               <a className="hover:border-b border-c-l-primary pb-1 hover:cursor-pointer">View other projects.</a>
             </Link>
             
@@ -46,23 +46,20 @@ export default function FeaturedWork({ projects } : FeaturedWorkProps) {
                 </div>
                 <div className="mt-4 flex items-center justify-between text-base font-medium text-white space-x-8">
                   <h3>
-                  <Link href={product.attributes.appUrl}>
-                    <a>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {product.attributes.title}
-                    </a>
-                  </Link>
-
+                    <Link href={product.attributes.appUrl}>
+                      <a>
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {product.attributes.title}
+                      </a>
+                    </Link>
                   </h3>
-                  <div>
-                    <p >
-                      {product.attributes.categories.data.map((cat) => (
+                  <p className="">
+                    {product.attributes.categories.data.map((cat) => (
                         <span className="inline-flex items-center px-2.5 mx-1 py-0.5 rounded text-xs font-medium bg-c-l-primary text-c-d-primary">
                           {cat.attributes.name}
                         </span> 
                       ))}
-                    </p>
-                  </div>
+                  </p>
                   
                 </div>
                 <p className="mt-1 text-sm text-gray-400">{product.attributes.description}</p>
