@@ -1,11 +1,15 @@
 import Moralis from 'moralis';
 
 const config = {
-    domain: process.env.APP_DOMAIN,
+    domain: process.env.APP_DOMAIN!,
     statement: 'Please sign this message to confirm your identity.',
-    uri: process.env.NEXTAUTH_URL,
+    uri: process.env.NEXTAUTH_URL!,
     timeout: 60,
 };
+
+export declare enum AuthNetwork {
+    EVM = "evm"
+}
 
 export const requestMessage = async (address: string, chain: string, network: string) => {
     await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
@@ -13,7 +17,7 @@ export const requestMessage = async (address: string, chain: string, network: st
     return await Moralis.Auth.requestMessage({
             address,
             chain,
-            network,
+            network: "evm",
             ...config,
         });
 }
