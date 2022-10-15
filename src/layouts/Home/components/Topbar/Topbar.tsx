@@ -25,7 +25,7 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
             aria-label="Global"
           >
             <div className="flex items-center flex-1">
-              <div className="flex items-center justify-between w-full md:w-auto">
+              <div className="flex items-center w-full md:w-auto">
 
                 <Link href="/">
                   <a>
@@ -34,22 +34,19 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
                   </a>
                 </Link>
 
-                <div className="flex items-center md:hidden">
+                <div className="flex items-center md:hidden mx-4">
                   <Popover.Button className="rounded-md inline-flex items-center justify-center text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
                     <span className="sr-only">Open main menu</span>
                     <ChevronDownIcon className="h-6 w-6" aria-hidden="true" />
                   </Popover.Button>
                 </div>
                 
-                <div className="flex items-center md:hidden">
-                  <Account />
-                </div>
                 
               </div>
               <div className="hidden space-x-8 md:flex md:ml-10">
                 {navigation.map((item) => (
                   <Link key={item.name} href={item.href}>
-                    <a className="text-base font-medium text-white hover:text-gray-300">
+                    <a className="text-base font-medium text-white hover:text-c-l-primary hover:underline underline-offset-4">
                       {item.name}
                     </a>
                   </Link>
@@ -57,8 +54,7 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
                 ))}
               </div>
             </div>
-            <div className="hidden md:flex md:items-center md:space-x-6">
-            
+            <div className="flex md:items-center md:space-x-6">
               <Account />
             </div>
           </nav>

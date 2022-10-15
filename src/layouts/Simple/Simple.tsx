@@ -13,7 +13,7 @@ interface Props {
 const Simple = ({ themeMode, themeToggler, children, className }: Props): JSX.Element => {
 
   return (
-    <div className={`${themeMode} bg-c-bg-light`}>
+    <div className={`${themeMode} bg-zinc-800`}>
       <Topbar themeMode={themeMode} themeToggler={themeToggler} className={className} />
       
       <main className="-mt-28">

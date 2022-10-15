@@ -1,11 +1,9 @@
 import { Account } from '@components/Web3';
-import { DarkModeToggler } from '@components/index'
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Disclosure } from '@headlessui/react'
 import { SearchIcon } from '@heroicons/react/solid'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { classNames } from '@helpers/ui';
-import { navigation, userNavigation } from '@helpers/routes';
+import { navigation } from '@helpers/routes';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -76,6 +74,9 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
                     </div>
                   </div>
                 </div>
+                <div className="lg:block lg:ml-4">
+                  <Account />
+                </div>
                 <div className="flex lg:hidden">
                   {/* Mobile menu button */}
                   <Disclosure.Button className="dark:bg-c-primary p-2 rounded-md inline-flex items-center justify-center text-indigo-200 hover:text-white hover:bg-indigo-500 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white">
@@ -87,14 +88,7 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
                     )}
                   </Disclosure.Button>
                 </div>
-                <div className="hidden lg:block lg:ml-4">
-                  <div className="flex items-center">
-                    {/* Profile dropdown */}
-                    <DarkModeToggler themeMode={themeMode} onClick={() => themeToggler()}/>
-                    <Account />
-                    
-                  </div>
-                </div>
+
               </div>
             </div>
             
@@ -122,12 +116,6 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
                   </Disclosure.Button>
                 ))}
               </div>
-
-              {/* Account for Mobile*/}
-              <div className="pt-4 pb-3 border-t border-indigo-700">
-                <Account />
-              </div>
-
             </Disclosure.Panel>
           </>
         )}
