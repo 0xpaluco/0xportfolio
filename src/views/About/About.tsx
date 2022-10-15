@@ -42,18 +42,18 @@ const AboutView = ({ }: AboutViewProps) => {
                 </h1>
                 <div className="mt-6 space-y-7 text-base text-gray-400">
                   <p>
-                    I've always enjoyed making things, my first experience with programming was when I was 13 years old, where
+                    I’ve always enjoyed making things, my first experience with programming was when I was 13 years old, where
                     I began experimenting with online video games and hosting several private servers.
-                    That's when I realized I wanted to create bigger and greater things.
+                    That’s when I realized I wanted to create bigger and greater things.
                   </p>
                   <p>
-                    Throughout my professional career, I've had the opportunity to work with a variety of start-ups in numerous industries.
-                    I've liked studying and working directly with company founders,
+                    Throughout my professional career, I’ve had the opportunity to work with a variety of start-ups in numerous industries.
+                    I’ve liked studying and working directly with company founders,
                     which has given me the opportunity to learn about various aspects of business growth.
                   </p>
 
                   <p>
-                    Today, I'm the founder of 0xLabs, where we're
+                    Today, I’m the founder of 0xLabs, where we’re
                     aiming to let creators own their own platform
                     so they <em>can</em>{' '} offer their audience access and ownership.
                   </p>
