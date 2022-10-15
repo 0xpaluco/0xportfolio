@@ -1,5 +1,6 @@
 export { default as Aside } from './Aside';
-export { default as ArticleGrid } from './ArticleGrid';
+export { default as ArticleList } from './ArticleList';
+export { default as Card } from './Card';
 export { default as DarkModeToggler } from './DarkModeToggler';
 export { default as Example } from './Example';
 export { default as Feed } from './Feed';
