@@ -1,18 +1,21 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Blockie } from '@components/shared';
 import { classNames } from '@helpers/ui';
-import { getEllipsisTxt, tokenValueTxt } from '@helpers/formater';
-import { UserAddIcon } from '@heroicons/react/solid'
+import { getEllipsisTxt } from '@helpers/formater';
 import Head from 'next/head';
-
-import { useMemo } from 'react';
 import { ERC20Balance, NFTBalance } from '@components/Web3';
-import { ProfileProps } from 'pages/me';
+import { ERC20Token } from '@/types';
 
-export default function Profile(props: ProfileProps) {
+export interface PortfolioProps {
+  address: string;
+  ens?: string;
+  nativeBalance: string;
+  tokenBalances: Array<ERC20Token>;
+  nftBalances: Array<any>
+}
 
-  const address = '0x...';
 
+export default function Portfolio(props: PortfolioProps) {
 
     return (
         <div className="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
