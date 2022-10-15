@@ -20,9 +20,11 @@
       "@middleware": ["lib/middleware"],
       "@views/*": ["src/views/*"],
       "@components/*": ["src/components/*"],
+      "@images/*": ["src/images/*"],
       "@helpers/*": ["lib/helpers/*"],
       "@styles/*": ["styles/*"],
-      "@/types": ["lib/types"]
+      "@/types": ["lib/types"],
+      "@/*": ["src/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
