@@ -22,7 +22,7 @@
     "ethers": "^5.6.9",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
-    "moralis": "^2.3.1",
+    "moralis": "^2.6.4",
     "next": "^12.2.5",
     "next-auth": "^4.10.3",
     "next-connect": "^0.12.2",
