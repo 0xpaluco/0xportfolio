@@ -1,3 +1,4 @@
+import { GitHubIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from '@components/SocialIcons';
 import { UserGroupIcon } from '@heroicons/react/outline'
 
 
@@ -18,16 +19,17 @@ function containPage(this: NavItem, path: string)  {
 
 
 export const navigation: NavItem[] = [
-    { name: 'DAO', href: '/dao', icon: UserGroupIcon, current: currentPage },
+    { name: 'About', href: '/about', icon: UserGroupIcon, current: currentPage },
+    { name: 'Articles', href: '/blog', icon: UserGroupIcon, current: currentPage },
     { name: 'Projects', href: '/projects', icon: UserGroupIcon, current: currentPage },
-    { name: 'Blog', href: '/blog', icon: UserGroupIcon, current: currentPage },
+    { name: 'Portfolio', href: '/portfolio', icon: UserGroupIcon, current: currentPage },
 ]
 
 export const secondaryNavigation = [
-    { name: 'About Us', href: '#' },
+    { name: 'About', href: '/about' },
+    { name: 'Articles', href: '/blog' },
     { name: 'Lets Work', href: '/contact' },
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Terms of use', href: '#' },
+    { name: 'Projects', href: '/projects' },
 ]
   
 export const userNavigation = [
@@ -40,31 +42,27 @@ export const feedTabs = [
     { name: 'Tab3', href: '#', current: currentPage },
 ]
 
+
 export const socialNavigation = [
     
     {
-      name: 'tiktok',
-      href: '#',
+      name: 'Twitter',
+      href: 'https://twitter.com/0xpaluco',
+      icon: TwitterIcon
     },
     {
-      name: 'instagram',
-      href: '#',
+      name: 'Instagram',
+      href: 'https://instagram.com/0xpaluco',
+      icon: InstagramIcon
     },
     {
-      name: 'twitter',
-      href: '#',
+      name: 'Github',
+      href: 'https://github.com/0xpaluco',
+      icon: GitHubIcon
     },
     {
-      name: 'youtube',
-      href: '#',
+      name: 'Linkedin',
+      href: 'https://www.linkedin.com/in/0xpaluco',
+      icon: LinkedInIcon
     },
-    {
-      name: 'discord',
-      href: '#',
-    },
-    {
-        name: 'github',
-        href: '#',
-    },
-    
   ]

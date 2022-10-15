@@ -4,17 +4,15 @@ declare module "next-auth" {
   /**
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
    */
+   type TUserData = {
+    address: string;
+    signature: string;
+    profileId: string;
+    expirationTime: ISODateString;
+  };
+
   interface Session {
-    user: {
-      /** The user's ethereum address. */
-      address: string
-    } & DefaultSession["user"]
+    user: TUserData
   }
 
-  interface JWT {
-    user: {
-      /** The user's ethereum address. */
-      address: string
-    } & DefaultSession["user"]
-  }
 }
