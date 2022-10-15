@@ -19,6 +19,23 @@ export const projects = async () => {
         return await client.projects(query);
 }
 
+export const projectsBySlug = async (slug: string) => {
+    const client = new StrapiClient(apiConfig);
+    const query = qs.stringify(
+        {
+            populate: '*',
+            filters: {
+                slug: { $eq: slug }
+            },
+            pagination: { limit: 1 }
+        }, 
+        {
+            encodeValuesOnly: true, // prettify URL
+        });
+        
+    return await client.projects(query);
+}
+
 export const projectsforCategory = async (categorySlug: string) => {
     const client = new StrapiClient(apiConfig);
     const query = qs.stringify(
@@ -69,6 +86,24 @@ export const articles = async () => {
         });
         
         return await client.articles(query);
+}
+
+export const newestArticles = async (limit: number) => {
+    const client = new StrapiClient(apiConfig);
+    
+    const query = qs.stringify(
+        {
+            populate: "*",
+            pagination: {
+                limit
+            },
+            sort: ['publishedAt:desc'],
+        }, 
+        {
+            encodeValuesOnly: true, // prettify URL
+        });
+
+    return await client.articles(query);
 }
 
 export const articlesBySlug = async (slug: string) => {
