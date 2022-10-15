@@ -1,10 +1,9 @@
-import { ReactElement, ReactNode, useState } from 'react'
-import { GetServerSideProps, GetStaticProps } from "next";
+import { ReactElement } from 'react'
+import { GetStaticProps } from "next";
 import { NextPageWithLayout } from '@/types'
-import { FeedView, HomeView, BlogView, ProjectsView } from '@views/index'
-import WithLayout, { Explore, Simple, Home } from 'src/layouts'
-import { DUMMY_POSTS } from 'lib/dummy'
-import { feedTabs } from '@helpers/routes'
+import { ProjectsView } from '@views/index'
+import WithLayout, { Home } from 'src/layouts'
+
 import { Aside } from '@components/index'
 import { catchPromise } from '@helpers/utils';
 import { projects } from '@helpers/strapi';

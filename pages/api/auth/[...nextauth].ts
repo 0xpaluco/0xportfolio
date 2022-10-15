@@ -1,96 +1,63 @@
-import { ApiRequest, ApiResponse } from "@/types"
-import { getUser } from "@helpers/auth"
-import Moralis from "moralis"
-import NextAuth from "next-auth"
-import { Provider } from "next-auth/providers"
-import CredentialsProvider from "next-auth/providers/credentials"
-import { getCsrfToken } from "next-auth/react"
-import { SiweMessage } from "siwe"
+import NextAuth, { ISODateString, Session } from "next-auth"
+import CredentialsProvider from 'next-auth/providers/credentials';
+import Moralis from 'moralis';
 
+export interface ISession extends Session { }
+
+const provider = CredentialsProvider({
+  name: 'MoralisAuth',
+  credentials: {
+      message: {
+          label: 'Message',
+          type: 'text',
+          placeholder: '0x0',
+      },
+      signature: {
+          label: 'Signature',
+          type: 'text',
+          placeholder: '0x0',
+      },
+  },
+    async authorize(credentials) {
+      try {
+        // "message" and "signature" are needed for authorization
+        // we described them in "credentials" above
+        const message = credentials?.message;
+        const signature = credentials?.signature;
+
+        await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
+
+        const { address, profileId } = (
+          await Moralis.Auth.verify({ message: message!, signature: signature!, network: 'evm' })
+        ).raw;
+
+        const user = { address, profileId, signature };
+        // returning the user object and creating  a session
+        return user;
+      } catch (e) {
+        console.error(e);
+        return null;
+      }
+    },
+})
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
-export default async function auth(req: ApiRequest, res: ApiResponse) {
-  const providers: Provider[] = [
-    CredentialsProvider({
-      name: "Ethereum",
-      credentials: {
-        message: {
-          label: "Message",
-          type: "text",
-          placeholder: "0x0",
-        },
-        signature: {
-          label: "Signature",
-          type: "text",
-          placeholder: "0x0",
-        },
-      },
-      async authorize(credentials) {
-        try {
-          const siwe = new SiweMessage(JSON.parse(credentials?.message || "{}"))
 
-          const nextAuthUrl =
-            process.env.NEXTAUTH_URL ||
-            (process.env.VERCEL_URL
-              ? `https://${process.env.VERCEL_URL}`
-              : null)
-          if (!nextAuthUrl) {
-            return null
-          }
 
-          const nextAuthHost = new URL(nextAuthUrl).host
-          if (siwe.domain !== nextAuthHost) {
-            return null
-          }
-
-          if (siwe.nonce !== (await getCsrfToken({ req }))) {
-            return null
-          }
-
-          await siwe.validate(credentials?.signature || "")
-
-          // Moralis Auth
-          // const user = await getUser(siwe.toMessage(), credentials?.signature!)          
-          
-          return {
-            id: siwe.address
-          }
-        } catch (e) {
-          return null
-        }
-      },
-    }),
-  ]
-
-  const isDefaultSigninPage =
-    req.method === "GET" && req?.query?.nextauth?.includes("signin")
-
-  // Hide Sign-In with Ethereum from default sign page
-  if (isDefaultSigninPage) {
-    providers.pop()
-  }
-
-  return await NextAuth(req, res, {
-    // https://next-auth.js.org/configuration/providers/oauth
-    providers,
-    pages: {
-      signIn: "/connect",
+export default NextAuth({
+  providers: [provider],
+  pages: {
+    signIn: '/connect'
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      user && (token.user = user);
+      return token;
     },
-    session: {
-      strategy: "jwt",
+    async session({ session, token }) {
+      session.expires = (token as unknown as ISession).user.expirationTime;
+      session.user = (token as unknown as ISession).user;
+      return session;
     },
-    secret: process.env.NEXTAUTH_SECRET,
-    callbacks: {
-      async jwt({ token, user }) {
-        user && (token.user = user);
-        return token;
-      },
-      async session({ session, token }) {
-        session.address = token.sub
-        session.user.name = token.sub
-        session.user.image = 'https://www.fillmurray.com/128/128'
-        return session
-      },
-    },
-  })
-}
+  },
+});

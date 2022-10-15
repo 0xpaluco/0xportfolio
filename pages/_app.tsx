@@ -36,7 +36,10 @@ const client = createClient({
 });
 
 const getSiweMessageOptions: GetSiweMessageOptions = () => ({
-  statement: 'Sign in to 0xPaluco Dapp',
+    domain: process.env.NEXT_PUBLIC_APP_DOMAIN!,
+    statement: 'Please sign this message to confirm your identity.',
+    uri: process.env.NEXT_PUBLIC_NEXTAUTH_URL!,
+    timeout: 60
 });
 
 const themeConfig: ThemeOptions = {
@@ -66,7 +69,7 @@ function App({ Component, session, pageProps: {  ...pageProps } }: AppPropsWithL
   return (
     <WagmiConfig client={client}>
       <SessionProvider session={session} refetchInterval={0}>
-        <RainbowKitSiweNextAuthProvider getSiweMessageOptions={getSiweMessageOptions}>
+        <RainbowKitSiweNextAuthProvider getSiweMessageOptions={getSiweMessageOptions} enabled={false}>
           <RainbowKitProvider chains={chains} 
             theme={myTheme}>
             {Component.auth ? (

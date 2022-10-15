@@ -1,16 +1,13 @@
 import { ReactElement } from 'react'
 import { GetStaticProps } from "next";
 import { NextPageWithLayout } from '@/types'
-import { BlogView, CategoryView } from '@views/index'
-import WithLayout, { Explore, Simple, Home } from 'src/layouts'
+import { CategoryView } from '@views/index'
+import WithLayout, { Home } from 'src/layouts'
 import { Aside } from '@components/index'
 import { catchPromise } from '@helpers/utils';
 import { Category, CategoryContent, StrapiCategoryData } from 'lib/types/strapi-schema';
 import { categories, categoriesBySlug, mergeData } from '@helpers/strapi';
 import Error from 'next/error';
-
-
-const LIMIT = 3;
 
 interface PageProps {
   category: Category

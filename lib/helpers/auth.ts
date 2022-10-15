@@ -1,4 +1,5 @@
 import Moralis from 'moralis';
+import { EvmChain } from '@moralisweb3/evm-utils'
 
 const config = {
     domain: process.env.APP_DOMAIN!,
@@ -12,14 +13,16 @@ export declare enum AuthNetwork {
 }
 
 export const requestMessage = async (address: string, chain: string, network: string) => {
-    await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
+    
+    const data = {
+        address,
+        chain: EvmChain.create(chain).hex,
+        network: network,
+        ...config,
+    };
 
-    return await Moralis.Auth.requestMessage({
-            address,
-            chain,
-            network: "evm",
-            ...config,
-        });
+    await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
+    return await Moralis.Auth.requestMessage(data);
 }
 
 export const getUser = async (message: string, signature: string) => {

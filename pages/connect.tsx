@@ -10,9 +10,9 @@ const HomePage: NextPageWithLayout = () => {
   return <AuthView/>
 }
 
-HomePage.getLayout = function getLayout(page: ReactElement) {
-  return <WithLayout layout={Home} component={page} aside={Aside}/>
-}
+// HomePage.getLayout = function getLayout(page: ReactElement) {
+//   return <WithLayout layout={Home} component={page} aside={Aside}/>
+// }
 
 HomePage.auth = false;
 

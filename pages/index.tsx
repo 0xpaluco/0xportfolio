@@ -1,11 +1,11 @@
 import { ReactElement } from 'react'
 import { NextPageWithLayout } from '@/types'
 import {  HomeView } from '@views/index'
-import WithLayout, { Home } from 'src/layouts'
+import WithLayout, { Home, Simple } from 'src/layouts'
 import { Aside } from '@components/index'
-import { Meta, StrapiProjectData } from 'lib/types/strapi-schema'
+import { Meta, StrapiArticleData, StrapiProjectData } from 'lib/types/strapi-schema'
 import { catchPromise } from '@helpers/utils'
-import { featuredProjects } from '@helpers/strapi'
+import { featuredProjects, newestArticles } from '@helpers/strapi'
 import { GetStaticProps } from 'next'
 
 
@@ -13,32 +13,29 @@ const LIMIT: number = 3;
 
 interface PageProps {
   projectData: StrapiProjectData
+  articleData: StrapiArticleData
   error?: Error
   //children?: ReactNode;
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
 
-  const [projectData, error] = await catchPromise(featuredProjects(LIMIT));
+  const [ projectData, articleData ] = await Promise.all([
+    featuredProjects(2),
+    newestArticles(LIMIT)
+  ]);
   
-  if(error){
-    return {
-      props: {
-        projectData: { data: [], meta: {} as Meta } as StrapiProjectData,
-        error: JSON.parse(JSON.stringify(error))
-      } // will be passed to the page component as props
-    }
-  }
   return {
     props: {
       projectData,
+      articleData
     } // will be passed to the page component as props
   }
 }
 
 
-const HomePage: NextPageWithLayout<PageProps> = ({ projectData, error }) => {
-  return <HomeView projectData={projectData}/>
+const HomePage: NextPageWithLayout<PageProps> = ({ projectData, articleData }) => {
+  return <HomeView projectData={projectData} articleData={articleData} />
 }
 
 HomePage.getLayout = function getLayout(page: ReactElement<PageProps>) {

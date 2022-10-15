@@ -34,6 +34,11 @@ handler
 
       const { address, chain, network } = req.body;
 
+      console.log('api');
+      console.log(address);
+      console.log(chain);
+      console.log(network);
+      
       const message = await catchAPIErrors(requestMessage(address, chain, network))
       res.status(200).json(message);
   })

@@ -1,15 +1,13 @@
 import type { ReactElement } from 'react'
 import { ProfileView } from '@views/index'
-import WithLayout, { Simple } from 'src/layouts'
+import WithLayout, { Simple, Home } from 'src/layouts'
 import Moralis from 'moralis';
 import { GetServerSideProps } from 'next';
-import { ERC20Token } from '@/types';
 import { getSession } from 'next-auth/react';
-import { getToken } from 'next-auth/jwt';
 import { catchPromise } from '@helpers/utils';
+import { ERC20Token } from '@/types';
 
-
-export interface ProfileProps {
+interface PageProps {
   address: string;
   ens?: string;
   nativeBalance: string;
@@ -17,27 +15,30 @@ export interface ProfileProps {
   nftBalances: Array<any>
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+
+export const getServerSideProps: GetServerSideProps<PageProps> = async (context) => {
 
   const session = await getSession(context)
-  const token = await getToken({ req: context.req });
-  const address = token?.sub ?? "0x0";
-  
-  if (!token) {
+  const address = session?.user?.address ?? "";
+
+  if (!address) {
     return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
+      props: {
+        address,
+        nativeBalance: "",
+        tokenBalances: [],
+        nftBalances: [],
+        ens: ""
+      }
     }
   }
 
   await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
   // Promise.all() for receiving data async from two endpoints
   const [nativeBalance, tokenBalances, nftBalances] = await Promise.all([
-      Moralis.EvmApi.account.getNativeBalance({ address }),
-      Moralis.EvmApi.account.getTokenBalances({ address }),
-      Moralis.EvmApi.account.getNFTs({ address }),
+      Moralis.EvmApi.balance.getNativeBalance({ address }),
+      Moralis.EvmApi.token.getWalletTokenBalances({ address }),
+      Moralis.EvmApi.nft.getWalletNFTs({ address }),
   ]);
 
   const resolvePromise = Moralis.EvmApi.resolve.resolveAddress({ address });
@@ -47,14 +48,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       address,
       nativeBalance: nativeBalance.result.balance.ether,
-      tokenBalances: tokenBalances.result.map((token) => JSON.parse(JSON.stringify(token.toJSON())) ),
-      nftBalances: nftBalances.result.map((token) => JSON.parse(JSON.stringify(token.toJSON())) ),
+      tokenBalances: tokenBalances.result.map((_token) => JSON.parse(JSON.stringify(_token.toJSON())) ),
+      nftBalances: nftBalances.result.map((_token) => JSON.parse(JSON.stringify(_token.toJSON())) ),
       ens: response ? response.result.name : ""
     }
   }
 }
 
-const Me = (props: ProfileProps) => {
+const Portfolio = (props: PageProps) => {
   return (
     <ProfileView 
       address={props.address}
@@ -66,10 +67,10 @@ const Me = (props: ProfileProps) => {
   )
 }
 
-Me.getLayout = function getLayout(page: ReactElement) {
-  return <WithLayout layout={Simple} component={page} />
+Portfolio.getLayout = function getLayout(page: ReactElement<PageProps>) {
+  return <WithLayout layout={Home} component={page} />
 }
 
-Me.auth = true;
+Portfolio.auth = true;
 
-export default Me
+export default Portfolio
