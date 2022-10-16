@@ -53,13 +53,8 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
               <div className="absolute inset-0 bg-gradient-to-t from-c-l-primary via-c-l-primary opacity-20" />
               <div className="relative px-8">
                 <blockquote className="mt-8">
-                  <div className="relative text-lg font-medium text-white md:flex-grow">
-                    <FolderIcon className='h-8 w-8 transform' />
-                    <p className="relative">
-                      {project.attributes.description}
-                    </p>
-                  </div>
-
+                  
+                 
 
                 </blockquote>
               </div>
@@ -72,7 +67,7 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
           <div className="pt-12 sm:pt-16 lg:pt-20">
             <article>
               <header className="flex flex-col">
-                <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+                <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
                   {project.attributes.title}
                 </h1>
                 <p className="mt-8 text-xl leading-8 text-gray-400">
@@ -89,13 +84,7 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
                     </div> */}
 
                 </p>
-                <time
-                  dateTime={project.attributes.publishedAt.toString()}
-                  className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
-                >
-                  <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
-                  <span className="ml-3">{moment(project.attributes.publishedAt).format("MMMM D, YYYY")}</span>
-                </time>
+                
               </header>
               <div className='prose prose-lg prose-white mx-auto mt-6 text-white'>
                 <Markdown>{project.attributes.description}</Markdown>
@@ -106,8 +95,8 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
           {/* Stats section */}
 
           <div className="mt-10">
-            <Link href={project.attributes.appUrl}>
-              <a href="#" className="text-base font-medium text-c-l-primary">
+            <Link href={project.attributes.appUrl} target={'_blank'}>
+              <a target='_blank' className="text-base font-medium text-c-l-primary">
                 Go to App
                 <span aria-hidden="true"> &rarr;</span>
               </a>
