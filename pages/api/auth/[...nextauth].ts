@@ -18,7 +18,7 @@ const provider = CredentialsProvider({
       placeholder: '0x0',
     },
   },
-  async authorize(credentials) {
+  async authorize(credentials, req) {
     try {
       // "message" and "signature" are needed for authorization
       // we described them in "credentials" above
