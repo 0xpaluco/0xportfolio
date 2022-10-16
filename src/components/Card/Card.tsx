@@ -28,7 +28,7 @@ interface CardLinkProps {
 Card.Link = function CardLink({ children, href, ...props }: CardLinkProps) {
   return (
     <>
-      <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:bg-c-bg-light group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl" />
+      <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:bg-c-bg-light group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl" />
       <Link href={href}>
         {/* <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl" /> */}
         <a>
@@ -47,7 +47,7 @@ interface CardTitleProps {
 
 Card.Title = function CardTitle({ as: Component = 'h2', href, children }: CardTitleProps) {
   return (
-    <Component className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+    <Component className="text-base font-semibold tracking-tight text-white">
       {href ? <Card.Link href={href}>{children}</Card.Link> : children}
     </Component>
   )
@@ -59,7 +59,7 @@ interface CardDescriptionProps {
 
 Card.Description = function CardDescription({ children }: CardDescriptionProps) {
   return (
-    <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+    <p className="relative z-10 mt-2 text-sm text-gray-400">
       {children}
     </p>
   )
@@ -99,7 +99,7 @@ Card.Eyebrow = function CardEyebrow({
     <Component
       className={clsx(
         className,
-        'relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500',
+        'relative z-10 order-first mb-3 flex items-center text-sm text-gray-400',
         decorate && 'pl-3.5'
       )}
       {...props}
