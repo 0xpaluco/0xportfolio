@@ -13,7 +13,7 @@ declare module "next-auth" {
 
 
   interface Session {
-    user: TUserData
+    user: User
   }
 
 }
