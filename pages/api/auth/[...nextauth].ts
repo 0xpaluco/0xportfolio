@@ -1,8 +1,6 @@
-import NextAuth, { ISODateString, Session } from "next-auth"
+import NextAuth, { Session, User } from "next-auth"
 import CredentialsProvider from 'next-auth/providers/credentials';
 import Moralis from 'moralis';
-
-export interface ISession extends Session { }
 
 const provider = CredentialsProvider({
   name: 'MoralisAuth',
@@ -18,7 +16,7 @@ const provider = CredentialsProvider({
       placeholder: '0x0',
     },
   },
-  async authorize(credentials, req) {
+  async authorize(credentials) {
     try {
       // "message" and "signature" are needed for authorization
       // we described them in "credentials" above
@@ -31,7 +29,7 @@ const provider = CredentialsProvider({
         await Moralis.Auth.verify({ message: message!, signature: signature!, network: 'evm' })
       ).raw;
 
-      const user = { address, profileId, signature };
+      const user: User = { address, profileId, signature };
       // returning the user object and creating  a session
       return user;
     } catch (e) {
@@ -55,8 +53,8 @@ export default NextAuth({
       return token;
     },
     async session({ session, token }) {
-      session.expires = (token as unknown as ISession).user.expirationTime;
-      session.user = (token as unknown as ISession).user;
+      session.expires = (token as unknown as Session).user.expirationTime;
+      session.user = (token as unknown as Session).user;
       return session;
     },
   },
