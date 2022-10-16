@@ -110,7 +110,7 @@ interface ArticleListProps {
 
 const ArticleList = ({ articles }: ArticleListProps) => {
   return (
-    <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40 mb-10">
+    <div className="md:border-l-2 md:border-gray-400/40 md:pl-6 mb-10">
       <div className="inline-flex items-center text-c-l-primary">
         <BookOpenIcon className="w-5 h-5 mr-2" />
         <h2 className="text-sm font-semibold">ARTICLES</h2>

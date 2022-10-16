@@ -1,8 +1,4 @@
-
-
-import { Article } from 'lib/types/strapi-schema'
 import Image from 'next/future/image'
-import Head from 'next/head'
 import portraitImage from '@images/portrait.jpg'
 import { socialNavigation } from '@helpers/routes'
 import { SocialLink } from '@components/SocialIcons'
@@ -31,7 +27,7 @@ const AboutView = ({ }: AboutViewProps) => {
                     src={portraitImage}
                     alt=""
                     sizes="(min-width: 1024px) 32rem, 20rem"
-                    className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+                    className="aspect-square rotate-3 rounded-2xl object-cover bg-zinc-800"
                   />
                 </div>
               </div>
@@ -77,7 +73,7 @@ const AboutView = ({ }: AboutViewProps) => {
                   <SocialLink
                     href="mailto:hello@0xpalu.co"
                     icon={MailIcon}
-                    className="my-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
+                    className="my-8 border-t pt-8 border-zinc-700/40"
                   >
                     hello@0xpalu.co
                   </SocialLink>
