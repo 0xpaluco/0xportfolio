@@ -1,13 +1,8 @@
-import { Article, Category, CategoryContent, Project, StrapiProjectData } from "lib/types/strapi-schema";
-import { useState, useMemo, useEffect } from "react";
-import { ArticleGrid, ProjectGrid } from "@components/index";
+import { Category, CategoryContent } from "lib/types/strapi-schema";
 import { classNames } from "@helpers/ui";
 import { FolderIcon, BookOpenIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { CodeIcon, ExternalLinkIcon, ArrowRightIcon } from "@heroicons/react/solid";
-
-
-
 interface CardProps {
   content: CategoryContent
 }
