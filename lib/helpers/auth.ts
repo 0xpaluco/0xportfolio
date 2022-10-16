@@ -12,7 +12,7 @@ export declare enum AuthNetwork {
     EVM = "evm"
 }
 
-export const requestMessage = async (address: string, chain: string, network: string) => {
+export const requestMessage = async (address: string, chain: string, network: any) => {
     
     const data = {
         address,
