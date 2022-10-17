@@ -5,6 +5,7 @@ import { Project } from 'lib/types/strapi-schema'
 import Link from 'next/link'
 import moment from 'moment'
 import { FolderIcon } from '@heroicons/react/outline'
+import { MetaTags } from '@components/shared'
 
 
 interface ProjectDetailProps {
@@ -63,6 +64,7 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
         </div>
 
         <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
+          <MetaTags title={project.attributes.title} description={project.attributes.description}/>
           {/* Content area */}
           <div className="pt-12 sm:pt-16 lg:pt-20">
             <article>
