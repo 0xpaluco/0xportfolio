@@ -21,7 +21,7 @@ interface PageProps {
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
 
   const [ projectData, articleData ] = await Promise.all([
-    featuredProjects(2),
+    featuredProjects(LIMIT),
     newestArticles(LIMIT)
   ]);
   
