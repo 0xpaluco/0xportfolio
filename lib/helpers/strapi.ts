@@ -10,7 +10,8 @@ export const projects = async () => {
     const client = new StrapiClient(apiConfig);
     const query = qs.stringify(
         {
-            populate: "*"
+            populate: "*",
+            sort: ['slug:asc'],
         }, 
         {
             encodeValuesOnly: true, // prettify URL
@@ -65,7 +66,8 @@ export const featuredProjects = async (limit: number) => {
             },
             pagination: {
                 limit
-            }
+            },
+            sort: ['slug:asc'],
         }, 
         {
             encodeValuesOnly: true, // prettify URL
@@ -79,7 +81,8 @@ export const articles = async () => {
     const client = new StrapiClient(apiConfig);
     const query = qs.stringify(
         {
-            populate: "*"
+            populate: "*",
+            sort: ['publishedAt:desc'],
         }, 
         {
             encodeValuesOnly: true, // prettify URL
