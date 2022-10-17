@@ -42,7 +42,7 @@ interface ArticleListProps {
 
 const ArticleList = ({ articles }: ArticleListProps) => {
   return (
-    <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+    <div className="md:border-l-2 md:border-gray-400/40 md:pl-6">
       <div className="flex max-w-3xl flex-col space-y-16">
         {articles.map((article) => (
           <Article key={article.id} article={article} />
