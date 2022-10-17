@@ -12,6 +12,7 @@ export interface Attributes {
     title:       string;
     slug:        string;
     description: string;
+    content: string;
     repositoryUrl:        string;
     appUrl:         string;
     featured: boolean;

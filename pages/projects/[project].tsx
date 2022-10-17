@@ -21,9 +21,6 @@ interface PageProps {
 export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   const slug  = params?.project as string;
   const [projectData, error] = await catchPromise(projectsBySlug(slug));
-  console.log(slug);
-  console.log(projectData.data);
-  
 
   if(error){
     return {

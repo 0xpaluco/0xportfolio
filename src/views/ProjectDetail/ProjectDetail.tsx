@@ -87,7 +87,7 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
                 
               </header>
               <div className='prose prose-lg prose-white mx-auto mt-6 text-white'>
-                <Markdown>{project.attributes.description}</Markdown>
+                <Markdown>{project.attributes.content}</Markdown>
               </div>
             </article>
           </div>
