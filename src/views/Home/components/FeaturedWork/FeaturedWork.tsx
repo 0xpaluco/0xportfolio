@@ -1,11 +1,11 @@
 import { Card } from "@components/index"
 import { FolderIcon, CodeBracketIcon, BookOpenIcon, EnvelopeIcon } from "@heroicons/react/24/outline"
-import { Project, Article } from "lib/types/strapi-schema"
+import { Article } from "lib/types/cms"
 import moment from "moment"
 import Link from "next/link"
 
 interface FeaturedWorkProps {
-  projects: Project[]
+  projects: any[]
   articles: Article[]
 }
 
@@ -32,7 +32,7 @@ export default function FeaturedWork({ projects, articles }: FeaturedWorkProps) 
 }
 
 interface ListProps {
-  projects: Project[]
+  projects: any[]
 }
 const ProjectList = ({ projects }: ListProps) => {
   return (
@@ -83,18 +83,18 @@ const Article = ({ article }: ArticleProps) => {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
-        <Card.Title href={`/${article.attributes.slug}`}>
-          {article.attributes.title}
+        <Card.Title href={`/blog/${article.slug}`}>
+          {article.title}
         </Card.Title>
         <Card.Eyebrow
           as="time"
-          dateTime={article.attributes.publishedAt}
+          dateTime={article.date}
           className="block"
           decorate
         >
-          {moment(article.attributes.publishedAt).format("MMMM D, YYYY")}
+          {moment(article.date).format("MMMM D, YYYY")}
         </Card.Eyebrow>
-        <Card.Description>{article.attributes.summary}</Card.Description>
+        <Card.Description>{article.summary}</Card.Description>
         <Card.Cta>Read article</Card.Cta>
       </Card>
     </article>
@@ -111,7 +111,7 @@ const ArticleList = ({ articles }: ArticleListProps) => {
       <div className="md:border-l-2 md:border-gray-400/40 md:pl-6">
         <div className="inline-flex items-center text-c-l-primary">
           <BookOpenIcon className="w-5 h-5 mr-2" />
-          <h2 className="text-sm font-semibold">ARTICLES</h2>
+          <h2 className="text-sm font-semibold">LATEST ARTICLES</h2>
         </div>
         <div className="flex flex-col space-y-16 mt-12 md:mt-8">
           {articles?.map((article) => (

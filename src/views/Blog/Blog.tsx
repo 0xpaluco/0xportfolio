@@ -1,15 +1,13 @@
 'use client';
 
 import { ArticleList } from "@components/index";
-import { useState } from "react";
-
+import { Article } from "lib/types/cms";
 interface BlogProps {
-  articleData: any[] 
+  articleData: Article[] 
 }
 
 const Blog = ({ articleData }: BlogProps) => {
 
-  const [articles, setArticles] = useState<any[]>([]);
 
   return (
     <>
@@ -25,7 +23,7 @@ const Blog = ({ articleData }: BlogProps) => {
             </p>
           </div>
 
-          <ArticleList articles={articles} />
+          <ArticleList articles={articleData} />
         </div>
       </div>
     </>

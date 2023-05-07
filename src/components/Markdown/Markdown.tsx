@@ -1,9 +1,13 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown, { Components } from "react-markdown"
 import rehypeHighlight from "rehype-highlight"
 import remarkGfm from "remark-gfm"
 
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 
 interface MarkdownProp {
@@ -20,30 +24,46 @@ const mdxComponents: Components = {
     li: ({ children }) => <li className="mt-1 text-base">{children}</li>,
     a: ({ children, href }) => <Link href={href || ""} target="_blank" className="font-medium text-base my-4 text-c-l-primary hover:cursor-pointer">{children}</Link>,
     p: ({ children }) => <p className="mt-4 text-base">{children}</p>,
-    pre: ({ children }) => <pre className="whitespace-pre-wrap bg-black text-white text-sm my-2 p-4">{children}</pre>,
-    code: ({ children }) => <code className="text-white text-sm">{children}</code>,
+    pre: ({ children }) => <pre className="whitespace-pre-wrap bg-c-bg text-white text-sm my-2 p-4">{children}</pre>,
+    code: ({ node, inline, className, children, ...props }) => {
+        const match = /language-(\w+)/.exec(className || '')
+        return !inline && match ? 
+        (<CodeBlock
+            codestring={String(children).replace(/\n$/, '')}
+            language={match[1]}
+        />) : (<code className="text-white text-sm">{children}</code>)
+    },
     img: ({ alt, src, children }) => (
         <figure>
-              <Image
+            <Image
                 className="w-full rounded-lg"
                 src={src || defaultImg}
-                alt={alt}
+                alt={alt || ""}
                 width={1310}
                 height={873}
-              />
-              <figcaption>{alt}</figcaption>
-            </figure>
+            />
+            <figcaption>{alt}</figcaption>
+        </figure>
     ),
     // ...
 };
 
+const CodeBlock = ({ language, codestring }) => {
+    return (
+        <SyntaxHighlighter language={language} style={vscDarkPlus} PreTag="div">
+            {codestring}
+        </SyntaxHighlighter>
+    )
+}
+
 const Markdown = (props: MarkdownProp) => {
     return (
         <>
-            <ReactMarkdown 
-                remarkPlugins={[remarkGfm]} 
+            <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeHighlight]}
-                components={mdxComponents}>{props.children}</ReactMarkdown>
+                children={props.children}
+                components={mdxComponents}/>
         </>
     )
 }

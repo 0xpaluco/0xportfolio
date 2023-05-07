@@ -2,19 +2,18 @@
 
 import { Fragment, useState } from 'react';
 import { FeaturedWork, Main, CTA } from './components';
+import { Article } from 'lib/types/cms';
 
 interface HomeProps {
     projectData: any[]
-    articleData: any[]
+    articleData: Article[]
 }
 
 const HomeView = ({ projectData, articleData }: HomeProps) => {
-    const [projects, setProjects] = useState<any[]>([]);
-    const [articles, setArticles] = useState<any[]>([]);
     return (
         <Fragment>
             <Main/>
-            <FeaturedWork projects={projects} articles={articles}/>
+            <FeaturedWork projects={projectData} articles={articleData}/>
             <CTA />
         </Fragment>
     )

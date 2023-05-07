@@ -1,4 +1,5 @@
 // import 'server-only'
+import { getAllPublishedArticles } from '@helpers/notion';
 import { HomeView } from '@views/index'
 import type { Metadata } from 'next';
 
@@ -9,9 +10,9 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const projectData: any[] = []
-  const articleData: any[] = []
+  const articles = await getAllPublishedArticles()
 
-  return <HomeView projectData={projectData} articleData={articleData} />
+  return <HomeView projectData={projectData} articleData={articles} />
 }
 
 Page.auth = false

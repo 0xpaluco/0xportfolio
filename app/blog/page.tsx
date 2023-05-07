@@ -1,3 +1,4 @@
+import { getAllPublishedArticles } from '@helpers/notion';
 import { BlogView } from '@views/index'
 import type { Metadata } from 'next';
 
@@ -7,9 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const articleData: any[] = []
-
-  return <BlogView articleData={articleData} />
+  const articles = await getAllPublishedArticles()
+  return <BlogView articleData={articles} />
 }
 
 Page.auth = false

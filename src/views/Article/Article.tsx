@@ -1,8 +1,9 @@
 'use client';
 
 import { Markdown } from '@components/index'
-import { Article } from 'lib/types/strapi-schema'
+import { Article } from 'lib/types/cms'
 import moment from 'moment'
+import Link from 'next/link';
 
 interface ArticleViewProps {
   article: Article
@@ -12,7 +13,7 @@ const ArticleView = ({ article }: ArticleViewProps) => {
 
   return (
     <div className="relative overflow-hidden bg-c-bg text-white py-16">
-      <div className="hidden lg:absolute lg:inset-y-0 lg:block lg:h-full lg:w-full">
+      <div className="hidden lg:inset-y-0 lg:block lg:h-full lg:w-full">
         <div className="relative mx-auto h-full max-w-prose text-lg" aria-hidden="true">
           <svg
             className="absolute top-12 left-full translate-x-32 transform"
@@ -88,32 +89,30 @@ const ArticleView = ({ article }: ArticleViewProps) => {
               <article>
                 <header className="flex flex-col">
                   <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                    {article.attributes.title}
+                    {article.title}
                   </h1>
                   <p className="mt-8 text-xl leading-8 text-gray-400">
-                    {article.attributes.summary}
+                    {article.summary}
 
-                    {/* <div className='inline-flex w-full'>   
-                            {article.attributes.categories.data.map((cat) => (
-                                <span key={cat.id} className="inline-flex rounded bg-c-l-primary px-2 py-0.5 text-xs font-bold text-c-d-primary mx-2">
-                                    <Link href={`/c/${cat.attributes.slug}`}>
-                                        <a>{cat.attributes.slug}</a>
-                                    </Link>  
-                                </span>
-                            ))}
-                          </div> */}
+                    <div className='inline-flex w-full'>
+                      {article.tags.map((tag) => (
+                        <Link href={`/c/${tag}`} key={tag} className="inline-flex rounded bg-c-l-primary px-2 py-0.5 text-xs font-bold text-c-d-primary mr-2">
+                          {tag}
+                        </Link>
+                      ))}
+                    </div>
 
                   </p>
                   <time
-                    dateTime={article.attributes.publishedAt.toString()}
+                    dateTime={article.date.toString()}
                     className="order-first flex items-center text-base text-gray-400"
                   >
                     <span className="h-4 w-0.5 rounded-full bg-gray-200" />
-                    <span className="ml-3">{moment(article.attributes.publishedAt).format("MMMM D, YYYY")}</span>
+                    <span className="ml-3">{moment(article.date).format("MMMM D, YYYY")}</span>
                   </time>
                 </header>
                 <div className='prose prose-lg prose-white mx-auto mt-6 text-white'>
-                  <Markdown>{article.attributes.content}</Markdown>
+                  <Markdown children={article.content || ""}/>
                 </div>
               </article>
             </div>

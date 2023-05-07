@@ -1,3 +1,4 @@
+import { articleBySlug, getAllPublishedArticles } from '@helpers/notion';
 import { ArticleView } from '@views/index'
 import type { Metadata } from 'next';
 
@@ -5,27 +6,18 @@ import type { Metadata } from 'next';
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-    return [{ id: '1' }, { id: '2' }]
+    const articles = await getAllPublishedArticles()
+    return articles.map(({ slug }) => ({ params: { slug } }));
 }
-
-async function getArticle(params) {
-    const res = await fetch(`https://.../posts/${params.id}`);
-    const data = await res.json();
-    return data.project;
-}
-
 
 export async function generateMetadata({ params }): Promise<Metadata> {
-    const article = await getArticle(params.id);
-    
+    const article = await articleBySlug(params.slug);
     return { title: article.title };
 }
 
-
-export default async function Page({ params }) {
-    const article = await getArticle(params);
-
-    return <ArticleView article={article} />
+export default async function Page({ params }) {    
+    const article = await articleBySlug(params.slug);
+    return <ArticleView article={article}/>
 }
 
 Page.auth = false
