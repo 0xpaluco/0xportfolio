@@ -1,10 +1,10 @@
 import {
   CurrencyDollarIcon,
-  DocumentAddIcon,
+  DocumentPlusIcon,
   GlobeAltIcon,
   UserGroupIcon,
-} from '@heroicons/react/solid'
-import { UserAddIcon } from "@heroicons/react/outline";
+} from '@heroicons/react/24/solid'
+import { UserPlusIcon } from "@heroicons/react/24/outline";
 
 const Header = () => {
 
@@ -37,7 +37,7 @@ const Header = () => {
                   type="button"
                   className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-black bg-white hover:bg-gray-100"
                 >
-                  <UserAddIcon className="-ml-1 mr-2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                  <UserPlusIcon className="-ml-1 mr-2 h-5 w-5 text-gray-400" aria-hidden="true" />
                   Join
                 </button>
               </span>
@@ -47,7 +47,7 @@ const Header = () => {
                   type="button"
                   className="inline-flex items-center px-4 py-2 rounded-md shadow-sm text-sm font-medium text-white bg-c-primary hover:bg-c-d-primary  focus:ring-c-primary"
                 >
-                  <DocumentAddIcon className="-ml-1 mr-2 h-5 w-5 text-white" aria-hidden="true" />
+                  <DocumentPlusIcon className="-ml-1 mr-2 h-5 w-5 text-white" aria-hidden="true" />
                   Make Proporsal
                 </button>
               </span>

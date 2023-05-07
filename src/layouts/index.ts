@@ -1,4 +1,2 @@
-export { default as Explore } from './Explore';
-export { default as Home } from './Home';
-export { default as Simple } from './Simple';
+export { default as Main } from './Main';
 export { default } from './WithLayout'

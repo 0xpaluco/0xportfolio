@@ -1,7 +1,9 @@
+'use client';
+
 import { Divider, Loader } from "@components/shared";
 import { useEffect, useState } from "react";
 import { Disclosure } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/outline'
+import { ChevronDownIcon } from '@heroicons/react/24/outline'
 
 import _ from 'lodash';
 import { classNames } from "@helpers/ui";

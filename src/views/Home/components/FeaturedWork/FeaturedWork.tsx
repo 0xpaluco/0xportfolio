@@ -1,5 +1,5 @@
 import { Card } from "@components/index"
-import { FolderIcon, CodeIcon, BookOpenIcon, MailIcon } from "@heroicons/react/outline"
+import { FolderIcon, CodeBracketIcon, BookOpenIcon, EnvelopeIcon } from "@heroicons/react/24/outline"
 import { Project, Article } from "lib/types/strapi-schema"
 import moment from "moment"
 import Link from "next/link"
@@ -38,23 +38,22 @@ const ProjectList = ({ projects }: ListProps) => {
   return (
     <div className="p-4 border-gray-400/40 border-2 rounded-lg">
       <div className="mt-2 inline-flex items-center text-c-l-primary">
-        <CodeIcon className="w-5 h-5 mr-2" />
+        <CodeBracketIcon className="w-5 h-5 mr-2" />
         <h2 className="text-sm font-semibold">MY WORK</h2>
       </div>
       <div className="mt-6 flow-root">
         <ul role="list" className="-my-5 divide-y divide-gray-400">
-          {projects.map((project) => (
+          {projects?.map((project) => (
 
             <li key={project.id} className="py-5">
               <div className="relative">
                 <FolderIcon className="w-8 h-8 text-c-l-primary mb-2" />
                 <h3 className="text-sm font-semibold text-white">
-                  <Link href={`/projects/${project.attributes.slug}`}>
-                    <a className="hover:underline focus:outline-none">
+                  <Link href={`/projects/${project.attributes.slug}`}
+                     className="hover:underline focus:outline-none">
                       {/* Extend touch target to entire panel */}
                       <span className="absolute inset-0" aria-hidden="true" />
                       {project.attributes.slug}
-                    </a>
                   </Link>
                 </h3>
                 <p className="mt-1 text-sm text-gray-400 line-clamp-2">{project.attributes.description}</p>
@@ -65,12 +64,10 @@ const ProjectList = ({ projects }: ListProps) => {
         </ul>
       </div>
       <div className="mt-6">
-        <Link href={'/projects'}>
-          <a
+        <Link href={'/projects'}
             className="flex w-full items-center justify-center rounded-md border-2 border-c-bg bg-c-bg-light px-4 py-2 text-sm font-medium text-white shadow-sm hover:border-c-primary/40"
           >
             View all projects
-          </a>
         </Link>
 
       </div>
@@ -117,7 +114,7 @@ const ArticleList = ({ articles }: ArticleListProps) => {
           <h2 className="text-sm font-semibold">ARTICLES</h2>
         </div>
         <div className="flex flex-col space-y-16 mt-12 md:mt-8">
-          {articles.map((article) => (
+          {articles?.map((article) => (
             <Article key={article.id} article={article} />
           ))}
         </div>
@@ -131,7 +128,7 @@ const Form = () => {
     <div className="border-gray-400/40 border-2 rounded-lg p-4 mb-6">
       <form action="#" className="sm:max-w-xl sm:mx-auto lg:mx-0">
         <div className="mt-2 inline-flex items-center text-c-l-primary">
-          <MailIcon className="w-5 h-5 mr-2" />
+          <EnvelopeIcon className="w-5 h-5 mr-2" />
           <h2 className="text-sm font-semibold">STAY UP TO DATE</h2>
         </div>
         <p className="my-3 text-sm text-gray-400">
@@ -156,7 +153,7 @@ const Form = () => {
               disabled={true}
               className="block w-full py-3 px-4 rounded-md shadow bg-c-primary text-white font-medium hover:bg-c-d-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900"
             >
-              Join
+              Join Us
             </button>
           </div>
         </div>

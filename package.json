@@ -1,7 +1,7 @@
 {
-  "name": "@0xpaluco/dapp",
+  "name": "0xportfolio",
   "private": true,
-  "description": "0xPaluco's DApp",
+  "description": "0xPaluco's Portfolio Site",
   "version": "1.0.0",
   "author": {
     "name": "0xPaluco",
@@ -15,17 +15,20 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.4.3",
-    "@heroicons/react": "^1.0.5",
-    "@rainbow-me/rainbowkit": "^0.5.0",
+    "@heroicons/react": "^2.0.17",
+    "@moralisweb3/common-evm-utils": "^2.19.0",
+    "@moralisweb3/core": "^2.7.4",
+    "@moralisweb3/next": "^2.19.0",
+    "@rainbow-me/rainbowkit": "^0.12.12",
     "@rainbow-me/rainbowkit-siwe-next-auth": "^0.1.0",
-    "axios": "^0.27.2",
-    "ethers": "^5.6.9",
+    "axios": "^1.4.0",
+    "ethers": "5.7.2",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "moralis": "^2.6.4",
-    "next": "^12.2.5",
+    "next": "^13.4.1",
     "next-auth": "^4.10.3",
-    "next-connect": "^0.12.2",
+    "next-connect": "^1.0.0",
     "nextjs-cors": "^2.1.0",
     "react": "^18.2.0",
     "react-blockies": "^1.4.1",
@@ -34,10 +37,10 @@
     "react-hook-form": "^7.30.0",
     "react-markdown": "^8.0.3",
     "react-social-icons": "^5.14.0",
-    "rehype-highlight": "^5.0.2",
+    "rehype-highlight": "^6.0.0",
     "remark-gfm": "^3.0.1",
-    "siwe": "^1.1.6",
-    "wagmi": "^0.6.4"
+    "siwe": "^2.1.4",
+    "wagmi": "^0.12.13"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",
@@ -45,17 +48,17 @@
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
     "@types/lodash": "^4.14.182",
-    "@types/node": "17.0.41",
+    "@types/node": "20.1.0",
     "@types/qs": "^6.9.7",
     "@types/react": "^18.0.17",
     "@types/react-blockies": "^1.4.1",
     "autoprefixer": "^10.4.2",
     "cross-env": "^7.0.3",
-    "eslint": "8.7.0",
-    "eslint-config-next": "12.0.8",
+    "eslint": "8.40.0",
+    "eslint-config-next": "13.4.1",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.24",
-    "typescript": "4.5.4"
+    "typescript": "5.0.4"
   },
   "packageManager": "yarn@3.2.1"
 }

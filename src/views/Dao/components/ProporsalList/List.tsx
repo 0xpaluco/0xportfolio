@@ -1,14 +1,14 @@
 
 import {
-  ArrowNarrowLeftIcon,
-  ArrowNarrowRightIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
   CheckCircleIcon,
   ChevronRightIcon,
-  MailIcon,
   IdentificationIcon
 
-} from '@heroicons/react/solid'
+} from '@heroicons/react/24/solid'
 import { classNames } from "@helpers/ui";
+import Link from 'next/link';
 
 
 const tabs = [
@@ -58,7 +58,7 @@ const ProporsalTabs = () => {
           <div className="border-b border-gray-200">
             <nav className="mt-2 -mb-px flex space-x-8" aria-label="Tabs">
               {tabs.map((tab) => (
-                <a
+                <Link
                   key={tab.name}
                   href={tab.href}
                   className={classNames(
@@ -79,7 +79,7 @@ const ProporsalTabs = () => {
                       {tab.count}
                     </span>
                   ) : null}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -95,7 +95,7 @@ const ProporsalTabs = () => {
         <ul role="list" className="mt-5 border-t border-gray-200 divide-y divide-gray-200 sm:mt-0 sm:border-t-0">
           {candidates.map((candidate) => (
             <li key={candidate.address}>
-              <a href="#" className="group block">
+              <Link href="#" className="group block">
                 <div className="flex items-center py-5 px-4 sm:py-6 sm:px-0">
                   <div className="min-w-0 flex-1 flex items-center">
                     <div className="flex-shrink-0">
@@ -136,7 +136,7 @@ const ProporsalTabs = () => {
                     />
                   </div>
                 </div>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -153,39 +153,39 @@ const Pagination = () => {
               aria-label="Pagination"
             >
               <div className="-mt-px w-0 flex-1 flex">
-                <a
+                <Link
                   href="#"
                   className="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-200"
                 >
-                  <ArrowNarrowLeftIcon className="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+                  <ArrowLeftIcon className="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
                   Previous
-                </a>
+                </Link>
               </div>
               <div className="hidden md:-mt-px md:flex">
-                <a
+                <Link
                   href="#"
                   className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
                 >
                   1
-                </a>
+                </Link>
                 {/* Current: "border-purple-500 text-purple-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200" */}
-                <a
+                <Link
                   href="#"
                   className="border-purple-500 text-purple-600 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
                   aria-current="page"
                 >
                   2
-                </a>
+                </Link>
                 
               </div>
               <div className="-mt-px w-0 flex-1 flex justify-end">
-                <a
+                <Link
                   href="#"
                   className="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-200"
                 >
                   Next
-                  <ArrowNarrowRightIcon className="ml-3 h-5 w-5 text-gray-400" aria-hidden="true" />
-                </a>
+                  <ArrowRightIcon className="ml-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+                </Link>
               </div>
             </nav>
         </>

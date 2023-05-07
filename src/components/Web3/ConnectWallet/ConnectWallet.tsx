@@ -1,4 +1,4 @@
-import { IdentificationIcon } from '@heroicons/react/solid'
+import { IdentificationIcon } from '@heroicons/react/24/solid'
 import { Account } from '@components/Web3';
 
 const ConnectWallet = () => {

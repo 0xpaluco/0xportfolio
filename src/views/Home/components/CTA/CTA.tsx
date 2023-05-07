@@ -1,12 +1,14 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function CTA() {
   return (
     <div className="relative bg-c-bg">
       <div className="h-56 bg-c-bg sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
-        <img
+        <Image
           className="w-full h-full object-cover"
           src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&blend=272f40&sat=-100&blend-mode=multiply"
+          fill={true}
           alt=""
         />
 
@@ -20,12 +22,10 @@ export default function CTA() {
           </p>
           <div className="mt-8">
             <div className="inline-flex rounded-md shadow">
-              <Link href="/contact">
-                <a
-                  className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-c-primary hover:bg-c-d-primary"
-                >
-                  Let’s Work together
-                </a>
+              <Link href="/contact"
+                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-c-primary hover:bg-c-d-primary"
+              >
+                Let’s Work together
               </Link>
 
             </div>

@@ -1,7 +1,9 @@
+'use client';
+
 import Head from 'next/head'
 import {
     CalendarIcon
-} from '@heroicons/react/outline'
+} from '@heroicons/react/24/outline'
 import { Feed } from '@components/index';
 import { Loader } from '@components/shared';
 import { feedTabs } from '@helpers/routes';

@@ -1,4 +1,4 @@
-import nc from 'next-connect';
+import { createRouter } from "next-connect";
 import { ApiRequest, ApiResponse } from '@/types';
 import NextCors from 'nextjs-cors';
 
@@ -12,7 +12,7 @@ async function cors_dep(_req: ApiRequest, _res: ApiResponse, next: any) {
 }
   
 
-const cors = nc<ApiRequest, ApiResponse>();
+const cors = createRouter<ApiRequest, ApiResponse>();
 cors.use(cors_dep);
 
 export default cors;

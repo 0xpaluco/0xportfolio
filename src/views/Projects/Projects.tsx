@@ -1,15 +1,17 @@
+'use client';
+
 import { StrapiProjectData } from "lib/types/strapi-schema";
 import { useState } from "react";
 import { ProjectGrid } from "@components/index";
 import { MetaTags } from "@components/shared";
 
 interface ProjectsProps {
-  projectData: StrapiProjectData
+  projectData: any[]
 }
 
 const Projects = ({ projectData }: ProjectsProps) => {
 
-  const [projects, setProjects] = useState(projectData.data);
+  const [projects, setProjects] = useState<any[]>([]);
 
   return (
     <>

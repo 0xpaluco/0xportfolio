@@ -1,7 +1,6 @@
 import { secondaryNavigation, socialNavigation } from '@helpers/routes'
 import Link from 'next/link'
 
-
 const Footer = () => {
     
     return(
@@ -10,10 +9,8 @@ const Footer = () => {
           <nav className="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
             {secondaryNavigation.map((item) => (
               <div key={item.name} className="px-5 py-2">
-                <Link href={item.href}>
-                  <a className="text-sm text-white hover:text-gray-400">
+                <Link href={item.href} className="text-sm text-white hover:text-gray-400">
                     {item.name}
-                  </a>
                 </Link>
               </div>
             ))}
@@ -22,9 +19,7 @@ const Footer = () => {
             {socialNavigation.map((item) => (
 
               <Link key={item.name} href={item.href} target="_blank">
-                <a target={"_blank"}>
                   <item.icon className='w-6 h-6 text-white'></item.icon>
-                </a>
               </Link>
               
             ))}

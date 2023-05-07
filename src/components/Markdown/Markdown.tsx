@@ -18,13 +18,13 @@ const mdxComponents: Components = {
     h3: ({ children }) => <h3 className="font-medium text-lg my-4 text-white">{children}</h3>,
     ul: ({ children }) => <ul className="list-disc ml-4 mt-4">{children}</ul>,
     li: ({ children }) => <li className="mt-1 text-base">{children}</li>,
-    a: ({ children, href }) => <Link href={href || ""}><a target="_blank" className="font-medium text-base my-4 text-c-l-primary hover:cursor-pointer">{children}</a></Link>,
+    a: ({ children, href }) => <Link href={href || ""} target="_blank" className="font-medium text-base my-4 text-c-l-primary hover:cursor-pointer">{children}</Link>,
     p: ({ children }) => <p className="mt-4 text-base">{children}</p>,
     pre: ({ children }) => <pre className="whitespace-pre-wrap bg-black text-white text-sm my-2 p-4">{children}</pre>,
     code: ({ children }) => <code className="text-white text-sm">{children}</code>,
     img: ({ alt, src, children }) => (
         <figure>
-              <img
+              <Image
                 className="w-full rounded-lg"
                 src={src || defaultImg}
                 alt={alt}

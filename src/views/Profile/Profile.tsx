@@ -1,4 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
+'use client';
+
 import { Blockie } from '@components/shared';
 import { classNames } from '@helpers/ui';
 import { getEllipsisTxt } from '@helpers/formater';

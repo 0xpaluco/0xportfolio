@@ -1,7 +1,9 @@
+'use client';
+
 /* This example requires Tailwind CSS v2.0+ */
 import { MetaTags } from '@components/shared';
 import { getEllipsisTxt } from '@helpers/formater';
-import { LockClosedIcon } from '@heroicons/react/solid'
+import { LockClosedIcon } from '@heroicons/react/24/solid'
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { NFTList } from './components';
@@ -59,10 +61,8 @@ function Banner(props: SafeProps) {
           <h1 className="text-2xl font-bold text-gray-900">Safe #{id}</h1>
           <p className="text-sm font-medium text-gray-500">
             Rescue Tokens from:{' '}
-            <Link href="#">
-              <a className="text-gray-900">
-                {name ? name : getEllipsisTxt(from)} 
-              </a>
+            <Link href="#" className="text-gray-900">
+              {name ? name : getEllipsisTxt(from)} 
             </Link>
             {' '}
           </p>

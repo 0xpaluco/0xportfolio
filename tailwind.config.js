@@ -1,6 +1,7 @@
 
 module.exports = {
   content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./src/**/**/*.{js,ts,jsx,tsx}"
   ],
@@ -28,7 +29,6 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
     require('@tailwindcss/aspect-ratio')
   ],
 }

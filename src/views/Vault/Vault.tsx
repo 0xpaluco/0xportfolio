@@ -1,3 +1,5 @@
+'use client';
+
 import { Account } from "@components/Web3";
 import { classNames } from "@helpers/ui";
 import axios from "axios";
@@ -15,13 +17,13 @@ const Vault = ({ safes }: HeroProps) => {
 
     const { data: session, status } = useSession();
     const isAuthenticated = status === "authenticated";
-    
+
     const provider = useProvider()
     const [blockNumber, setBlockNumber] = useState<number>()
     const [balance, setBalance] = useState<{}>()
 
     useEffect(() => {
-        provider.on('block', async (blockNumber: number) =>{
+        provider.on('block', async (blockNumber: number) => {
             setBlockNumber(blockNumber)
 
             // const address = "0xdcfff0eaaef06eb27c821c62f2e3636ec0dade5f"
@@ -29,8 +31,8 @@ const Vault = ({ safes }: HeroProps) => {
             // setBalance(resp.data.balance);
         })
     },
-    [])
-    
+        [])
+
 
     return (
         <div className="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
@@ -43,17 +45,17 @@ const Vault = ({ safes }: HeroProps) => {
                         </h1>
                         <p className="mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
                             Access your safe and get your tokens back.
-                            
+
                         </p>
-                        
+
 
                         <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
 
-                        { blockNumber } 
-                        
+                            {blockNumber}
+
                             {!isAuthenticated && <>
                                 <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                                    <Account /> 
+                                    <Account />
                                 </div>
                             </>}
 
@@ -103,17 +105,17 @@ const SafeItem = (props: SafeItemProp) => {
                     <p className="text-sm text-gray-500 truncate">from: {name ? name : safe.from}</p>
                 </div>
                 <div>
-                    <Link href={{
-                        pathname: '/projects/token-recovery/safe',
-                        query: {
-                            id: safe.id,
-                            from: safe.from,
-                            to: safe.to
-                        },
-                    }}>
-                        <a className="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50" >
-                            View
-                        </a>
+                    <Link
+                        className="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50"
+                        href={{
+                            pathname: '/projects/token-recovery/safe',
+                            query: {
+                                id: safe.id,
+                                from: safe.from,
+                                to: safe.to
+                            },
+                        }}>
+                        View
                     </Link>
 
                 </div>
@@ -149,7 +151,7 @@ const SafeList = (props: SafeListProp) => {
                 </h1>
                 <ul role="list" className="mx-1 divide-y divide-gray-200">
                     {safes.map((safe: any, i: number) => (
-                        <SafeItem safe={safe} key={i}/>
+                        <SafeItem safe={safe} key={i} />
                     ))}
                 </ul>
             </div>

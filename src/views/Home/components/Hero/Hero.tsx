@@ -1,13 +1,13 @@
 import { Account } from "@components/Web3";
 import { classNames } from "@helpers/ui";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
+import { useSession } from "next-auth/react";
 
-interface HeroProps {
-    isAuthenticated?: boolean;
-}
+interface HeroProps {}
 
-
-const Hero = ({ isAuthenticated  }: HeroProps) => {
-    
+const Hero = ({ }: HeroProps) => {
+    const { openConnectModal } = useConnectModal();
+    const { data: session } = useSession()
 
     return (
         <div className="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
@@ -22,29 +22,37 @@ const Hero = ({ isAuthenticated  }: HeroProps) => {
                             more info here i guess...
                         </p>
                         <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-                            
-                        { isAuthenticated && <>
-                            <div className="rounded-md shadow">
-                                <div className="text-center">
-                                    <button type="button" 
-                                        className={classNames("w-full flex items-center justify-center px-8 py-3 border-2 border-transparent text-base font-medium rounded-md text-black dark:border-c-primary border-c-secondary bg-c-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10")}
+
+                            {session && <>
+                                <div className="rounded-md shadow">
+                                    <div className="text-center">
+                                        <button type="button"
+                                            className={classNames("w-full flex items-center justify-center px-8 py-3 border-2 border-transparent text-base font-medium rounded-md text-black dark:border-c-primary border-c-secondary bg-c-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10")}
                                         >
-                                        View Dashboard???
-                                    </button>
+                                            View Dashboard???
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </>}
-                        
-                        { !isAuthenticated && <>
-                            <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                                <Account />
-                            </div>
-                        </>}
+                            </>}
+
+                            {!session && <>
+                                <div className="mt-3 rounded-md shadow sm:mt-0">
+                                    {openConnectModal && (
+                                        <button
+                                            onClick={openConnectModal}
+                                            type="button"
+                                            className="rounded-md bg-c-primary px-3.5 py-2.5 text-base font-bold text-white shadow-sm hover:bg-c-d-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-primary"
+                                        >
+                                            Connect Wallet
+                                        </button>
+                                    )}
+                                </div>
+                            </>}
 
                         </div>
                     </div>
                 </div>
-                
+
                 <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
                     <div className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full dark:bg-c-l-primary bg-c-l-secondary" />
                 </div>

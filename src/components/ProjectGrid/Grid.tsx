@@ -1,6 +1,6 @@
 import { classNames } from "@helpers/ui";
-import { FolderIcon } from "@heroicons/react/outline";
-import { CodeIcon, ExternalLinkIcon } from "@heroicons/react/solid";
+import { FolderIcon } from "@heroicons/react/24/outline";
+import { LinkIcon, CodeBracketIcon } from "@heroicons/react/24/solid";
 import { Project } from "lib/types/strapi-schema";
 import Link from "next/link";
 
@@ -23,11 +23,9 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       </div>
       <div className="my-8">
         <h3 className="text-lg font-medium text-white">
-          <Link href={`/projects/${project.attributes.slug}`}>
-            <a className="hover:underline focus:outline-none">
+          <Link href={`/projects/${project.attributes.slug}`} className="hover:underline focus:outline-none">
               <span className="absolute inset-0" aria-hidden="true" />
               {project.attributes.slug}
-            </a>
           </Link>
         </h3>
 
@@ -45,10 +43,8 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           </span>
 
           {project.attributes.categories?.data.map((cat) => (
-            <Link href={`/c/${cat.attributes.slug}`} key={cat.id}>
-              <a className="hover:underline mr-1 inline-flex items-center rounded text-sm font-medium text-c-l-primary before:mr-1 before:text-slate-400 before:content-['/']">
-                {cat.attributes.slug}
-              </a>
+            <Link href={`/c/${cat.attributes.slug}`} key={cat.id} className="hover:underline mr-1 inline-flex items-center rounded text-sm font-medium text-c-l-primary before:mr-1 before:text-slate-400 before:content-['/']">
+              {cat.attributes.slug}
             </Link>
 
           ))}
@@ -63,18 +59,14 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 
 
         {project.attributes.repositoryUrl && (
-          <Link href={project.attributes.repositoryUrl} target="_blank">
-            <a className="hover:text-gray-400 hover:cursor-pointer mx-2" target={"_blank"}>
-              <CodeIcon className="h-6 w-6" strokeWidth={"1px"} />
-            </a>
+          <Link href={project.attributes.repositoryUrl} className="hover:text-gray-400 hover:cursor-pointer mx-2" target={"_blank"}>
+              <CodeBracketIcon className="h-6 w-6" strokeWidth={"1px"} />
           </Link>
         )}
 
         {project.attributes.appUrl && (
-          <Link href={project.attributes.repositoryUrl} target="_blank">
-            <a className="hover:text-gray-400 hover:cursor-pointer mx-2" target={"_blank"}>
-              <ExternalLinkIcon className="h-6 w-6" strokeWidth={"1px"} />
-            </a>
+          <Link href={project.attributes.repositoryUrl} className="hover:text-gray-400 hover:cursor-pointer mx-2" target={"_blank"}>
+              <LinkIcon className="h-6 w-6" strokeWidth={"1px"} />
           </Link>
         )}
 

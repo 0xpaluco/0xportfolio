@@ -1,10 +1,10 @@
 
-import { HomeIcon } from '@heroicons/react/solid'
+import { HomeIcon } from '@heroicons/react/24/solid'
 import { Markdown } from '@components/index'
 import { Project } from 'lib/types/strapi-schema'
 import Link from 'next/link'
 import moment from 'moment'
-import { FolderIcon } from '@heroicons/react/outline'
+import { FolderIcon } from '@heroicons/react/24/outline'
 import { MetaTags } from '@components/shared'
 
 
@@ -97,11 +97,9 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
           {/* Stats section */}
 
           <div className="mt-10">
-            <Link href={project.attributes.appUrl} target={'_blank'}>
-              <a target='_blank' className="text-base font-medium text-c-l-primary">
-                Go to App
-                <span aria-hidden="true"> &rarr;</span>
-              </a>
+            <Link href={project.attributes.appUrl} target={'_blank'} className="text-base font-medium text-c-l-primary">
+              Go to App
+              <span aria-hidden="true"> &rarr;</span>
             </Link>
           </div>
 

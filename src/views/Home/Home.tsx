@@ -1,24 +1,22 @@
-import { MetaTags } from '@components/shared';
-import { StrapiProjectData, StrapiArticleData } from 'lib/types/strapi-schema';
-import { useState } from 'react';
-import { FeaturedWork, Main } from './components';
+'use client';
+
+import { Fragment, useState } from 'react';
+import { FeaturedWork, Main, CTA } from './components';
 
 interface HomeProps {
-    projectData: StrapiProjectData
-    articleData: StrapiArticleData
+    projectData: any[]
+    articleData: any[]
 }
 
 const HomeView = ({ projectData, articleData }: HomeProps) => {
-    const [projects, setProjects] = useState(projectData.data);
-    const [articles, setArticles] = useState(articleData.data);
+    const [projects, setProjects] = useState<any[]>([]);
+    const [articles, setArticles] = useState<any[]>([]);
     return (
-        <>
-        <MetaTags 
-            title="Web3 Development" 
-            description="Web3 Research and Development" />
-        <Main/>
-        <FeaturedWork projects={projects} articles={articles}/>
-        </>
+        <Fragment>
+            <Main/>
+            <FeaturedWork projects={projects} articles={articles}/>
+            <CTA />
+        </Fragment>
     )
 }
 

@@ -1,10 +1,8 @@
+'use client';
 
-import { HomeIcon } from '@heroicons/react/solid'
 import { Markdown } from '@components/index'
 import { Article } from 'lib/types/strapi-schema'
 import moment from 'moment'
-import { MetaTags } from '@components/shared'
-
 
 interface ArticleViewProps {
   article: Article
@@ -88,7 +86,6 @@ const ArticleView = ({ article }: ArticleViewProps) => {
             <div className="mx-auto max-w-2xl">
 
               <article>
-              <MetaTags title={article.attributes.title} description={article.attributes.summary}/>
                 <header className="flex flex-col">
                   <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
                     {article.attributes.title}

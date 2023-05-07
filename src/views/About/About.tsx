@@ -1,8 +1,10 @@
-import Image from 'next/future/image'
+'use client';
+
+import Image from 'next/image'
 import portraitImage from '@images/portrait.jpg'
 import { socialNavigation } from '@helpers/routes'
 import { SocialLink } from '@components/SocialIcons'
-import { MailIcon } from '@heroicons/react/solid'
+import { EnvelopeIcon } from '@heroicons/react/24/solid'
 import { MetaTags } from '@components/shared'
 
 interface AboutViewProps {
@@ -78,7 +80,7 @@ const AboutView = ({ }: AboutViewProps) => {
 
                       <SocialLink
                         href="mailto:hello@0xpalu.co"
-                        icon={MailIcon}
+                        icon={EnvelopeIcon}
                         className="my-8 border-t pt-8 border-zinc-700/40"
                       >
                         hello@0xpalu.co

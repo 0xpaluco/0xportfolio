@@ -1,4 +1,6 @@
-import React, { useState, useEffect, ReactElement } from 'react';
+'use client';
+
+import React, { useState, useEffect, ReactNode } from 'react';
 
 export const useDarkMode = () => {
   const [themeMode, setTheme] = useState('light');
@@ -33,7 +35,7 @@ export const useDarkMode = () => {
 
 interface Props {
   layout: any;
-  component: ReactElement;
+  component: ReactNode;
   aside?: any;
   // All other props
   [x:string]: any;
@@ -49,11 +51,13 @@ const WithLayout = ({ component: Component, layout: Layout, aside, ...rest }: Pr
     }, [mountedComponent]);
 
     return (
-      <div>
+      <>
         <Layout themeMode={themeMode} themeToggler={themeToggler} aside={aside}>
+
           {Component}
+
         </Layout>
-      </div>
+      </>
     );
 }
 
