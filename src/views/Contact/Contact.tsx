@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { useState } from "react";
 import { InlineWidget, useCalendlyEventListener } from "react-calendly";
 
@@ -8,10 +9,11 @@ const Contact = () => {
     <div className="relative dark:bg-c-bg-light">
       <div className="lg:absolute lg:inset-0">
         <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-          <img
+          <Image
             className="h-56 w-full object-cover lg:absolute lg:h-full"
             src="https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
             alt=""
+            fill
           />
         </div>
       </div>
@@ -22,7 +24,7 @@ const Contact = () => {
             <p className="mt-4 text-lg text-gray-400 sm:mt-3">
               We’d love to hear from you! Schedule a meeting and tell us how we can help you.
             </p>
-            <Form />
+            <Calendly />
           </div>
         </div>
       </div>
@@ -32,7 +34,7 @@ const Contact = () => {
 
 const Calendly = () => {
 
-  const eventUrl = process.env.CALENDLY_EVENT_URL || "";
+  const eventUrl = process.env.NEXT_PUBLIC_CALENDLY_EVENT_URL!;
   const baseHeight = "750px"
   const [height, setHeight] = useState<string>(baseHeight)
 
@@ -52,12 +54,13 @@ const Calendly = () => {
           pageSettings={{
             backgroundColor: '272f40',
             hideEventTypeDetails: true,
-            hideLandingPageDetails: true,
+            hideLandingPageDetails: false,
             primaryColor: 'a731c2',
             textColor: 'fdfdfd'
           }}
           styles={{
-            height: height
+            height: height,
+            backgroundColor: '#272f40',
           }}
         />
       </div>

@@ -119,7 +119,7 @@ const getProjectPageMetaData = (post) => {
     cover: post.cover[`${post.cover.type}`]?.url,
     slug: post.properties.Slug?.rich_text[0]?.plain_text,
     repo: post.properties['Repo Url'].formula.string,
-    appUrl: undefined
+    appUrl: post.properties['App Url'].url,
   } as Project;
 };
 

@@ -1,6 +1,6 @@
 import { classNames } from "@helpers/ui";
 import { FolderIcon } from "@heroicons/react/24/outline";
-import { LinkIcon, CodeBracketIcon } from "@heroicons/react/24/solid";
+import { LinkIcon, CodeBracketIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
 import { Project } from "lib/types/cms";
 import Link from "next/link";
 
@@ -66,7 +66,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 
         {project.appUrl && (
           <Link href={project.appUrl} className="hover:text-gray-400 hover:cursor-pointer mx-2" target={"_blank"}>
-              <LinkIcon className="h-6 w-6" strokeWidth={"1px"} />
+              <ArrowTopRightOnSquareIcon className="h-6 w-6" strokeWidth={"1px"} />
           </Link>
         )}
 
