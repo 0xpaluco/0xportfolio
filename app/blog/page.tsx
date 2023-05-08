@@ -2,6 +2,8 @@ import { getAllPublishedArticles } from '@helpers/notion';
 import { BlogView } from '@views/index'
 import type { Metadata } from 'next';
 
+export const revalidate = 60; // revalidate this page every 60 seconds
+
 export const metadata: Metadata = {
     title: 'Blog',
     description: 'Welcome to Next.js'

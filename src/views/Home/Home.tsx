@@ -1,11 +1,11 @@
 'use client';
 
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import { FeaturedWork, Main, CTA } from './components';
-import { Article } from 'lib/types/cms';
+import { Article, Project } from 'lib/types/cms';
 
 interface HomeProps {
-    projectData: any[]
+    projectData: Project[]
     articleData: Article[]
 }
 

@@ -1,6 +1,6 @@
 import { Card } from "@components/index"
 import { FolderIcon, CodeBracketIcon, BookOpenIcon, EnvelopeIcon } from "@heroicons/react/24/outline"
-import { Article } from "lib/types/cms"
+import { Article, Project } from "lib/types/cms"
 import moment from "moment"
 import Link from "next/link"
 
@@ -32,7 +32,7 @@ export default function FeaturedWork({ projects, articles }: FeaturedWorkProps) 
 }
 
 interface ListProps {
-  projects: any[]
+  projects: Project[]
 }
 const ProjectList = ({ projects }: ListProps) => {
   return (
@@ -49,14 +49,14 @@ const ProjectList = ({ projects }: ListProps) => {
               <div className="relative">
                 <FolderIcon className="w-8 h-8 text-c-l-primary mb-2" />
                 <h3 className="text-sm font-semibold text-white">
-                  <Link href={`/projects/${project.attributes.slug}`}
+                  <Link href={`/project/${project.slug}`}
                      className="hover:underline focus:outline-none">
                       {/* Extend touch target to entire panel */}
                       <span className="absolute inset-0" aria-hidden="true" />
-                      {project.attributes.slug}
+                      {project.slug}
                   </Link>
                 </h3>
-                <p className="mt-1 text-sm text-gray-400 line-clamp-2">{project.attributes.description}</p>
+                <p className="mt-1 text-sm text-gray-400 line-clamp-2">{project.description}</p>
               </div>
             </li>
 

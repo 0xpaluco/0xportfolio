@@ -1,23 +1,16 @@
+import { getAllProjects } from '@helpers/notion';
 import { ProjectsView } from '@views/index'
 import type { Metadata } from 'next';
 
+export const revalidate = 60; // revalidate this page every 60 seconds
+
 export const metadata: Metadata = {
     title: 'Projects',
-    description: 'Welcome to Next.js'
+    description: 'Things I’ve made trying to put my dent in the universe.'
 };
 
-
-async function getProjects() {
-    const res = await fetch(`https://...`);
-    const projects = await res.json();
-
-    return projects;
-}
-
-
 export default async function Page() {
-    const projects = await getProjects();
-
+    const projects = await getAllProjects();
     return <ProjectsView projectData={projects} />
 }
 

@@ -1,11 +1,11 @@
 
 import qs from "qs";
-import { concat, map, flatten, kebabCase } from 'lodash';
+import { concat, map, orderBy, kebabCase } from 'lodash';
 
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 
-import { Article } from "lib/types/cms";
+import { Article, Project } from "lib/types/cms";
 
 const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -13,12 +13,12 @@ const notion = new Client({
 
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
-const getPageMetaData = (post) => {
+const getArticlePageMetaData = (post) => {
     const getTags = (tags) => {
       const allTags = tags.map((tag) => {
-        return kebabCase(tag.name);
+        return kebabCase(tag.name.toLowerCase());
       });
-      return allTags as string[];
+      return orderBy(allTags as string[]);
     };
 
     return {
@@ -26,7 +26,7 @@ const getPageMetaData = (post) => {
       title: post.properties.Name.title[0].plain_text,
       tags: getTags(post.properties.Tags.multi_select),
       summary: post.properties.Summary.rich_text[0].plain_text,
-      banner: post.properties.Banner.files[0].file.url,
+      cover: post.cover.file.url,
       date: getToday(post.properties['Publish date'].date.start),
       slug: post.properties.Slug.rich_text[0].plain_text,
     } as Article;
@@ -50,7 +50,7 @@ const getPageMetaData = (post) => {
     return today;
   };
 
-export const getAllPublishedArticles = async () => {
+export const getAllPublishedArticles = async (page_size: number = 100) => {
     
     
     const posts = await notion.databases.query({
@@ -67,11 +67,12 @@ export const getAllPublishedArticles = async () => {
             direction: "descending",
           },
         ],
+        page_size
       });
     const allPosts = posts.results;
     
     return allPosts.map((post) => {
-        return getPageMetaData(post);
+        return getArticlePageMetaData(post);
     });
 }
 
@@ -89,7 +90,7 @@ export const articleBySlug = async (slug: string) => {
       });
     
       const page = response.results[0];
-      const metadata = getPageMetaData(page);
+      const metadata = getArticlePageMetaData(page);
       const mdblocks = await n2m.pageToMarkdown(page.id);
       const mdString = n2m.toMarkdownString(mdblocks);
 
@@ -99,40 +100,90 @@ export const articleBySlug = async (slug: string) => {
       } as Article;
 }
 
-// export const newestArticles = async (limit: number) => {
-//     const client = new StrapiClient(apiConfig);
+
+// PROJECTS
+
+const getProjectPageMetaData = (post) => {
+  const getTags = (tags) => {
+    const allTags = tags.map((tag) => {
+      return kebabCase(tag.name.toLowerCase());
+    });
+    return orderBy(allTags as string[]);
+  };  
+
+  return {
+    id: post.id,
+    title: post.properties['Project Name'].title[0].plain_text,
+    tags: getTags(post.properties.Tags?.multi_select),
+    description: post.properties.Description?.rich_text[0]?.plain_text,
+    cover: post.cover[`${post.cover.type}`]?.url,
+    slug: post.properties.Slug?.rich_text[0]?.plain_text,
+    repo: post.properties['Repo Url'].formula.string,
+    appUrl: undefined
+  } as Project;
+};
+
+export const getAllProjects = async (page_size: number = 100) => {
     
-//     const query = qs.stringify(
-//         {
-//             populate: "*",
-//             pagination: {
-//                 limit
-//             },
-//             sort: ['publishedAt:desc'],
-//         }, 
-//         {
-//             encodeValuesOnly: true, // prettify URL
-//         });
+  const projects = await notion.databases.query({
+      database_id: process.env.NOTION_PROJECTS_DB_ID!,
+      filter: {
+        and: [
+          {
+            property: "Tags",
+            multi_select: {
+              does_not_contain: "Client"
+            },
+          },
+          {
+            or: [
+              {
+                property: "Status",
+                status: {
+                  equals: "Published"
+                }
+              },
+              {
+                property: "Status",
+                status: {
+                  equals: "Development"
+                }
+              },
+            ],
+          }
+        ],
+      },
+      page_size
+    });
+  const allProjects = projects.results;
+  return allProjects.map((project) => {
+      return getProjectPageMetaData(project);
+  });
+}
 
-//     return await client.articles(query);
-// }
+export const projectBySlug = async (slug: string) => {
+  const response = await notion.databases.query({
+      database_id: process.env.NOTION_PROJECTS_DB_ID!,
+      filter: {
+        property: "Slug",
+        formula: {
+          string: {
+            equals: slug,
+          },
+        },
+      },
+    });
+  
+    const page = response.results[0];
+    const metadata = getProjectPageMetaData(page);
+    const mdblocks = await n2m.pageToMarkdown(page.id);
+    const mdString = n2m.toMarkdownString(mdblocks);
 
-// export const articlesBySlug = async (slug: string) => {
-//     const client = new StrapiClient(apiConfig);
-//     const query = qs.stringify(
-//         {
-//             populate: '*',
-//             filters: {
-//                 slug: { $eq: slug }
-//             },
-//             pagination: { limit: 1 }
-//         }, 
-//         {
-//             encodeValuesOnly: true, // prettify URL
-//         });
-        
-//     return await client.articles(query);
-// }
+    return {
+      ...metadata,
+      content: mdString,
+    } as Project;
+}
 
 
 // export const projects = async () => {

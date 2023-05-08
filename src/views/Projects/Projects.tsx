@@ -1,24 +1,16 @@
 'use client';
 
-import { StrapiProjectData } from "lib/types/strapi-schema";
-import { useState } from "react";
 import { ProjectGrid } from "@components/index";
-import { MetaTags } from "@components/shared";
+import { Project } from "lib/types/cms";
 
 interface ProjectsProps {
-  projectData: any[]
+  projectData: Project[]
 }
 
 const Projects = ({ projectData }: ProjectsProps) => {
 
-  const [projects, setProjects] = useState<any[]>([]);
-
   return (
     <>
-      <MetaTags
-        title="Projects"
-        description="Things I’ve made trying to put my dent in the universe."
-      />
       <div className="relative bg-c-bg rounded-md shadow-lg pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
         <div className="absolute inset-0">
           <div className="h-1/3 sm:h-2/3" />
@@ -31,7 +23,7 @@ const Projects = ({ projectData }: ProjectsProps) => {
             </p>
           </div>
 
-          <ProjectGrid projects={projects}></ProjectGrid>
+          <ProjectGrid projects={projectData}></ProjectGrid>
 
         </div>
       </div>

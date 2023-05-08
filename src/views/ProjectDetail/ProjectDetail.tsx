@@ -1,12 +1,7 @@
 
-import { HomeIcon } from '@heroicons/react/24/solid'
-import { Markdown } from '@components/index'
-import { Project } from 'lib/types/strapi-schema'
+import { Project } from 'lib/types/cms'
 import Link from 'next/link'
-import moment from 'moment'
-import { FolderIcon } from '@heroicons/react/24/outline'
-import { MetaTags } from '@components/shared'
-
+import Image from 'next/image'
 
 interface ProjectDetailProps {
   project: Project
@@ -45,13 +40,14 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
           <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-none lg:px-0 lg:py-20">
             {/* Testimonial card*/}
             <div className="relative overflow-hidden rounded-2xl pt-64 pb-10 shadow-xl">
-              <img
+              <Image
                 className="absolute inset-0 h-full w-full object-cover"
-                src={project.attributes.coverImage.data?.attributes.url}
-                alt=""
+                src={project.cover}
+                alt={project.slug}
+                width={320}
+                height={180}
               />
-              <div className="absolute inset-0 bg-c-l-primary mix-blend-multiply" />
-              <div className="absolute inset-0 bg-gradient-to-t from-c-l-primary via-c-l-primary opacity-20" />
+              
               <div className="relative px-8">
                 <blockquote className="mt-8">
                   
@@ -64,32 +60,31 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
         </div>
 
         <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
-          <MetaTags title={project.attributes.title} description={project.attributes.description}/>
           {/* Content area */}
           <div className="pt-12 sm:pt-16 lg:pt-20">
             <article>
               <header className="flex flex-col">
                 <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                  {project.attributes.title}
+                  {project.title}
                 </h1>
                 <p className="mt-8 text-xl leading-8 text-gray-400">
-                  {project.attributes.description}
+                  {project.description}
 
-                  {/* <div className='inline-flex w-full'>   
-                      {article.attributes.categories.data.map((cat) => (
-                          <span key={cat.id} className="inline-flex rounded bg-c-l-primary px-2 py-0.5 text-xs font-bold text-c-d-primary mx-2">
-                              <Link href={`/c/${cat.attributes.slug}`}>
-                                  <a>{cat.attributes.slug}</a>
+                  <div className='inline-flex w-full'>   
+                      {project.tags.map((tag) => (
+                          <span key={tag} className="inline-flex rounded bg-c-l-primary px-2 py-0.5 text-xs font-bold text-c-d-primary mr-2">
+                              <Link href={`/c/${tag}`}>
+                                  {tag}
                               </Link>  
                           </span>
                       ))}
-                    </div> */}
+                    </div>
 
                 </p>
                 
               </header>
               <div className='prose prose-lg prose-white mx-auto mt-6 text-white'>
-                <Markdown>{project.attributes.content}</Markdown>
+                {/* <Markdown children={project.content || ""}/> */}
               </div>
             </article>
           </div>
@@ -97,10 +92,19 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
           {/* Stats section */}
 
           <div className="mt-10">
-            <Link href={project.attributes.appUrl} target={'_blank'} className="text-base font-medium text-c-l-primary">
+            {project.repo && (
+              <Link href={project.repo} target={'_blank'} className="text-base font-medium text-c-l-primary mr-4">
+              View Repo
+              <span aria-hidden="true"> &rarr;</span>
+            </Link>
+            )}
+            
+            {project.appUrl && (
+              <Link href={project.appUrl} target={'_blank'} className="text-base font-medium text-c-l-primary mr-4">
               Go to App
               <span aria-hidden="true"> &rarr;</span>
             </Link>
+            )}
           </div>
 
         </div>
