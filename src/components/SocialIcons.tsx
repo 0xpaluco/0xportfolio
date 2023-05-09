@@ -44,13 +44,14 @@ export interface SocialLinkProps {
   href: string
   children: any
   icon: any
+  target?: string
 }
 
-export function SocialLink({ className, href, children, icon: Icon }: SocialLinkProps) {
+export function SocialLink({ className, href, children, icon: Icon, target = "_blank" }: SocialLinkProps) {
   return (
     <li className={clsx(className, 'flex')}>
       <Link
-        target={"_blank"}
+        target={target}
         href={href}
         className="group flex text-sm font-medium text-zinc-800 transition hover:text-c-l-primary dark:text-zinc-200 dark:hover:text-c-l-primary ml-2 hover:underline"
       >

@@ -1,32 +1,29 @@
 'use client';
 
-import Image from "next/image";
 import { useState } from "react";
 import { InlineWidget, useCalendlyEventListener } from "react-calendly";
 
 const Contact = () => {
   return (
-    <div className="relative dark:bg-c-bg-light">
-      <div className="lg:absolute lg:inset-0">
-        <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-          <Image
-            className="h-56 w-full object-cover lg:absolute lg:h-full"
-            src="https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
-            alt=""
-            fill
-          />
+    <div className="relative isolate dark:bg-c-bg-light">
+    <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
+      <div className="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
+        <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+          
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">We’d love to hear from you!</h2>
+          <p className="mt-6 text-lg leading-8 text-gray-400">
+            Schedule a 15-minute zoom meeting to talk shop and nerd out over software development.
+          </p>
+          <p className="mt-6 text-lg leading-8 text-gray-400">
+            Choose a date and time that works better for you. 
+            During the meeting, we'll dive into your project requirements, timelines, and other nerdy stuff. 
+          </p>
+          <p className="mt-6 text-lg leading-8 text-gray-400">
+            A confirmation email with all the deets will be sent to you. Can't wait to geek out with you!
+          </p>
         </div>
       </div>
-      <div className="relative py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto lg:py-32 lg:grid lg:grid-cols-2">
-        <div className="lg:pr-8">
-          <div className="max-w-md mx-auto sm:max-w-lg lg:mx-0">
-            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-white">Lets work together</h2>
-            <p className="mt-4 text-lg text-gray-400 sm:mt-3">
-              We’d love to hear from you! Schedule a meeting and tell us how we can help you.
-            </p>
-            <Calendly />
-          </div>
-        </div>
+      <Calendly/>
       </div>
     </div>
   )
@@ -46,9 +43,8 @@ const Calendly = () => {
   });
 
   return (
-    <div className="mt-8">
+    <div className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48">
       {/* <!-- Calendly inline widget begin --> */}
-      <div className="shadow-md shadow-c-bg">
         <InlineWidget
           url={eventUrl}
           pageSettings={{
@@ -63,7 +59,6 @@ const Calendly = () => {
             backgroundColor: '#272f40',
           }}
         />
-      </div>
       {/* <!-- Calendly inline widget end --> */}
     </div>
   )
