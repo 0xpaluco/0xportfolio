@@ -27,11 +27,11 @@ const mdxComponents: Components = {
     pre: ({ children }) => <pre className="whitespace-pre-wrap bg-c-bg text-white text-sm my-2 p-4">{children}</pre>,
     code: ({ node, inline, className, children, ...props }) => {
         const match = /language-(\w+)/.exec(className || '')
-        return !inline && match ? 
-        (<CodeBlock
-            codestring={String(children).replace(/\n$/, '')}
-            language={match[1]}
-        />) : (<code className="text-white text-sm">{children}</code>)
+        return !inline && match ?
+            (<CodeBlock
+                codestring={String(children).replace(/\n$/, '')}
+                language={match[1]}
+            />) : (<code className="text-white text-sm">{children}</code>)
     },
     img: ({ alt, src, children }) => (
         <figure>
@@ -62,8 +62,9 @@ const Markdown = (props: MarkdownProp) => {
             <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeHighlight]}
-                children={props.children}
-                components={mdxComponents}/>
+                components={mdxComponents}>
+                {props.children}
+            </ReactMarkdown>
         </>
     )
 }

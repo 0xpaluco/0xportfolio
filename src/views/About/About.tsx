@@ -46,19 +46,19 @@ const AboutView = ({ }: AboutViewProps) => {
 
                     <div className="mt-6 space-y-7 text-base text-gray-400">
                       <p>
-                        Hi there, I'm Paluco - a software engineer, app builder, and Web3/AI fan based in sunny Puerto Rico. 
-                        When I'm not buried in code, you can find me sipping piña coladas on the beach (okay, maybe not always).
+                        Hi there, I’m Paluco - a software engineer, app builder, and Web3/AI fan based in sunny Puerto Rico. 
+                        When I’m not buried in code, you can find me sipping piña coladas on the beach (okay, maybe not always).
                       </p>
                       <p>
                         From a young age, I was tinkering with computers and dreaming up big ideas. 
-                        Fast forward to now, and I'm the founder of <span className='text-c-l-primary'>0xResearch Labs </span> 
+                        Fast forward to now, and I’m the founder of <span className='text-c-l-primary'>0xResearch Labs </span> 
                         - a company dedicated to building decentralized solutions that promote ownership, transparency, and innovation.
                       </p>
 
                       <p>
-                        With my expertise in Web3 and AI technology, I'm on a mission to revolutionize the way we interact with digital content. 
-                        But don't worry, I haven't let my tech geek status go to my head (at least not yet). 
-                        When I'm not building apps, I'm probably gaming, binge-watching Netflix, or trying to teach my dog new tricks.
+                        With my expertise in Web3 and AI technology, I’m on a mission to revolutionize the way we interact with digital content. 
+                        But don’t worry, I haven’t let my tech geek status go to my head (at least not yet). 
+                        When I’m not building apps, I’m probably gaming, binge-watching Netflix, or trying to teach my dog new tricks.
                       </p>
                     </div>
                   </div>

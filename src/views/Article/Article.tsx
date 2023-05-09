@@ -112,7 +112,7 @@ const ArticleView = ({ article }: ArticleViewProps) => {
                   </time>
                 </header>
                 <div className='prose prose-lg prose-white mx-auto mt-6 text-white'>
-                  <Markdown children={article.content || ""}/>
+                  <Markdown>{article.content || ""}</Markdown>
                 </div>
               </article>
             </div>

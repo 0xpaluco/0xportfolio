@@ -16,10 +16,10 @@ const Contact = () => {
           </p>
           <p className="mt-6 text-lg leading-8 text-gray-400">
             Choose a date and time that works better for you. 
-            During the meeting, we'll dive into your project requirements, timelines, and other nerdy stuff. 
+            During the meeting, we’ll dive into your project requirements, timelines, and other nerdy stuff. 
           </p>
           <p className="mt-6 text-lg leading-8 text-gray-400">
-            A confirmation email with all the deets will be sent to you. Can't wait to geek out with you!
+            A confirmation email with all the deets will be sent to you. Can’t wait to geek out with you!
           </p>
         </div>
       </div>
