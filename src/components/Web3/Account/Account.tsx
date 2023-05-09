@@ -43,7 +43,7 @@ const Account = () => {
         message,
         signature,
         redirect: false,
-        callbackUrl: "/wallet",
+        callbackUrl: "/",
       });
       // /**
       //  * instead of using signIn(..., redirect: "/user")
