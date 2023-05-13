@@ -1,4 +1,5 @@
 import { Card } from "@components/index"
+import { getBlogLink, getDateStr } from "@helpers/notion"
 import { FolderIcon, CodeBracketIcon, BookOpenIcon, EnvelopeIcon } from "@heroicons/react/24/outline"
 import { Article, Project } from "lib/types/cms"
 import moment from "moment"
@@ -83,16 +84,15 @@ const Article = ({ article }: ArticleProps) => {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
-        <Card.Title href={`/blog/${article.slug}`}>
+        <Card.Title href={getBlogLink(article.slug)}>
           {article.title}
         </Card.Title>
         <Card.Eyebrow
           as="time"
-          dateTime={article.date}
           className="block"
-          decorate
+          decorate={false}
         >
-          {moment(article.date).format("MMMM D, YYYY")}
+          {getDateStr(article.date)}
         </Card.Eyebrow>
         <Card.Description>{article.summary}</Card.Description>
         <Card.Cta>Read article</Card.Cta>
