@@ -73,13 +73,13 @@ export const projectBySlug = async (slug: string) => {
         },
     });
 
-    const page = response.results[0];
-    const metadata = getProjectPageMetaData(page);
-    const mdblocks = await n2m.pageToMarkdown(page.id);
-    const mdString = n2m.toMarkdownString(mdblocks);
+    const project = response.results[0];
+    const metadata = getProjectPageMetaData(project);
+    const mdblocks = await n2m.pageToMarkdown(project.id);
+    const content = n2m.toMarkdownString(mdblocks);
 
     return {
         ...metadata,
-        content: mdString,
+        content,
     } as Project;
 }

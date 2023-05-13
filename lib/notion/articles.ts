@@ -62,10 +62,10 @@ export const articleBySlug = async (slug: string) => {
     const page = response.results[0];
     const metadata = getArticlePageMetaData(page);
     const mdblocks = await n2m.pageToMarkdown(page.id);
-    const mdString = n2m.toMarkdownString(mdblocks);
+    const content = n2m.toMarkdownString(mdblocks);
 
     return {
         ...metadata,
-        content: mdString,
+        content,
     } as Article;
 }
