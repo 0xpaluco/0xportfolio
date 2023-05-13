@@ -1,6 +1,7 @@
 'use client';
 
 import { Markdown } from '@components/index'
+import { getDateStr } from '@helpers/notion';
 import { Article } from 'lib/types/cms'
 import moment from 'moment'
 import Link from 'next/link';
@@ -104,11 +105,11 @@ const ArticleView = ({ article }: ArticleViewProps) => {
 
                   </p>
                   <time
-                    dateTime={article.date.toString()}
+                    dateTime={article.date}
                     className="order-first flex items-center text-base text-gray-400"
                   >
                     <span className="h-4 w-0.5 rounded-full bg-gray-200" />
-                    <span className="ml-3">{moment(article.date).format("MMMM D, YYYY")}</span>
+                    <span className="ml-3">{getDateStr(article.date)}</span>
                   </time>
                 </header>
                 <div className='prose prose-lg prose-white mx-auto mt-6 text-white'>
