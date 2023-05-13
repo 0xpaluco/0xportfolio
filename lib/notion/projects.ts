@@ -2,6 +2,7 @@ import { Project } from "lib/types/cms";
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import { getTags } from "./utils";
+import { getCategories } from "./categories";
 
 const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -9,11 +10,12 @@ const notion = new Client({
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 
-const getProjectPageMetaData = (project) => {
+const getProjectPageMetaData = async (project) => {
+    const cats = await getCategories(project.properties.Categories.relation)
     return {
         id: project.id,
         title: project.properties['Project Name'].title[0].plain_text,
-        tags: getTags(project.properties.Tags?.multi_select),
+        tags: cats,
         description: project.properties.Description?.rich_text[0]?.plain_text,
         cover: project.cover[`${project.cover.type}`]?.url,
         slug: project.properties.Slug?.rich_text[0]?.plain_text,
@@ -55,9 +57,12 @@ export const getAllProjects = async (page_size: number = 100) => {
         page_size
     });
     const allProjects = projects.results;
-    return allProjects.map((project) => {
-        return getProjectPageMetaData(project);
-    });
+    const projectList: Project[] = []
+    for (let i = 0; i < allProjects.length; i++) {
+        const project = allProjects[i];
+        projectList.push(await getProjectPageMetaData(project))
+    }
+    return projectList
 }
 
 export const projectBySlug = async (slug: string) => {
@@ -74,7 +79,7 @@ export const projectBySlug = async (slug: string) => {
     });
 
     const project = response.results[0];
-    const metadata = getProjectPageMetaData(project);
+    const metadata = await getProjectPageMetaData(project);
     const mdblocks = await n2m.pageToMarkdown(project.id);
     const content = n2m.toMarkdownString(mdblocks);
 

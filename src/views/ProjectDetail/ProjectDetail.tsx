@@ -2,6 +2,7 @@
 import { Project } from 'lib/types/cms'
 import Link from 'next/link'
 import Image from 'next/image'
+import { getCategoryLink } from '@helpers/notion'
 
 interface ProjectDetailProps {
   project: Project
@@ -47,11 +48,11 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
                 width={320}
                 height={180}
               />
-              
+
               <div className="relative px-8">
                 <blockquote className="mt-8">
-                  
-                 
+
+
 
                 </blockquote>
               </div>
@@ -69,19 +70,16 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
                 </h1>
                 <p className="mt-8 text-xl leading-8 text-gray-400">
                   {project.description}
-
-                  <div className='inline-flex w-full'>   
-                      {project.tags.map((tag) => (
-                          <span key={tag} className="inline-flex rounded bg-c-l-primary px-2 py-0.5 text-xs font-bold text-c-d-primary mr-2">
-                              <Link href={`/c/${tag}`}>
-                                  {tag}
-                              </Link>  
-                          </span>
-                      ))}
-                    </div>
-
                 </p>
-                
+                <div className='mt-4 inline-flex w-full'>
+                  {project.tags.map((tag) => (
+                    <span key={tag.id} className="inline-flex rounded bg-c-l-primary px-2 py-0.5 text-sm font-bold text-c-d-primary mr-2">
+                      <Link href={getCategoryLink(tag.slug)}>
+                        {tag.title}
+                      </Link>
+                    </span>
+                  ))}
+                </div>
               </header>
               <div className='prose prose-lg prose-white mx-auto mt-6 text-white'>
                 {/* <Markdown children={project.content || ""}/> */}
@@ -94,16 +92,16 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
           <div className="mt-10">
             {project.repo && (
               <Link href={project.repo} target={'_blank'} className="text-base font-medium text-c-l-primary mr-4">
-              View Repo
-              <span aria-hidden="true"> &rarr;</span>
-            </Link>
+                View Repo
+                <span aria-hidden="true"> &rarr;</span>
+              </Link>
             )}
-            
+
             {project.appUrl && (
               <Link href={project.appUrl} target={'_blank'} className="text-base font-medium text-c-l-primary mr-4">
-              Go to App
-              <span aria-hidden="true"> &rarr;</span>
-            </Link>
+                Go to App
+                <span aria-hidden="true"> &rarr;</span>
+              </Link>
             )}
           </div>
 

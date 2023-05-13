@@ -1,6 +1,7 @@
+import { getCategoryLink, getProjectLink } from "@helpers/notion";
 import { classNames } from "@helpers/ui";
 import { FolderIcon } from "@heroicons/react/24/outline";
-import { LinkIcon, CodeBracketIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
+import { CodeBracketIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
 import { Project } from "lib/types/cms";
 import Link from "next/link";
 
@@ -23,7 +24,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       </div>
       <div className="my-8">
         <h3 className="text-lg font-medium text-white">
-          <Link href={`/project/${project.slug}`} className="hover:underline focus:outline-none">
+          <Link href={getProjectLink(project.slug)} className="hover:underline focus:outline-none">
               <span className="absolute inset-0" aria-hidden="true" />
               {project.slug}
           </Link>
@@ -43,8 +44,8 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           </span>
 
           {project.tags.map((tag) => (
-            <Link href={`/c/${tag}`} key={tag} className="hover:underline mr-1 inline-flex items-center rounded text-sm font-medium text-c-l-primary before:mr-1 before:text-slate-400 before:content-['/']">
-              {tag}
+            <Link href={getCategoryLink(tag.slug)} key={tag.id} className="hover:underline mr-1 inline-flex items-center rounded text-sm font-medium text-c-l-primary before:mr-1 before:text-slate-400 before:content-['/']">
+              {tag.slug}
             </Link>
 
           ))}

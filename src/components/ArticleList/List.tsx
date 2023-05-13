@@ -1,5 +1,4 @@
 import { Article } from "lib/types/cms";
-import moment from "moment";
 import { Card } from "@components/index";
 import { getBlogLink, getDateStr } from "@helpers/notion";
 

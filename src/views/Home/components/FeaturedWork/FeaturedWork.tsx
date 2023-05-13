@@ -1,8 +1,7 @@
 import { Card } from "@components/index"
-import { getBlogLink, getDateStr } from "@helpers/notion"
+import { getBlogLink, getDateStr, getProjectLink } from "@helpers/notion"
 import { FolderIcon, CodeBracketIcon, BookOpenIcon, EnvelopeIcon } from "@heroicons/react/24/outline"
 import { Article, Project } from "lib/types/cms"
-import moment from "moment"
 import Link from "next/link"
 
 interface FeaturedWorkProps {
@@ -50,7 +49,7 @@ const ProjectList = ({ projects }: ListProps) => {
               <div className="relative">
                 <FolderIcon className="w-8 h-8 text-c-l-primary mb-2" />
                 <h3 className="text-sm font-semibold text-white">
-                  <Link href={`/project/${project.slug}`}
+                  <Link href={getProjectLink(project.slug)}
                      className="hover:underline focus:outline-none">
                       {/* Extend touch target to entire panel */}
                       <span className="absolute inset-0" aria-hidden="true" />
