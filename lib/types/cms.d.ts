@@ -6,7 +6,7 @@ export type Article = {
     summary: string
     cover: string
     content?: string
-    date: Date
+    date: string
 }
 
 export type Project = {

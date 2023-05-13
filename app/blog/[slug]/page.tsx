@@ -1,4 +1,5 @@
-import { articleBySlug, getAllPublishedArticles } from '@helpers/notion';
+import { getBlogLink } from '@helpers/notion';
+import { articleBySlug, getAllPublishedArticles } from '@lib/notion';
 import { ArticleView } from '@views/index'
 import type { Metadata } from 'next';
 
@@ -12,12 +13,24 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
     const article = await articleBySlug(params.slug);
-    return { title: article.title };
+    return {
+        title: article.title, 
+        description: article.summary, 
+        openGraph: {
+            type: "website",
+            url: `https://0xpalu.co${getBlogLink(article.slug)}`,
+            title: article.title, 
+            description: article.summary, 
+            images: [{
+                url: article.cover, 
+            }]
+        }
+    };
 }
 
-export default async function Page({ params }) {    
+export default async function Page({ params }) {
     const article = await articleBySlug(params.slug);
-    return <ArticleView article={article}/>
+    return <ArticleView article={article} />
 }
 
 Page.auth = false

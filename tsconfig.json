@@ -38,6 +38,9 @@
       "@helpers/*": [
         "src/helpers/*"
       ],
+      "@lib/*": [
+        "./lib/*"
+      ],
       "@styles/*": [
         "styles/*"
       ],

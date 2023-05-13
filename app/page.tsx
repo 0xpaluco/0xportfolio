@@ -1,11 +1,11 @@
 // import 'server-only'
-import { getAllProjects, getAllPublishedArticles } from '@helpers/notion';
+import { getAllProjects, getAllPublishedArticles } from '@lib/notion';
 import { HomeView } from '@views/index'
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '0xPaluco | Web3 Development',
-  description: 'Welcome to Next.js',
+  title: '0xPaluco | Software Engineer',
+  description: 'Hi there, I’m Paluco - a software engineer, app builder, and Web3/AI fan based in sunny Puerto Rico.',
 };
 
 export default async function Page() {

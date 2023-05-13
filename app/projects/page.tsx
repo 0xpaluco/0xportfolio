@@ -1,4 +1,4 @@
-import { getAllProjects } from '@helpers/notion';
+import { getAllProjects } from '@lib/notion';
 import { ProjectsView } from '@views/index'
 import type { Metadata } from 'next';
 

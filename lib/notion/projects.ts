@@ -1,0 +1,85 @@
+import { Project } from "lib/types/cms";
+import { Client } from "@notionhq/client";
+import { NotionToMarkdown } from "notion-to-md";
+import { getTags } from "./utils";
+
+const notion = new Client({
+    auth: process.env.NOTION_TOKEN,
+})
+const n2m = new NotionToMarkdown({ notionClient: notion });
+
+
+const getProjectPageMetaData = (project) => {
+    return {
+        id: project.id,
+        title: project.properties['Project Name'].title[0].plain_text,
+        tags: getTags(project.properties.Tags?.multi_select),
+        description: project.properties.Description?.rich_text[0]?.plain_text,
+        cover: project.cover[`${project.cover.type}`]?.url,
+        slug: project.properties.Slug?.rich_text[0]?.plain_text,
+        repo: project.properties['Repo Url'].formula.string,
+        appUrl: project.properties['App Url'].url,
+    } as Project;
+};
+
+export const getAllProjects = async (page_size: number = 100) => {
+
+    const projects = await notion.databases.query({
+        database_id: process.env.NOTION_PROJECTS_DB_ID!,
+        filter: {
+            and: [
+                {
+                    property: "Tags",
+                    multi_select: {
+                        does_not_contain: "Client"
+                    },
+                },
+                {
+                    or: [
+                        {
+                            property: "Status",
+                            status: {
+                                equals: "Published"
+                            }
+                        },
+                        {
+                            property: "Status",
+                            status: {
+                                equals: "Development"
+                            }
+                        },
+                    ],
+                }
+            ],
+        },
+        page_size
+    });
+    const allProjects = projects.results;
+    return allProjects.map((project) => {
+        return getProjectPageMetaData(project);
+    });
+}
+
+export const projectBySlug = async (slug: string) => {
+    const response = await notion.databases.query({
+        database_id: process.env.NOTION_PROJECTS_DB_ID!,
+        filter: {
+            property: "Slug",
+            formula: {
+                string: {
+                    equals: slug,
+                },
+            },
+        },
+    });
+
+    const page = response.results[0];
+    const metadata = getProjectPageMetaData(page);
+    const mdblocks = await n2m.pageToMarkdown(page.id);
+    const mdString = n2m.toMarkdownString(mdblocks);
+
+    return {
+        ...metadata,
+        content: mdString,
+    } as Project;
+}

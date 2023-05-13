@@ -1,4 +1,5 @@
-import { getAllProjects, projectBySlug } from '@helpers/notion';
+import { getProjectLink } from '@helpers/notion';
+import { getAllProjects, projectBySlug } from '@lib/notion';
 import { ProjectDetailView } from '@views/index'
 import type { Metadata } from 'next';
 
@@ -13,7 +14,18 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
     const project = await projectBySlug(params.slug);
-    return { title: project.title };
+    return { 
+        title: project.title, 
+        description: project.description, 
+        openGraph: {
+        type: "website",
+        url: `https://0xpalu.co${getProjectLink(project.slug)}`,
+        title: project.title, 
+        description: project.description, 
+        images: [{
+            url: project.cover, 
+        }]
+    } };
 }
 
 
