@@ -73,6 +73,6 @@ export const articleBySlug = async (slug: string) => {
 
     return {
         ...metadata,
-        content,
+        content: content.parent,
     } as Article;
 }

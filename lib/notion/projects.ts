@@ -85,6 +85,6 @@ export const projectBySlug = async (slug: string) => {
 
     return {
         ...metadata,
-        content,
+        content: content.parent,
     } as Project;
 }
