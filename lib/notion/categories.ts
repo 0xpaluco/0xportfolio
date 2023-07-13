@@ -67,6 +67,6 @@ export const categoryBySlug = async (slug: string) => {
 
     return {
         ...metadata,
-        content,
+        content: content.parent,
     } as Category;
 }
