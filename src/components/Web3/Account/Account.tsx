@@ -5,7 +5,6 @@ import { signIn, useSession, signOut  } from 'next-auth/react';
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { useAccount, useSignMessage, useNetwork } from 'wagmi'
 import { useRouter } from 'next/navigation'
-import axios from 'axios';
 import { useAuthRequestChallengeEvm } from "@moralisweb3/next";
 
 interface AccountProps { }
