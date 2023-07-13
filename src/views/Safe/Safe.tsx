@@ -1,7 +1,6 @@
 'use client';
 
 /* This example requires Tailwind CSS v2.0+ */
-import { MetaTags } from '@components/shared';
 import { getEllipsisTxt } from '@helpers/formater';
 import { LockClosedIcon } from '@heroicons/react/24/solid'
 import { useRouter } from 'next/router';
@@ -21,8 +20,6 @@ export default function Safe() {
   
     return (
         <div className="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
-
-            <MetaTags title={"Safe"} description="Web3 Research and Development" />
             <Banner safe={data} />
             <NFTList address={data.from} />
         </div>

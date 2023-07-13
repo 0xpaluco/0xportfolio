@@ -5,7 +5,6 @@ import portraitImage from '@images/portrait.jpg'
 import { socialNavigation } from '@helpers/routes'
 import { SocialLink } from '@components/SocialIcons'
 import { EnvelopeIcon, CalendarDaysIcon } from '@heroicons/react/24/solid'
-import { MetaTags } from '@components/shared'
 
 interface AboutViewProps {
 }
@@ -14,11 +13,6 @@ const AboutView = ({ }: AboutViewProps) => {
 
   return (
     <>
-
-      <MetaTags
-        title='About'
-        description='I’m Paluco. I live in Puerto Rico, where I design the future.' />
-
       <div className="relative bg-c-bg rounded-md shadow-lg pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
         <div className="absolute inset-0">
           <div className="h-1/3 sm:h-2/3" />

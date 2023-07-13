@@ -2,37 +2,20 @@
 
 import { Account } from "@components/Web3";
 import { classNames } from "@helpers/ui";
-import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { useProvider } from 'wagmi'
 
 interface HeroProps {
     safes?: Array<SafeItem>
 }
 
-
 const Vault = ({ safes }: HeroProps) => {
 
     const { data: session, status } = useSession();
     const isAuthenticated = status === "authenticated";
-
-    const provider = useProvider()
     const [blockNumber, setBlockNumber] = useState<number>()
     const [balance, setBalance] = useState<{}>()
-
-    useEffect(() => {
-        provider.on('block', async (blockNumber: number) => {
-            setBlockNumber(blockNumber)
-
-            // const address = "0xdcfff0eaaef06eb27c821c62f2e3636ec0dade5f"
-            // const resp = await axios.get("/api/whale/balance", { params: { address, chain: provider.network.chainId } })            
-            // setBalance(resp.data.balance);
-        })
-    },
-        [])
-
 
     return (
         <div className="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
@@ -50,8 +33,6 @@ const Vault = ({ safes }: HeroProps) => {
 
 
                         <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-
-                            {blockNumber}
 
                             {!isAuthenticated && <>
                                 <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">

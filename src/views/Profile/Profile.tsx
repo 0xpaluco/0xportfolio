@@ -21,12 +21,6 @@ export default function Portfolio(props: PortfolioProps) {
 
     return (
         <div className="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
-            <Head>
-                <title>{"My Wallet"}</title>
-                <meta name="description" content="Trading Community" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
             <Banner address={props.address} ens={props.ens} />
             <ERC20Balance address={props.address} tokens={props.tokenBalances} />
             <NFTBalance address={props.address} tokens={props.nftBalances} />

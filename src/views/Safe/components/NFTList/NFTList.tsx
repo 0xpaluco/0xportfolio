@@ -17,7 +17,7 @@ interface NFTsByCollection {
 
 export default function NFTList(props: NFTListProps) {
 
- 
+
   const account = props.address;
   const results = props.data;
 
@@ -44,12 +44,12 @@ export default function NFTList(props: NFTListProps) {
 
       {_.keysIn(byCollection).map((address, i) => (
         <dl className="mt-6 space-y-6 divide-y divide-gray-200" key={i}>
-          
-         
+
+
           <Disclosure as="div" key={address} defaultOpen={true} className="p-6 shadow-lg rounded-md">
             {({ open }) => (
               <div>
-                
+
                 <div className="flex items-center h-5">
                   <span className="font-medium text-gray-900 text-lg mr-2">Select to Rescue </span>
                   <input
@@ -58,14 +58,14 @@ export default function NFTList(props: NFTListProps) {
                     name="comments"
                     type="checkbox"
                     className="focus:ring-indigo-500 h-4 w-4 text-indigo-600"
-                    
+
                   />
                 </div>
 
                 <dt className="text-lg">
-               
+
                   <Disclosure.Button className="text-left w-full flex justify-between items-start text-gray-400">
-                  
+
                     <span className="font-medium text-gray-900">{address}</span>
                     <span className="ml-6 h-7 flex items-center">
                       <ChevronDownIcon
