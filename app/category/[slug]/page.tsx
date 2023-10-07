@@ -21,7 +21,14 @@ export async function generateMetadata({ params }): Promise<Metadata> {
             url: `https://0xpalu.co${getCategoryLink(category.slug)}`,
             title: category.title,
             description: category.description,
-        }
+        },
+        robots: {
+            index: true,
+            follow: true
+        },
+        alternates: {
+            canonical: `https://0xpalu.co${getCategoryLink(category.slug)}`,
+        },
     };
 }
 

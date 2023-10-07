@@ -6,7 +6,14 @@ export const revalidate = 60; // revalidate this page every 60 seconds
 
 export const metadata: Metadata = {
     title: '0xPaluco | Projects',
-    description: 'Things I’ve made trying to put my dent in the universe.'
+    description: 'Things I’ve made trying to put my dent in the universe.',
+    alternates: {
+        canonical: `https://0xpalu.co/projects`,
+    },
+    robots: {
+        index: true,
+        follow: true
+    },
 };
 
 export default async function Page() {

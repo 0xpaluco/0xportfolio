@@ -2,6 +2,7 @@ export type Article = {
     id: string
     title: string
     slug: string
+    keywords: string
     tags: Category[]
     summary: string
     cover: string

@@ -36,7 +36,7 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
 
                 <Link href="/">
                   <span className="sr-only">0xpaluco</span>
-                  <h1 className="h-8 w-auto sm:h-10 text-white text-2xl tracking-tight font-extrabold"> 0xpaluco</h1>
+                  <span className="h-8 w-auto sm:h-10 text-white text-2xl tracking-tight font-extrabold">0xpaluco</span>
                 </Link>
 
                 <div className="flex items-center md:hidden mx-4">

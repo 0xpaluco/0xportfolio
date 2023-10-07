@@ -18,6 +18,7 @@ const getArticlePageMetaData = async (article) => {
         id: article.id,
         title: article.properties.Name.title[0].plain_text,
         tags: cats,
+        keywords: article.properties.Keywords.rich_text[0].plain_text,
         summary: article.properties.Summary.rich_text[0].plain_text,
         cover: article.cover[`${article.cover.type}`]?.url,
         date: article.properties['Publish date'].date.start,

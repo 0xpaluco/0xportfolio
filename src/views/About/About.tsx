@@ -34,9 +34,9 @@ const AboutView = ({ }: AboutViewProps) => {
                     </div>
                   </div>
                   <div className="lg:order-first lg:row-span-2">
-                    <h2 className="text-3xl tracking-tight font-extrabold text-white sm:text-5xl max-w-4xl">
+                    <h1 className="text-3xl tracking-tight font-extrabold text-white sm:text-5xl max-w-4xl">
                       Software Engineer Building the Future with Web3 and AI Technology
-                    </h2>
+                    </h1>
 
                     <div className="mt-6 space-y-7 text-base text-gray-400">
                       <p>

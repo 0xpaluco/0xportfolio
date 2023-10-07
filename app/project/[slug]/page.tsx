@@ -25,7 +25,14 @@ export async function generateMetadata({ params }): Promise<Metadata> {
             images: [{
                 url: project.cover,
             }]
-        }
+        },
+        alternates: {
+            canonical: `https://0xpalu.co${getProjectLink(project.slug)}`,
+        },
+        robots: {
+            index: true,
+            follow: true
+        },
     };
 }
 
