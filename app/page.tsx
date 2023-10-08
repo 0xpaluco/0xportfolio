@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: '0xPaluco | Software Engineer, App builder, and Web3/AI fan',
   description: 'Hi there, I’m Paluco - a software engineer, app builder, and Web3/AI fan based in sunny Puerto Rico.',
   alternates: {
-    canonical: `https://0xpalu.co/`,
+    canonical: `https://www.0xpalu.co/`,
   },
   robots: {
     index: true,

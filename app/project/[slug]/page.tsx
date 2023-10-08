@@ -27,7 +27,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
             }]
         },
         alternates: {
-            canonical: `https://0xpalu.co${getProjectLink(project.slug)}`,
+            canonical: `https://www.0xpalu.co${getProjectLink(project.slug)}`,
         },
         robots: {
             index: true,

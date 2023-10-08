@@ -18,7 +18,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
         description: article.summary,
         keywords: article.keywords,
         alternates: {
-            canonical: `https://0xpalu.co${getBlogLink(article.slug)}`,
+            canonical: `https://www.0xpalu.co${getBlogLink(article.slug)}`,
         },
         robots: {
             index: true,

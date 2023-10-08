@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: '0xPaluco | Contact',
   description: 'We’d love to hear from you. Schedule a 15-minute zoom meeting.',
   alternates: {
-    canonical: `https://0xpalu.co/contact`,
+    canonical: `https://www.0xpalu.co/contact`,
   },
   robots: {
     index: true,

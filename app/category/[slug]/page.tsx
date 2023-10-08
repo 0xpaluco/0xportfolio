@@ -27,7 +27,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
             follow: true
         },
         alternates: {
-            canonical: `https://0xpalu.co${getCategoryLink(category.slug)}`,
+            canonical: `https://www.0xpalu.co${getCategoryLink(category.slug)}`,
         },
     };
 }

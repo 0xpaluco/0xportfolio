@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Software Engineering, Startup Life, Artificial Intelligence, and Web3 Technology: The Future of Tech',
   keywords: "Software Engineering, Startup, Artificial Intelligence, Web3",
   alternates: {
-    canonical: `https://0xpalu.co/blog`,
+    canonical: `https://www.0xpalu.co/blog`,
   },
   robots: {
     index: true,
