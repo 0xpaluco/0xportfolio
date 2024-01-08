@@ -1,9 +1,5 @@
-'use client';
-
 import '../styles/globals.css'
-import '@rainbow-me/rainbowkit/styles.css';
 import { ReactNode } from 'react';
-import { Web3Provider } from '@/components';
 import WithLayout, { Main } from '@/layouts'
 
 interface LayoutProps {
@@ -25,9 +21,7 @@ export default function RootLayout({ children }: LayoutProps) {
 
       </head>
       <body>
-        <Web3Provider>
-          <WithLayout layout={Main} component={children} />
-        </Web3Provider>
+        <WithLayout layout={Main} component={children} />
       </body>
     </html>
   );
