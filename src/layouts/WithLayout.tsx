@@ -53,9 +53,7 @@ const WithLayout = ({ component: Component, layout: Layout, aside, ...rest }: Pr
     return (
       <>
         <Layout themeMode={themeMode} themeToggler={themeToggler} aside={aside}>
-
           {Component}
-
         </Layout>
       </>
     );

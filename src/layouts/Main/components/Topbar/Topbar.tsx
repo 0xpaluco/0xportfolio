@@ -1,10 +1,9 @@
 'use client';
 
-import { Account } from '@components/Web3';
 import { DarkModeToggler } from '@components/index'
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
+import { XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import { navigation } from '@helpers/routes';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
@@ -59,7 +58,7 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
               </div>
             </div>
             <div className="flex md:items-center md:space-x-6">
-              <Account />
+              {/* <Account /> */}
             </div>
           </nav>
         </div>
@@ -119,8 +118,6 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
                     </Link>
                   </p>
                 </div> */}
-
-
 
               </div>
             </div>
