@@ -1,14 +1,8 @@
 export { default as AboutView } from './About';
 export { default as ArticleView } from './Article';
-export { default as AuthView } from './Auth';
+export { default as BlogView } from './Blog';
 export { default as CategoryView } from './Category';
 export { default as ContactView } from './Contact';
-export { default as DaoView } from './Dao';
-export { default as FeedView } from './Feed';
 export { default as HomeView } from './Home';
-export { default as SafeView } from './Safe';
-export { default as ProfileView } from './Profile';
 export { default as ProjectDetailView } from './ProjectDetail';
 export { default as ProjectsView } from './Projects';
-export { default as BlogView } from './Blog';
-export { default as VaultView } from './Vault';

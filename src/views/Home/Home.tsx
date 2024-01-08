@@ -1,7 +1,7 @@
 'use client';
 
 import { Fragment } from 'react';
-import { FeaturedWork, Main, CTA } from './components';
+import { FeaturedWork, Hero, CTA } from './components';
 import { Article, Project } from 'lib/types/cms';
 
 interface HomeProps {
@@ -12,7 +12,7 @@ interface HomeProps {
 const HomeView = ({ projectData, articleData }: HomeProps) => {
     return (
         <Fragment>
-            <Main/>
+            <Hero />
             <FeaturedWork projects={projectData} articles={articleData}/>
             <CTA />
         </Fragment>
