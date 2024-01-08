@@ -10,7 +10,11 @@ interface CardProps {
   children: ReactNode
 }
 
-export default function Card({ as: Component = 'div', className, children }: CardProps) {
+export default function Card({
+  as: Component = 'div',
+  className,
+  children,
+}: CardProps) {
   return (
     <Component
       className={clsx(className, 'group relative flex flex-col items-start')}
@@ -43,7 +47,11 @@ interface CardTitleProps {
   href?: any
 }
 
-Card.Title = function CardTitle({ as: Component = 'h2', href, children }: CardTitleProps) {
+Card.Title = function CardTitle({
+  as: Component = 'h2',
+  href,
+  children,
+}: CardTitleProps) {
   return (
     <Component className="text-base font-semibold tracking-tight text-white">
       {href ? <Card.Link href={href}>{children}</Card.Link> : children}
@@ -55,12 +63,10 @@ interface CardDescriptionProps {
   children: ReactNode
 }
 
-Card.Description = function CardDescription({ children }: CardDescriptionProps) {
-  return (
-    <p className="relative z-10 mt-2 text-sm text-gray-400">
-      {children}
-    </p>
-  )
+Card.Description = function CardDescription({
+  children,
+}: CardDescriptionProps) {
+  return <p className="relative z-10 mt-2 text-sm text-gray-400">{children}</p>
 }
 
 interface CardCTAProps {
@@ -97,7 +103,7 @@ Card.Eyebrow = function CardEyebrow({
       className={clsx(
         className,
         'relative z-10 order-first mb-3 flex items-center text-sm text-gray-400',
-        decorate && 'pl-3.5'
+        decorate && 'pl-3.5',
       )}
       {...props}
     >

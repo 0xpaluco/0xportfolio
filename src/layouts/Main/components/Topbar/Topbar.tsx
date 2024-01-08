@@ -1,25 +1,28 @@
-'use client';
+'use client'
 
 import { DarkModeToggler } from '@components/index'
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
-import { navigation } from '@helpers/routes';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import { Divider } from '@components/shared';
-import { classNames } from '@helpers/ui';
+import { navigation } from '@helpers/routes'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
+import { Divider } from '@components/shared'
+import { classNames } from '@helpers/ui'
 
 interface Props {
-  className?: string;
-  themeMode: string;
-  themeToggler: Function;
-};
+  className?: string
+  themeMode: string
+  themeToggler: Function
+}
 
-export default function Topbar({ themeMode, themeToggler, className, ...rest }: Props) {
-
-  const pathname = usePathname();
-
+export default function Topbar({
+  themeMode,
+  themeToggler,
+  className,
+  ...rest
+}: Props) {
+  const pathname = usePathname()
 
   return (
     <div>
@@ -32,10 +35,11 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
           >
             <div className="flex items-center flex-1">
               <div className="flex items-center w-full md:w-auto">
-
                 <Link href="/">
                   <span className="sr-only">0xpaluco</span>
-                  <span className="h-8 w-auto sm:h-10 text-white text-2xl tracking-tight font-extrabold">0xpaluco</span>
+                  <span className="h-8 w-auto sm:h-10 text-white text-2xl tracking-tight font-extrabold">
+                    0xpaluco
+                  </span>
                 </Link>
 
                 <div className="flex items-center md:hidden mx-4">
@@ -44,16 +48,21 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
                     <ChevronDownIcon className="h-6 w-6" aria-hidden="true" />
                   </Popover.Button>
                 </div>
-
-
               </div>
               <div className="hidden space-x-8 md:flex md:ml-10">
                 {navigation.map((item) => (
-                  
-                  <Link key={item.name} href={item.href} className={classNames(pathname?.startsWith(item.href) ? "underline text-c-l-primary underline-offset-4" : "text-white", "text-base font-medium hover:text-c-l-primary hover:underline underline-offset-4")}>
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={classNames(
+                      pathname?.startsWith(item.href)
+                        ? 'underline text-c-l-primary underline-offset-4'
+                        : 'text-white',
+                      'text-base font-medium hover:text-c-l-primary hover:underline underline-offset-4',
+                    )}
+                  >
                     {item.name}
                   </Link>
-
                 ))}
               </div>
             </div>
@@ -72,11 +81,12 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-
-          <Popover.Panel focus className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top md:hidden">
+          <Popover.Panel
+            focus
+            className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top md:hidden"
+          >
             <div className="rounded-lg shadow-md bg-c-bg ring-1 ring-black ring-opacity-5 overflow-hidden">
               <div className="px-5 pt-4 flex items-center ">
-
                 <div className="mr-2">
                   <Popover.Button className="bg-c-bg rounded-md inline-flex items-center justify-center text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="sr-only">Close menu</span>
@@ -86,29 +96,39 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
 
                 <div>
                   <span className="sr-only">0xpaluco</span>
-                  <h1 className="h-8 w-auto sm:h-10 text-white text-xl tracking-tight font-extrabold"> 0xpaluco</h1>
+                  <h1 className="h-8 w-auto sm:h-10 text-white text-xl tracking-tight font-extrabold">
+                    {' '}
+                    0xpaluco
+                  </h1>
                 </div>
-
               </div>
               <div className="pt-5 pb-6">
-
                 <div className="px-2 space-y-1">
                   {navigation.map((item) => (
-                    <Link key={item.name} href={item.href} className={classNames(pathname?.startsWith(item.href) ? "text-c-l-primary" : "text-white", "block px-3 py-2 rounded-md text-base font-medium")}>
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={classNames(
+                        pathname?.startsWith(item.href)
+                          ? 'text-c-l-primary'
+                          : 'text-white',
+                        'block px-3 py-2 rounded-md text-base font-medium',
+                      )}
+                    >
                       {item.name}
                     </Link>
-
                   ))}
                 </div>
 
-
-
                 <div className="mt-6 px-5">
                   <Divider title="" />
-                  <Link key={'contact'} href={'/contact'} className="block text-center w-full py-3 px-4 rounded-md shadow bg-c-primary text-white font-medium hover:bg-c-l-primary">
-                      Lets Work together
+                  <Link
+                    key={'contact'}
+                    href={'/contact'}
+                    className="block text-center w-full py-3 px-4 rounded-md shadow bg-c-primary text-white font-medium hover:bg-c-l-primary"
+                  >
+                    Lets Work together
                   </Link>
-
                 </div>
                 {/* <div className="mt-6 px-5">
                   <p className="text-center text-base font-medium text-white">
@@ -118,7 +138,6 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
                     </Link>
                   </p>
                 </div> */}
-
               </div>
             </div>
           </Popover.Panel>
@@ -127,5 +146,3 @@ export default function Topbar({ themeMode, themeToggler, className, ...rest }: 
     </div>
   )
 }
-
-

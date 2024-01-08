@@ -8,10 +8,17 @@
     "url": "https://github.com/0xpaluco"
   },
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
+    "dev": "next dev",
+    "format": "npx prettier --write . --ignore-path .gitignore --cache",
+    "lint": "next lint -- --ignore-path .gitignore",
+    "lint:fix": "yarn run format && yarn run lint -- --fix",
     "start": "next start",
-    "lint": "next lint"
+    "type-check": "tsc --noEmit"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
@@ -49,7 +56,11 @@
     "autoprefixer": "^10.4.16",
     "eslint": "8.56.0",
     "eslint-config-next": "14.0.4",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "postcss": "^8.4.33",
+    "prettier": "^3.1.1",
+    "prettier-plugin-packagejson": "^2.4.9",
+    "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.1",
     "typescript": "5.3.3"
   },

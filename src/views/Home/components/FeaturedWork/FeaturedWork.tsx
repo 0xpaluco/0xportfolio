@@ -1,29 +1,34 @@
-import { Card } from "@components/index"
-import { getBlogLink, getDateStr, getProjectLink } from "@helpers/notion"
-import { FolderIcon, CodeBracketIcon, BookOpenIcon, EnvelopeIcon } from "@heroicons/react/24/outline"
-import { Article, Project } from "lib/types/cms"
-import Link from "next/link"
+import { Card } from '@components/index'
+import { getBlogLink, getDateStr, getProjectLink } from '@helpers/notion'
+import {
+  FolderIcon,
+  CodeBracketIcon,
+  BookOpenIcon,
+  EnvelopeIcon,
+} from '@heroicons/react/24/outline'
+import { Article, Project } from 'lib/types/cms'
+import Link from 'next/link'
 
 interface FeaturedWorkProps {
   projects: any[]
   articles: Article[]
 }
 
-export default function FeaturedWork({ projects, articles }: FeaturedWorkProps) {
+export default function FeaturedWork({
+  projects,
+  articles,
+}: FeaturedWorkProps) {
   return (
     <div className="py-12 bg-c-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mt-10">
-
           <div className="mt-6 lg:grid lg:grid-cols-2 lg:gap-y-8">
-
             <ArticleList articles={articles} />
 
             <div className="md:px-8 md:pb-8">
               <Form />
               <ProjectList projects={projects} />
             </div>
-
           </div>
         </div>
       </div>
@@ -44,32 +49,34 @@ const ProjectList = ({ projects }: ListProps) => {
       <div className="mt-6 flow-root">
         <ul role="list" className="-my-5 divide-y divide-gray-400">
           {projects?.map((project) => (
-
             <li key={project.id} className="py-5">
               <div className="relative">
                 <FolderIcon className="w-8 h-8 text-c-l-primary mb-2" />
                 <h3 className="text-sm font-semibold text-white">
-                  <Link href={getProjectLink(project.slug)}
-                     className="hover:underline focus:outline-none">
-                      {/* Extend touch target to entire panel */}
-                      <span className="absolute inset-0" aria-hidden="true" />
-                      {project.slug}
+                  <Link
+                    href={getProjectLink(project.slug)}
+                    className="hover:underline focus:outline-none"
+                  >
+                    {/* Extend touch target to entire panel */}
+                    <span className="absolute inset-0" aria-hidden="true" />
+                    {project.slug}
                   </Link>
                 </h3>
-                <p className="mt-1 text-sm text-gray-400 line-clamp-2">{project.description}</p>
+                <p className="mt-1 text-sm text-gray-400 line-clamp-2">
+                  {project.description}
+                </p>
               </div>
             </li>
-
           ))}
         </ul>
       </div>
       <div className="mt-6">
-        <Link href={'/projects'}
-            className="flex w-full items-center justify-center rounded-md border-2 border-c-bg bg-c-bg-light px-4 py-2 text-sm font-medium text-white shadow-sm hover:border-c-primary/40"
-          >
-            View all projects
+        <Link
+          href={'/projects'}
+          className="flex w-full items-center justify-center rounded-md border-2 border-c-bg bg-c-bg-light px-4 py-2 text-sm font-medium text-white shadow-sm hover:border-c-primary/40"
+        >
+          View all projects
         </Link>
-
       </div>
     </div>
   )
@@ -86,11 +93,7 @@ const Article = ({ article }: ArticleProps) => {
         <Card.Title href={getBlogLink(article.slug)}>
           {article.title}
         </Card.Title>
-        <Card.Eyebrow
-          as="time"
-          className="block"
-          decorate={false}
-        >
+        <Card.Eyebrow as="time" className="block" decorate={false}>
           {getDateStr(article.date)}
         </Card.Eyebrow>
         <Card.Description>{article.summary}</Card.Description>
@@ -131,7 +134,8 @@ const Form = () => {
           <h2 className="text-sm font-semibold">STAY UP TO DATE</h2>
         </div>
         <p className="my-3 text-sm text-gray-400">
-          Get notified when I publish something new, and unsubscribe at any time.
+          Get notified when I publish something new, and unsubscribe at any
+          time.
         </p>
         <div className="sm:flex sm:mt-4">
           <div className="min-w-0 flex-1">
@@ -156,7 +160,6 @@ const Form = () => {
             </button>
           </div>
         </div>
-
       </form>
     </div>
   )

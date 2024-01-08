@@ -1,6 +1,6 @@
-import { Article } from "lib/types/cms";
-import { Card } from "@components/index";
-import { getBlogLink, getDateStr } from "@helpers/notion";
+import { Article } from 'lib/types/cms'
+import { Card } from '@components/index'
+import { getBlogLink, getDateStr } from '@helpers/notion'
 
 interface ArticleProps {
   article: Article
@@ -13,21 +13,13 @@ const Article = ({ article }: ArticleProps) => {
         <Card.Title href={getBlogLink(article.slug)}>
           {article.title}
         </Card.Title>
-        <Card.Eyebrow
-          as="time"
-          className="md:hidden"
-          decorate
-        >
+        <Card.Eyebrow as="time" className="md:hidden" decorate>
           {getDateStr(article.date)}
         </Card.Eyebrow>
         <Card.Description>{article.summary}</Card.Description>
         <Card.Cta>Read article</Card.Cta>
       </Card>
-      <Card.Eyebrow
-        as="time"
-        className="mt-1 hidden md:block"
-        decorate={false}
-      >
+      <Card.Eyebrow as="time" className="mt-1 hidden md:block" decorate={false}>
         {getDateStr(article.date)}
       </Card.Eyebrow>
     </article>
@@ -50,5 +42,4 @@ const ArticleList = ({ articles }: ArticleListProps) => {
   )
 }
 
-
-export default ArticleList;
+export default ArticleList

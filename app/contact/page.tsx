@@ -1,5 +1,5 @@
 import { ContactView } from '@views/index'
-import type { Metadata } from 'next';
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: '0xPaluco | Contact',
@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   },
   robots: {
     index: true,
-    follow: true
+    follow: true,
   },
-};
+}
 
 export default async function Page() {
   const projectData: any[] = []

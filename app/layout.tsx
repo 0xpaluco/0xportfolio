@@ -1,13 +1,12 @@
 import '../styles/globals.css'
-import { ReactNode } from 'react';
+import { ReactNode } from 'react'
 import WithLayout, { Main } from '@/layouts'
 
 interface LayoutProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export default function RootLayout({ children }: LayoutProps) {
-
   return (
     <html lang="en">
       <head>
@@ -18,11 +17,10 @@ export default function RootLayout({ children }: LayoutProps) {
           Anything we add in layout will appear on EVERY PAGE. At present it can not be overridden lower down the tree.
           This can be useful for things like favicons, or other meta tags that are the same on every page.
         */}
-
       </head>
       <body>
         <WithLayout layout={Main} component={children} />
       </body>
     </html>
-  );
+  )
 }

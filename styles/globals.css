@@ -3,17 +3,16 @@
 @import './prism.css';
 @import 'tailwindcss/utilities';
 
-
 @layer base {
-    html {
-      font-family: Consolas, ui-monospace, monospace;
-    }
+  html {
+    font-family: Consolas, ui-monospace, monospace;
   }
+}
 
 html {
-    @apply h-full bg-white
+  @apply h-full bg-white;
 }
 
 body {
-    @apply h-full bg-white
+  @apply h-full bg-white;
 }

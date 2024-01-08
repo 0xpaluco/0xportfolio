@@ -1,14 +1,12 @@
-'use client';
+'use client'
 
-import { ArticleList } from "@components/index";
-import { Article } from "lib/types/cms";
+import { ArticleList } from '@components/index'
+import { Article } from 'lib/types/cms'
 interface BlogProps {
-  articleData: Article[] 
+  articleData: Article[]
 }
 
 const Blog = ({ articleData }: BlogProps) => {
-
-
   return (
     <>
       <div className="relative bg-c-bg rounded-md shadow-lg pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
@@ -17,9 +15,13 @@ const Blog = ({ articleData }: BlogProps) => {
         </div>
         <div className="relative  max-w-7xl mx-auto">
           <div className="text-left mb-16 md:mb-32">
-            <h1 className="text-3xl tracking-tight font-extrabold text-white sm:text-5xl max-w-4xl">Writing on software engineering, startup life, artificial intelligence and web3 technology.</h1>
+            <h1 className="text-3xl tracking-tight font-extrabold text-white sm:text-5xl max-w-4xl">
+              Writing on software engineering, startup life, artificial
+              intelligence and web3 technology.
+            </h1>
             <p className="mt-3 max-w-4xl text-md text-gray-400 sm:mt-4">
-              All of my long-form thoughts on programming, leadership, product development, and more, collected in chronological order.
+              All of my long-form thoughts on programming, leadership, product
+              development, and more, collected in chronological order.
             </p>
           </div>
 
@@ -30,4 +32,4 @@ const Blog = ({ articleData }: BlogProps) => {
   )
 }
 
-export default Blog;
+export default Blog
