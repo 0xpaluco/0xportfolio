@@ -3,7 +3,7 @@ export const getBlogLink = (slug: string) => {
 }
 
 export const getProjectLink = (slug: string) => {
-  return `/project/${slug}`
+  return `/work/${slug}`
 }
 
 export const getCategoryLink = (slug: string) => {

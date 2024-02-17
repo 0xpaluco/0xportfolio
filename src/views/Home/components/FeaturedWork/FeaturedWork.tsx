@@ -1,17 +1,19 @@
 import { Card } from '@components/index'
 import { getBlogLink, getDateStr, getProjectLink } from '@helpers/notion'
 import {
-  FolderIcon,
-  CodeBracketIcon,
   BookOpenIcon,
+  CodeBracketIcon,
   EnvelopeIcon,
+  FolderIcon,
 } from '@heroicons/react/24/outline'
-import { Article, Project } from 'lib/types/cms'
 import Link from 'next/link'
+import { SanityDocument } from 'next-sanity'
+
+import { Post, Project } from '@/sanity/lib/queries'
 
 interface FeaturedWorkProps {
-  projects: any[]
-  articles: Article[]
+  projects: SanityDocument<Project>[]
+  articles: SanityDocument<Post>[]
 }
 
 export default function FeaturedWork({
@@ -37,7 +39,7 @@ export default function FeaturedWork({
 }
 
 interface ListProps {
-  projects: Project[]
+  projects: SanityDocument<Project>[]
 }
 const ProjectList = ({ projects }: ListProps) => {
   return (
@@ -49,7 +51,7 @@ const ProjectList = ({ projects }: ListProps) => {
       <div className="mt-6 flow-root">
         <ul role="list" className="-my-5 divide-y divide-gray-400">
           {projects?.map((project) => (
-            <li key={project.id} className="py-5">
+            <li key={project._id} className="py-5">
               <div className="relative">
                 <FolderIcon className="w-8 h-8 text-c-l-primary mb-2" />
                 <h3 className="text-sm font-semibold text-white">
@@ -63,7 +65,7 @@ const ProjectList = ({ projects }: ListProps) => {
                   </Link>
                 </h3>
                 <p className="mt-1 text-sm text-gray-400 line-clamp-2">
-                  {project.description}
+                  {project.excerpt}
                 </p>
               </div>
             </li>
@@ -72,7 +74,7 @@ const ProjectList = ({ projects }: ListProps) => {
       </div>
       <div className="mt-6">
         <Link
-          href={'/projects'}
+          href={'/work'}
           className="flex w-full items-center justify-center rounded-md border-2 border-c-bg bg-c-bg-light px-4 py-2 text-sm font-medium text-white shadow-sm hover:border-c-primary/40"
         >
           View all projects
@@ -83,7 +85,7 @@ const ProjectList = ({ projects }: ListProps) => {
 }
 
 interface ArticleProps {
-  article: Article
+  article: SanityDocument<Post>
 }
 
 const Article = ({ article }: ArticleProps) => {
@@ -94,9 +96,9 @@ const Article = ({ article }: ArticleProps) => {
           {article.title}
         </Card.Title>
         <Card.Eyebrow as="time" className="block" decorate={false}>
-          {getDateStr(article.date)}
+          {getDateStr(article.publishedAt)}
         </Card.Eyebrow>
-        <Card.Description>{article.summary}</Card.Description>
+        <Card.Description>{article.excerpt}</Card.Description>
         <Card.Cta>Read article</Card.Cta>
       </Card>
     </article>
@@ -104,7 +106,7 @@ const Article = ({ article }: ArticleProps) => {
 }
 
 interface ArticleListProps {
-  articles: Article[]
+  articles: SanityDocument<Post>[]
 }
 
 const ArticleList = ({ articles }: ArticleListProps) => {
@@ -117,7 +119,7 @@ const ArticleList = ({ articles }: ArticleListProps) => {
         </div>
         <div className="flex flex-col space-y-16 mt-12 md:mt-8">
           {articles?.map((article) => (
-            <Article key={article.id} article={article} />
+            <Article key={article._id} article={article} />
           ))}
         </div>
       </div>
@@ -134,8 +136,7 @@ const Form = () => {
           <h2 className="text-sm font-semibold">STAY UP TO DATE</h2>
         </div>
         <p className="my-3 text-sm text-gray-400">
-          Get notified when I publish something new, and unsubscribe at any
-          time.
+          Get notified when I publish something new.
         </p>
         <div className="sm:flex sm:mt-4">
           <div className="min-w-0 flex-1">
@@ -156,7 +157,7 @@ const Form = () => {
               disabled={true}
               className="block w-full py-3 px-4 rounded-md shadow bg-c-primary text-white font-medium hover:bg-c-d-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900"
             >
-              Join Us
+              Join
             </button>
           </div>
         </div>

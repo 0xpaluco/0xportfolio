@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse, NextPage } from 'next'
+import { AppInitialProps, AppProps } from 'next/app'
 import { Session } from 'next-auth'
 import { SessionContextValue } from 'next-auth/react'
-import { AppInitialProps, AppProps } from 'next/app'
 import { ReactElement, ReactNode } from 'react'
 
 type ApiRequest = NextApiRequest & {}

@@ -1,14 +1,14 @@
 'use client'
 
 import { DarkModeToggler } from '@components/index'
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
-import { navigation } from '@helpers/routes'
-import { usePathname } from 'next/navigation'
-import Link from 'next/link'
 import { Divider } from '@components/shared'
+import { Popover, Transition } from '@headlessui/react'
+import { navigation } from '@helpers/routes'
 import { classNames } from '@helpers/ui'
+import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { Fragment } from 'react'
 
 interface Props {
   className?: string
@@ -67,7 +67,14 @@ export default function Topbar({
               </div>
             </div>
             <div className="flex md:items-center md:space-x-6">
-              {/* <Account /> */}
+              <div className="inline-flex rounded-md shadow">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-c-primary hover:bg-c-d-primary"
+                >
+                  Let’s Talk
+                </Link>
+              </div>
             </div>
           </nav>
         </div>

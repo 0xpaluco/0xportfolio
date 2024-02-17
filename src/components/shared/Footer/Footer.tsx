@@ -1,35 +1,29 @@
-import { secondaryNavigation, socialNavigation } from '@helpers/routes'
-import Link from 'next/link'
+'use client'
+import { icons,SocialLink } from '@components/SocialIcons'
 
-const Footer = () => {
+import { SocialLinkType } from '@/sanity/lib/queries'
+
+type FooterProps = {
+  links: SocialLinkType[]
+}
+const Footer = ({ links }: FooterProps) => {
   return (
-    <footer className="bg-c-bg-light mt-12">
-      <div className="max-w-7xl mx-auto py-6 px-4 overflow-hidden sm:px-6 lg:px-8">
-        <nav
-          className="-mx-5 -my-2 flex flex-wrap justify-center"
-          aria-label="Footer"
-        >
-          {secondaryNavigation.map((item) => (
-            <div key={item.name} className="px-5 py-2">
-              <Link
-                href={item.href}
-                className="text-sm text-white hover:text-gray-400"
-              >
-                {item.name}
-              </Link>
-            </div>
-          ))}
-        </nav>
-        <div className="mt-8 flex justify-center space-x-6">
-          {socialNavigation.map((item) => (
-            <Link key={item.name} href={item.href} target="_blank">
-              <item.icon className="w-6 h-6 text-white"></item.icon>
-            </Link>
+    <footer className="bg-c-bg-light">
+      <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
+        <div className="flex justify-center space-x-6 md:order-2">
+          {links?.map((item) => (
+            <SocialLink
+              key={item._id}
+              href={item.url}
+              icon={icons[item.label.toLowerCase()]}
+            />
           ))}
         </div>
-        <p className="mt-8 text-center text-base text-gray-400">
-          &copy; 2022 0xpaluco - All rights reserved.
-        </p>
+        <div className="mt-8 md:order-1 md:mt-0">
+          <p className="text-center text-sm leading-5 text-gray-400">
+            &copy; 2024 0xpaluco - All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   )

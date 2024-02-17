@@ -2,11 +2,13 @@ import { getCategoryLink, getProjectLink } from '@helpers/notion'
 import { classNames } from '@helpers/ui'
 import { FolderIcon } from '@heroicons/react/24/outline'
 import {
-  CodeBracketIcon,
   ArrowTopRightOnSquareIcon,
+  CodeBracketIcon,
 } from '@heroicons/react/24/solid'
-import { Project } from 'lib/types/cms'
 import Link from 'next/link'
+import { SanityDocument } from 'next-sanity'
+
+import { Project } from '@/sanity/lib/queries'
 
 interface ProjectCardProps {
   project: Project
@@ -14,7 +16,7 @@ interface ProjectCardProps {
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <div
-      key={project.id}
+      key={project._id}
       className={classNames(
         'relative group bg-c-bg p-6 focus-within:ring-1 focus-within:ring-inset focus-within:ring-white hover:rounded-xl hover:bg-c-bg-light hover:scale-105',
       )}
@@ -37,7 +39,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         </h3>
 
         <p className="mt-2 text-sm text-gray-400 line-clamp-6">
-          {project.description}
+          {project.excerpt}
         </p>
       </div>
       <div className="absolute bottom-2">
@@ -46,10 +48,10 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             ..
           </span>
 
-          {project.tags.map((tag) => (
+          {project.categories?.map((tag) => (
             <Link
               href={getCategoryLink(tag.slug)}
-              key={tag.id}
+              key={tag._id}
               className="hover:underline mr-1 inline-flex items-center rounded text-sm font-medium text-c-l-primary before:mr-1 before:text-slate-400 before:content-['/']"
             >
               {tag.slug}
@@ -61,9 +63,9 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         className="absolute top-6 right-6 text-gray-300 inline-flex items-center"
         aria-hidden="true"
       >
-        {project.repo && (
+        {project.repoUrl && (
           <Link
-            href={project.repo}
+            href={project.repoUrl}
             className="hover:text-gray-400 hover:cursor-pointer mx-2"
             target={'_blank'}
           >
@@ -89,14 +91,14 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 }
 
 interface ProjectGridProps {
-  projects: Project[]
+  projects: SanityDocument<Project>[]
 }
 
 const ProjectGrid = ({ projects }: ProjectGridProps) => {
   return (
     <div className="mt-16 overflow-hidden divide-y divide-c-bg-light sm:divide-y-0 sm:grid sm:grid-cols-3 sm:gap-3">
       {projects.map((project) => (
-        <ProjectCard project={project} key={project.id}></ProjectCard>
+        <ProjectCard project={project} key={project._id}></ProjectCard>
       ))}
     </div>
   )

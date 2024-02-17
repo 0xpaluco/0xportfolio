@@ -2,6 +2,7 @@
 
 import { Footer } from '@components/shared'
 import React from 'react'
+
 import { Topbar } from './components'
 
 interface Props {
@@ -27,7 +28,7 @@ const Main = ({
         className={className}
       />
       {children}
-      <Footer />
+      <Footer links={[]} />
     </div>
   )
 }

@@ -1,15 +1,15 @@
 'use client'
 
-import { CategoryContent } from 'lib/types/strapi-schema'
 import { classNames } from '@helpers/ui'
-import { FolderIcon, BookOpenIcon } from '@heroicons/react/24/outline'
-import Link from 'next/link'
+import { BookOpenIcon, FolderIcon } from '@heroicons/react/24/outline'
 import {
-  CodeBracketIcon,
   ArrowLeftOnRectangleIcon,
   ArrowRightIcon,
+  CodeBracketIcon,
 } from '@heroicons/react/24/solid'
 import { Category } from '@lib/types/cms'
+import { CategoryContent } from 'lib/types/strapi-schema'
+import Link from 'next/link'
 interface CardProps {
   content: CategoryContent
 }

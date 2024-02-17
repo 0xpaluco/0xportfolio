@@ -1,13 +1,13 @@
-import { SVGProps } from 'react'
 import clsx from 'clsx'
 import Link from 'next/link'
+import { SVGProps } from 'react'
 
 export function TwitterIcon(
   props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>,
 ) {
   return (
-    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path d="M20.055 7.983c.011.174.011.347.011.523 0 5.338-3.92 11.494-11.09 11.494v-.003A10.755 10.755 0 0 1 3 18.186c.308.038.618.057.928.058a7.655 7.655 0 0 0 4.841-1.733c-1.668-.032-3.13-1.16-3.642-2.805a3.753 3.753 0 0 0 1.76-.07C5.07 13.256 3.76 11.6 3.76 9.676v-.05a3.77 3.77 0 0 0 1.77.505C3.816 8.945 3.288 6.583 4.322 4.737c1.98 2.524 4.9 4.058 8.034 4.22a4.137 4.137 0 0 1 1.128-3.86A3.807 3.807 0 0 1 19 5.274a7.657 7.657 0 0 0 2.475-.98c-.29.934-.9 1.729-1.713 2.233A7.54 7.54 0 0 0 22 5.89a8.084 8.084 0 0 1-1.945 2.093Z" />
+    <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+      <path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
     </svg>
   )
 }
@@ -47,11 +47,18 @@ export function LinkedInIcon(
   )
 }
 
+export const icons = {
+  twitter: TwitterIcon,
+  instagram: InstagramIcon,
+  github: GitHubIcon,
+  linkedin: LinkedInIcon,
+}
+
 export interface SocialLinkProps {
   className?: string
   href: string
-  children: any
-  icon: any
+  children?: any
+  icon?: any
   target?: string
 }
 
@@ -69,8 +76,13 @@ export function SocialLink({
         href={href}
         className="group flex text-sm font-medium text-zinc-800 transition hover:text-c-l-primary dark:text-zinc-200 dark:hover:text-c-l-primary ml-2 hover:underline"
       >
-        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-c-l-primary mr-4 mt-2" />
-        <span className="flex text-white mt-2">{children}</span>
+        {Icon ? (
+          <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-c-l-primary mr-4 mt-2" />
+        ) : null}
+        {children ? (
+          <span className="flex text-white mt-2">{children}</span>
+        ) : null}
+        <span className="sr-only">{children}</span>
       </Link>
     </li>
   )

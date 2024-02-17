@@ -1,5 +1,5 @@
 import { User } from '@lib/types/cms'
-import { orderBy, kebabCase } from 'lodash'
+import { kebabCase, orderBy } from 'lodash'
 
 export const getTags = (tags: any[]) => {
   const allTags = tags.map((tag) => {

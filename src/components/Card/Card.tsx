@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import clsx from 'clsx'
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
+import clsx from 'clsx'
+import Link from 'next/link'
 import { ReactNode } from 'react'
 import { Url } from 'url'
 
@@ -48,7 +48,7 @@ interface CardTitleProps {
 }
 
 Card.Title = function CardTitle({
-  as: Component = 'h2',
+  as: Component = 'h3',
   href,
   children,
 }: CardTitleProps) {

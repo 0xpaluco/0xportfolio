@@ -21,17 +21,18 @@ function containPage(this: NavItem, path: string) {
 }
 
 export const navigation: NavItem[] = [
+  { name: 'Work', href: '/work', icon: UserGroupIcon },
+  { name: 'Process', href: '/process', icon: UserGroupIcon },
   { name: 'About', href: '/about', icon: UserGroupIcon },
-  { name: 'Articles', href: '/blog', icon: UserGroupIcon },
-  { name: 'Projects', href: '/projects', icon: UserGroupIcon },
+  { name: 'Blog', href: '/blog', icon: UserGroupIcon },
   // { name: 'Portfolio', href: '/portfolio', icon: UserGroupIcon },
 ]
 
 export const secondaryNavigation: NavItem[] = [
   { name: 'About', href: '/about' },
-  { name: 'Articles', href: '/blog' },
-  { name: 'Lets Work', href: '/contact' },
-  { name: 'Projects', href: '/projects' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Contact', href: '/contact' },
+  { name: 'Work', href: '/work' },
 ]
 
 export const userNavigation: NavItem[] = [{ name: 'My Wallet', href: '/me' }]

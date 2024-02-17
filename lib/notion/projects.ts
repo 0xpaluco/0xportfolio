@@ -1,8 +1,9 @@
-import { Project } from 'lib/types/cms'
 import { Client } from '@notionhq/client'
+import { Project } from 'lib/types/cms'
 import { NotionToMarkdown } from 'notion-to-md'
-import { getTags } from './utils'
+
 import { getCategories } from './categories'
+import { getTags } from './utils'
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,

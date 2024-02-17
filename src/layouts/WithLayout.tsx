@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, ReactNode } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 
 export const useDarkMode = () => {
   const [themeMode, setTheme] = useState('light')
@@ -35,7 +35,6 @@ export const useDarkMode = () => {
 interface Props {
   layout: any
   component: ReactNode
-  aside?: any
   // All other props
   [x: string]: any
 }
@@ -43,7 +42,6 @@ interface Props {
 const WithLayout = ({
   component: Component,
   layout: Layout,
-  aside,
   ...rest
 }: Props): JSX.Element => {
   const [themeMode, themeToggler, mountedComponent] = useDarkMode()
@@ -53,11 +51,9 @@ const WithLayout = ({
   }, [mountedComponent])
 
   return (
-    <>
-      <Layout themeMode={themeMode} themeToggler={themeToggler} aside={aside}>
-        {Component}
-      </Layout>
-    </>
+    <Layout themeMode={themeMode} themeToggler={themeToggler}>
+      {Component}
+    </Layout>
   )
 }
 

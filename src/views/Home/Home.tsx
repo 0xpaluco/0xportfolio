@@ -1,20 +1,23 @@
 'use client'
 
+import { SanityDocument } from 'next-sanity'
 import { Fragment } from 'react'
-import { FeaturedWork, Hero, CTA } from './components'
-import { Article, Project } from 'lib/types/cms'
+
+import { HomePageType,Post, Project } from '@/sanity/lib/queries'
+
+import { FeaturedWork, Hero } from './components'
 
 interface HomeProps {
-  projectData: Project[]
-  articleData: Article[]
+  projectData: SanityDocument<Project>[]
+  articleData: SanityDocument<Post>[]
+  pageData: SanityDocument<HomePageType>
 }
 
-const HomeView = ({ projectData, articleData }: HomeProps) => {
+const HomeView = ({ projectData, articleData, pageData }: HomeProps) => {
   return (
     <Fragment>
-      <Hero />
+      <Hero {...pageData.hero} links={pageData.links} />
       <FeaturedWork projects={projectData} articles={articleData} />
-      <CTA />
     </Fragment>
   )
 }
