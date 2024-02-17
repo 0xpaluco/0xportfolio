@@ -1,10 +1,10 @@
 import { defineField, defineType } from 'sanity'
-import { EnvelopeIcon } from '@sanity/icons'
+import { FaEnvelope } from "react-icons/fa";
 
 export default defineType({
   name: 'form',
   type: 'object',
-  icon: EnvelopeIcon,
+  icon: FaEnvelope,
   fields: [
     defineField({
       name: 'heading',
@@ -31,7 +31,7 @@ export default defineType({
       return {
         title: title || 'Untitled',
         subtitle: 'Form',
-        media: EnvelopeIcon,
+        media: FaEnvelope,
       }
     },
   },

@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity'
-import { HomeIcon } from '@sanity/icons'
+import { FaHome } from "react-icons/fa";
 
 export default defineType({
   name: 'home',
   title: 'Home Page',
   type: 'document',
-  icon: HomeIcon,
+  icon: FaHome,
   fields: [
     defineField({
       name: 'title',

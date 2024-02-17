@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity'
-import { ImagesIcon } from '@sanity/icons'
+import { TfiGallery } from "react-icons/tfi";
 
 export default defineType({
   name: 'gallery',
   type: 'object',
   title: 'Gallery',
-  icon: ImagesIcon,
+  icon: TfiGallery,
   fields: [
     {
       name: 'images',
@@ -20,7 +20,7 @@ export default defineType({
               name: 'alt',
               type: 'string',
               title: 'Alternative text',
-              icon: ImagesIcon,
+              icon: TfiGallery,
             },
           ],
         }),

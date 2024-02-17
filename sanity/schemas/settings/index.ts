@@ -1,4 +1,4 @@
-import { CogIcon } from '@sanity/icons'
+import { FaCog } from "react-icons/fa";
 import { defineField, defineType } from 'sanity'
 
 import OpenGraphInput from './OpenGraphInput'
@@ -7,7 +7,7 @@ export default defineType({
   name: 'settings',
   title: 'Settings',
   type: 'document',
-  icon: CogIcon,
+  icon: FaCog,
   preview: { select: { title: 'title', subtitle: 'description' } },
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,

@@ -1,12 +1,9 @@
-import { DocumentIcon } from '@sanity/icons'
-
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export const pageType = defineType({
   name: 'page',
   type: 'document',
   title: 'Pages',
-  icon: DocumentIcon,
   fields: [
     defineField({ name: 'title', type: 'string' }),
     defineField({

@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity'
-import { ComposeIcon } from '@sanity/icons'
+import { FaNewspaper } from "react-icons/fa6";
 
 export default defineType({
   name: 'blog',
   title: 'Blog Page',
   type: 'document',
-  icon: ComposeIcon,
+  icon: FaNewspaper,
   fields: [
     defineField({
       name: 'title',

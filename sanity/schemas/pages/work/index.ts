@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity'
-import { WrenchIcon } from '@sanity/icons'
+import { IoMdCodeWorking } from "react-icons/io";
 
 export default defineType({
   name: 'work',
   title: 'Work Page',
   type: 'document',
-  icon: WrenchIcon,
+  icon: IoMdCodeWorking,
   fields: [
     defineField({
       name: 'title',

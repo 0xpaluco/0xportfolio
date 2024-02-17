@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity'
-import { WrenchIcon } from '@sanity/icons'
+import { FaWrench } from "react-icons/fa";
 
 export default defineType({
   name: 'project',
   title: 'Projects',
   type: 'document',
-  icon: WrenchIcon,
+  icon: FaWrench,
   fields: [
     defineField({
       name: 'title',

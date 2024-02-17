@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity'
-import { LinkIcon } from '@sanity/icons'
+import { PiLinkSimpleBold } from "react-icons/pi";
 
 export default defineType({
   name: 'link',
   title: 'Links',
   type: 'document',
-  icon: LinkIcon,
+  icon: PiLinkSimpleBold,
   fields: [
     defineField({
       name: 'label',
@@ -30,7 +30,7 @@ export default defineType({
     prepare({ title }) {
       return {
         title: title || 'Untitled',
-        media: LinkIcon,
+        media: PiLinkSimpleBold,
       }
     },
   },

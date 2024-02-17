@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { StackIcon } from '@sanity/icons'
+import { GrSteps } from "react-icons/gr";
 
 export const processDeliverableType = defineType({
   name: 'deliverable',
@@ -72,7 +72,7 @@ export default defineType({
   name: 'process',
   title: 'Process Page',
   type: 'document',
-  icon: StackIcon,
+  icon: GrSteps,
   fields: [
     defineField({
       name: 'title',

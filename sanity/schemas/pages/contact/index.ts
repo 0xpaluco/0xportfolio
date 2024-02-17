@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity'
-import { EnvelopeIcon } from '@sanity/icons'
+import { MdContactPage } from "react-icons/md";
 
 export default defineType({
   name: 'contact',
   title: 'Contact Page',
   type: 'document',
-  icon: EnvelopeIcon,
+  icon: MdContactPage,
   fields: [
     defineField({
       name: 'title',

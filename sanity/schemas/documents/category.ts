@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity'
-import { TagIcon } from '@sanity/icons'
+import { MdOutlineCategory } from "react-icons/md";
 
 export default defineType({
   name: 'category',
   title: 'Categories',
   type: 'document',
-  icon: TagIcon,
+  icon: MdOutlineCategory,
   fields: [
     defineField({
       name: 'title',

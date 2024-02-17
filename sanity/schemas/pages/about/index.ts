@@ -1,13 +1,11 @@
-// schemas/profile.ts
-
 import { defineField, defineType } from 'sanity'
-import { UserIcon } from '@sanity/icons'
+import { FaUser } from "react-icons/fa";
 
 export default defineType({
   name: 'profile',
   title: 'About Page',
   type: 'document',
-  icon: UserIcon,
+  icon: FaUser,
   fields: [
     defineField({
       name: 'fullName',

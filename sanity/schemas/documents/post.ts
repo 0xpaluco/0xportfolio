@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity'
-import { CopyIcon } from '@sanity/icons'
+import { BsFileEarmarkPost } from "react-icons/bs";
 
 export default defineType({
   name: 'post',
   title: 'Posts',
   type: 'document',
-  icon: CopyIcon,
+  icon: BsFileEarmarkPost,
   fields: [
     defineField({
       name: 'title',

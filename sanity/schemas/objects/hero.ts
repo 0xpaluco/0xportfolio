@@ -1,12 +1,11 @@
-// ./schemas/heroType.ts
-import { DocumentTextIcon } from '@sanity/icons'
+import { GiNinjaHeroicStance } from "react-icons/gi";
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'hero',
   type: 'object',
   title: 'Hero',
-  icon: DocumentTextIcon,
+  icon: GiNinjaHeroicStance,
   fields: [
     defineField({
       name: 'heading',
@@ -42,7 +41,7 @@ export default defineType({
       return {
         title: title || 'Untitled',
         subtitle: 'Hero',
-        media: image || DocumentTextIcon,
+        media: image || GiNinjaHeroicStance,
       }
     },
   },

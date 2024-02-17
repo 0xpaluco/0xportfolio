@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity'
-import { StarIcon } from '@sanity/icons'
+import { FaStar } from "react-icons/fa";
 
 export default defineType({
   name: 'promotion',
   type: 'document',
   title: 'Promotions',
-  icon: StarIcon,
+  icon: FaStar,
   fields: [
     defineField({
       name: 'title',
@@ -24,7 +24,7 @@ export default defineType({
       return {
         title: title || 'Untitled',
         subtitle: 'Promo',
-        media: StarIcon,
+        media: FaStar,
       }
     },
   },

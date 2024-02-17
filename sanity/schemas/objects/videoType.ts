@@ -1,10 +1,10 @@
 import { defineField, defineType } from 'sanity'
-import { DocumentVideoIcon } from '@sanity/icons'
+import { FaVideo } from "react-icons/fa";
 
 export default defineType({
   name: 'video',
   type: 'object',
-  icon: DocumentVideoIcon,
+  icon: FaVideo,
   fields: [
     defineField({
       name: 'videoLabel',
@@ -24,7 +24,7 @@ export default defineType({
       return {
         title: title || 'Untitled',
         subtitle: 'Form',
-        media: DocumentVideoIcon,
+        media: FaVideo,
       }
     },
   },
