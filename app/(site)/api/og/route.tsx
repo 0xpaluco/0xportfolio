@@ -7,8 +7,6 @@ import { Settings, settingsQuery } from '@/sanity/lib/queries'
 
 // App router includes @vercel/og.
 // No need to install it.
-export const contentType = 'image/png'
-
 export const runtime = 'edge'
 
 export async function GET(request: Request) {
