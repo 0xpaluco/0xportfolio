@@ -30,27 +30,57 @@ const HomeView = ({ projectData, articleData, pageData }: HomeProps) => {
     <main>
       <Hero {...pageData.hero} links={pageData.links} />
 
-      <div className="py-12 bg-c-bg-light">
+      <div className="py-10 bg-c-bg-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mt-10">
-            <div className="mt-6 lg:grid lg:grid-cols-2 lg:gap-2">
-              <div className="col-span-1">
-                <RecentArticleList articles={articleData} />
+            <div className="grid md:grid-cols-3 gap-2">
+              <div className='grid md:grid-cols-3 md:col-span-3 gap-2'>
+                <div className="md:col-span-2">
+                  <RecentArticleList articles={articleData} />
+                </div>
+                <div className="md:col-span-1 grid md:grid-rows-4 gap-y-2">
+                  <div className="md:row-span-1">
+                    <NewsLetterForm />
+                  </div>
+                  <div className="md:row-span-3">
+                    <ProjectList projects={projectData} />
+                  </div>
+                </div>
               </div>
-
-              <div className="col-span-1">
-                <div className="">
-                  <NewsLetterForm />
-                </div>
-                <div className="">
-                  <ProjectList projects={projectData} />
-                </div>
+              <div className="md:col-span-3">
+                <CTA />
               </div>
             </div>
           </div>
         </div>
       </div>
     </main>
+  )
+}
+
+
+const CTA = () => {
+  return (
+    <div className="border-gray-400/40 border-2 rounded-lg bg-c-bg shadow-md shadow-c-bg">
+      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:justify-between lg:px-8">
+        <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          Thinking of Bringing Your MVP to Life?
+          <br />
+          Let’s Discuss How.
+        </h2>
+        <div className="mt-10 flex items-center gap-x-6 lg:mt-0 lg:flex-shrink-0">
+          <Link
+            href="/contact"
+            className="rounded-md bg-c-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-c-d-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Let’s Talk
+          </Link>
+          <Link href="/process" className="text-sm font-semibold leading-6 text-gray-300">
+            Learn more <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -64,7 +94,7 @@ type HeroProps = {
 const Hero = (props: HeroProps) => {
   return (
     <div className="pt-10 bg-c-bg-light sm:pt-16 lg:pt-8 lg:overflow-hidden">
-      <div className="mx-auto max-w-7xl lg:px-8">
+      <div className="mx-auto max-w-7xl lg:px-10">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8">
           <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
             <div className="lg:py-24">
