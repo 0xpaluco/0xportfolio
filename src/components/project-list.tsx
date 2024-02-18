@@ -10,7 +10,7 @@ interface ListProps {
 
 export const ProjectList = ({ projects }: ListProps) => {
   return (
-    <div className="p-4 border-gray-400/40 border-2 rounded-lg mt-1 bg-c-bg shadow-md shadow-c-bg">
+    <div className="p-4 border-gray-400/40 border-2 rounded-lg bg-c-bg shadow-md shadow-c-bg">
       <div className="mt-2 inline-flex items-center text-c-l-primary">
         <CodeBracketIcon className="w-5 h-5 mr-2" />
         <h2 className="text-sm font-semibold">MY WORK</h2>
@@ -19,21 +19,24 @@ export const ProjectList = ({ projects }: ListProps) => {
         <ul role="list" className="-my-5 divide-y divide-gray-400">
           {projects?.map((project) => (
             <li key={project._id} className="py-5">
-              <div className="relative">
+              <div className="relative flex">
                 <FolderIcon className="w-8 h-8 text-c-l-primary mb-2" />
-                <h3 className="text-sm font-semibold text-white">
-                  <Link
-                    href={getProjectLink(project.slug)}
-                    className="hover:underline focus:outline-none"
-                  >
-                    {/* Extend touch target to entire panel */}
-                    <span className="absolute inset-0" aria-hidden="true" />
-                    {project.slug}
-                  </Link>
-                </h3>
-                <p className="mt-1 text-sm text-gray-400 line-clamp-2">
-                  {project.excerpt}
-                </p>
+                <div className='flex-1 ml-4 px-2'>
+                  <h3 className="text-base text-white">
+                    <Link
+                      href={getProjectLink(project.slug)}
+                      className="hover:underline focus:outline-none"
+                    >
+                      {/* Extend touch target to entire panel */}
+                      <span className="absolute inset-0" aria-hidden="true" />
+                      {project.slug}
+                    </Link>
+                  </h3>
+                  <p className="mt-1 text-sm text-gray-400 line-clamp-2">
+                    {project.excerpt}
+                  </p>
+                </div>
+
               </div>
             </li>
           ))}
