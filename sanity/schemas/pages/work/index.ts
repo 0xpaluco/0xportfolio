@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { IoMdCodeWorking } from "react-icons/io";
+import { IoMdCodeWorking } from 'react-icons/io'
 
 export default defineType({
   name: 'work',

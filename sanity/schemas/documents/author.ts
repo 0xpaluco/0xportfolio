@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { FaUser } from "react-icons/fa";
+import { FaUser } from 'react-icons/fa'
 
 export default defineType({
   name: 'author',

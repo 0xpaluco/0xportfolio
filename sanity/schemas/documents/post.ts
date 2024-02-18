@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { BsFileEarmarkPost } from "react-icons/bs";
+import { BsFileEarmarkPost } from 'react-icons/bs'
 
 export default defineType({
   name: 'post',

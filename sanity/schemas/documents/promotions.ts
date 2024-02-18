@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { FaStar } from "react-icons/fa";
+import { FaStar } from 'react-icons/fa'
 
 export default defineType({
   name: 'promotion',

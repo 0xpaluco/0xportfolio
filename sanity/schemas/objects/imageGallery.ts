@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { TfiGallery } from "react-icons/tfi";
+import { TfiGallery } from 'react-icons/tfi'
 
 export default defineType({
   name: 'gallery',

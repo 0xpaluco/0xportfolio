@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { PiLinkSimpleBold } from "react-icons/pi";
+import { PiLinkSimpleBold } from 'react-icons/pi'
 
 export default defineType({
   name: 'link',

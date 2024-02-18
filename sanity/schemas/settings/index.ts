@@ -1,4 +1,4 @@
-import { FaCog } from "react-icons/fa";
+import { FaCog } from 'react-icons/fa'
 import { defineField, defineType } from 'sanity'
 
 import OpenGraphInput from './OpenGraphInput'

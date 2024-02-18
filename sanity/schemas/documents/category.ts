@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { MdOutlineCategory } from "react-icons/md";
+import { MdOutlineCategory } from 'react-icons/md'
 
 export default defineType({
   name: 'category',

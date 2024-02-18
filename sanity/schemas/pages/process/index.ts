@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { GrSteps } from "react-icons/gr";
+import { GrSteps } from 'react-icons/gr'
 
 export const processDeliverableType = defineType({
   name: 'deliverable',

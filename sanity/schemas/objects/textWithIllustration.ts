@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { RiGalleryFill } from "react-icons/ri";
+import { RiGalleryFill } from 'react-icons/ri'
 
 export default defineType({
   name: 'textWithIllustration',
