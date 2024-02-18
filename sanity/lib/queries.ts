@@ -83,7 +83,7 @@ export const POSTS_QUERY = groq`*[_type == "post" && defined(slug.current)] | or
 export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0] { ${postFields} }`
 
 /** Projects */
-export const HOME_PROJECTS_QUERY = groq`*[_type == "project" && defined(slug.current)][0..2] | order(publishedAt desc, _updatedAt desc) {
+export const HOME_PROJECTS_QUERY = groq`*[_type == "project" && defined(slug.current)][0..3] | order(publishedAt desc, _updatedAt desc) {
   ${projectFields}
 }`
 
