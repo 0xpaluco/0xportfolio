@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const homePage =
     await loadQuery<SanityDocument<HomePageType>>(HOME_PAGE_QUERY)
   return {
-    title: 'Home',
+    title: homePage.data.title,
     description: profile.data.shortBio,
     alternates: {
       canonical: `${siteURL}`,

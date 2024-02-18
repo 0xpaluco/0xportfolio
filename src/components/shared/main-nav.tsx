@@ -1,6 +1,5 @@
 'use client'
 
-import { DarkModeToggler } from '@components/index'
 import { Divider } from '@components/shared'
 import { Popover, Transition } from '@headlessui/react'
 import { navigation } from '@helpers/routes'
@@ -12,16 +11,9 @@ import { Fragment } from 'react'
 
 interface Props {
   className?: string
-  themeMode: string
-  themeToggler: Function
 }
 
-export default function Topbar({
-  themeMode,
-  themeToggler,
-  className,
-  ...rest
-}: Props) {
+export default function MainNav({ className }: Props) {
   const pathname = usePathname()
 
   return (
@@ -137,14 +129,6 @@ export default function Topbar({
                     Lets Work together
                   </Link>
                 </div>
-                {/* <div className="mt-6 px-5">
-                  <p className="text-center text-base font-medium text-white">
-                    Existing customer?{' '}
-                    <Link href="#" className="text-white hover:underline">
-                      Login
-                    </Link>
-                  </p>
-                </div> */}
               </div>
             </div>
           </Popover.Panel>

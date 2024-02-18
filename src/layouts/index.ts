@@ -1,2 +1,2 @@
-export { default as Main } from './Main'
-export { default } from './WithLayout'
+export { default as MainLayout } from './main'
+export { default as ArticleLayout } from './article-layout'

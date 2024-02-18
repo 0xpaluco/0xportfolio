@@ -1,5 +1,6 @@
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
 import clsx from 'clsx'
+import Image from 'next/image'
 import Link from 'next/link'
 import { ReactNode } from 'react'
 import { Url } from 'url'
@@ -32,7 +33,7 @@ interface CardLinkProps {
 Card.Link = function CardLink({ children, href, ...props }: CardLinkProps) {
   return (
     <>
-      <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:bg-c-bg-light group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl" />
+      <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-95 group-hover:bg-c-bg-light group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl" />
       <Link href={href}>
         <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl" />
         <span className="relative z-10">{children}</span>
@@ -66,7 +67,11 @@ interface CardDescriptionProps {
 Card.Description = function CardDescription({
   children,
 }: CardDescriptionProps) {
-  return <p className="relative z-10 mt-2 text-sm text-gray-400">{children}</p>
+  return (
+    <p className="relative z-10 mt-2 text-sm text-gray-400 line-clamp-3">
+      {children}
+    </p>
+  )
 }
 
 interface CardCTAProps {
@@ -117,5 +122,21 @@ Card.Eyebrow = function CardEyebrow({
       )}
       {children}
     </Component>
+  )
+}
+
+interface CardMediaProps {
+  src: string
+  alt: string
+}
+Card.Media = function CardMedia({ src, alt }: CardMediaProps) {
+  return (
+    <Image
+      className="reslative rounded-md"
+      src={src}
+      width={250}
+      height={250}
+      alt={alt}
+    />
   )
 }

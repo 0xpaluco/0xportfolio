@@ -1,7 +1,7 @@
 'use client'
 
 import Markdown from '@components/Markdown'
-import { icons,SocialLink } from '@components/SocialIcons'
+import { icons, SocialLink } from '@components/SocialIcons'
 import { CalendarDaysIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
 import { SanityDocument } from 'next-sanity'

@@ -3,7 +3,7 @@
 import { ProjectGrid } from '@components/index'
 import { SanityDocument } from 'next-sanity'
 
-import { PageDataType,Project } from '@/sanity/lib/queries'
+import { PageDataType, Project } from '@/sanity/lib/queries'
 
 interface ProjectsProps {
   projectData: SanityDocument<Project>[]

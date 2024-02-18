@@ -10,7 +10,7 @@ import { loadQuery } from '@/sanity/lib/store'
 
 export const revalidate = 60 // revalidate this page every 60 seconds
 export const dynamicParams = true
-export const dynamic = "force-dynamic"
+export const dynamic = 'force-dynamic'
 
 export async function generateStaticParams() {
   const projects = await loadQuery<SanityDocument<Project[]>>(PROJECTS_QUERY)

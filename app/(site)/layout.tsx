@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import { SanityDocument } from 'next-sanity'
 import { ReactNode } from 'react'
 
-import WithLayout, { Main } from '@/layouts'
+import { MainLayout } from '@/layouts'
 import { PROFILE_QUERY, ProfileType } from '@/sanity/lib/queries'
 import { loadQuery } from '@/sanity/lib/store'
 
@@ -47,11 +47,7 @@ export default async function RootLayout({ children }: LayoutProps) {
         */}
       </head>
       <body>
-        <WithLayout
-          layout={Main}
-          component={children}
-          {...profile.data.links}
-        />
+        <MainLayout>{children}</MainLayout>
       </body>
     </html>
   )
