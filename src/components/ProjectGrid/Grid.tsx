@@ -38,7 +38,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           </Link>
         </h3>
 
-        <p className="mt-2 text-sm text-gray-400 line-clamp-6">
+        <p className="mt-2 text-sm text-gray-400 line-clamp-4">
           {project.excerpt}
         </p>
       </div>

@@ -54,7 +54,7 @@ Card.Title = function CardTitle({
   children,
 }: CardTitleProps) {
   return (
-    <Component className="text-base font-semibold tracking-tight text-white">
+    <Component className="sm:text-lg text-base font-semibold tracking-tight text-white">
       {href ? <Card.Link href={href}>{children}</Card.Link> : children}
     </Component>
   )
@@ -132,7 +132,7 @@ interface CardMediaProps {
 Card.Media = function CardMedia({ src, alt }: CardMediaProps) {
   return (
     <Image
-      className="reslative rounded-md"
+      className="relative rounded-md"
       src={src}
       width={250}
       height={250}
