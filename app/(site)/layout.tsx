@@ -47,7 +47,7 @@ export default async function RootLayout({ children }: LayoutProps) {
         */}
       </head>
       <body>
-        <MainLayout>{children}</MainLayout>
+        <MainLayout links={profile.data.links}>{children}</MainLayout>
       </body>
     </html>
   )
