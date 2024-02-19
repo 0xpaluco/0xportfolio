@@ -1,6 +1,5 @@
 import { LiveQueryWrapper } from '@components/shared'
 import { getBlogLink } from '@helpers/notion'
-import { ArticleViewProps } from '@views/Article/Article'
 import { ArticleView } from '@views/index'
 import type { Metadata } from 'next'
 import { draftMode } from 'next/headers'
@@ -9,6 +8,7 @@ import { SanityDocument } from 'next-sanity'
 import { urlForImage } from '@/sanity/lib/image'
 import { Post, POST_QUERY, POSTS_QUERY } from '@/sanity/lib/queries'
 import { loadQuery } from '@/sanity/lib/store'
+import { ArticleViewProps } from '@views/article-view'
 
 export const revalidate = 60 // revalidate this page every 60 seconds
 export const dynamicParams = true
