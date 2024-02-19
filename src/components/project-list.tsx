@@ -2,6 +2,7 @@ import { getProjectLink } from '@helpers/notion'
 import { CodeBracketIcon, FolderIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { SanityDocument } from 'next-sanity'
+
 import { Project } from '@/sanity/lib/queries'
 
 interface ListProps {
@@ -21,7 +22,7 @@ export const ProjectList = ({ projects }: ListProps) => {
             <li key={project._id} className="py-5">
               <div className="relative flex">
                 <FolderIcon className="w-8 h-8 text-c-l-primary mb-2" />
-                <div className='flex-1 ml-4 px-2'>
+                <div className="flex-1 ml-4 px-2">
                   <h3 className="text-base text-white">
                     <Link
                       href={getProjectLink(project.slug)}
@@ -36,7 +37,6 @@ export const ProjectList = ({ projects }: ListProps) => {
                     {project.excerpt}
                   </p>
                 </div>
-
               </div>
             </li>
           ))}

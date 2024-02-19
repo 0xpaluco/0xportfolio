@@ -2,8 +2,9 @@ import { Card } from '@components/index'
 import { getBlogLink, getDateStr } from '@helpers/notion'
 import { BookOpenIcon } from '@heroicons/react/24/outline'
 import { SanityDocument } from 'next-sanity'
-import { Post } from '@/sanity/lib/queries'
+
 import { urlForImage, urlForImageSqr } from '@/sanity/lib/image'
+import { Post } from '@/sanity/lib/queries'
 
 interface ArticleProps {
   article: SanityDocument<Post>

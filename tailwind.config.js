@@ -22,15 +22,14 @@ module.exports = {
         transparent: 'transparent',
       },
       animation: {
-        "meteor-effect": "meteor 5s linear infinite",
+        'meteor-effect': 'meteor 5s linear infinite',
       },
       keyframes: {
- 
         meteor: {
-          "0%": { transform: "rotate(215deg) translateX(0)", opacity: 1 },
-          "70%": { opacity: 1 },
-          "100%": {
-            transform: "rotate(215deg) translateX(-500px)",
+          '0%': { transform: 'rotate(215deg) translateX(0)', opacity: 1 },
+          '70%': { opacity: 1 },
+          '100%': {
+            transform: 'rotate(215deg) translateX(-500px)',
             opacity: 0,
           },
         },
@@ -41,22 +40,21 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
-    addVariablesForColors
+    addVariablesForColors,
   ],
 }
 
 const {
   default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
- 
+} = require('tailwindcss/lib/util/flattenColorPalette')
 
 function addVariablesForColors({ addBase, theme }) {
-  let allColors = flattenColorPalette(theme("colors"));
+  let allColors = flattenColorPalette(theme('colors'))
   let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-  );
- 
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
+  )
+
   addBase({
-    ":root": newVars,
-  });
+    ':root': newVars,
+  })
 }

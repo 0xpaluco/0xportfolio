@@ -1,5 +1,6 @@
-import { ArticleLayout } from '@/layouts'
 import { ReactNode } from 'react'
+
+import { ArticleLayout } from '@/layouts'
 
 interface LayoutProps {
   children: ReactNode

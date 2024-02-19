@@ -1,23 +1,21 @@
 'use client'
 
+import { NewsLetterForm } from '@components/newsletter-form'
+import { ProjectList } from '@components/project-list'
+import { RecentArticleList } from '@components/recent-article-list'
+import { icons, SocialLink } from '@components/SocialIcons'
+import { ChevronRightIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
 import Link from 'next/link'
-
 import { SanityDocument } from 'next-sanity'
+
+import { urlForImage } from '@/sanity/lib/image'
 import {
   HomePageType,
   Post,
   Project,
   SocialLinkType,
 } from '@/sanity/lib/queries'
-import { urlForImage } from '@/sanity/lib/image'
-
-import { NewsLetterForm } from '@components/newsletter-form'
-import { RecentArticleList } from '@components/recent-article-list'
-import { ProjectList } from '@components/project-list'
-
-import { icons, SocialLink } from '@components/SocialIcons'
-import { ChevronRightIcon } from '@heroicons/react/24/solid'
 
 interface HomeProps {
   projectData: SanityDocument<Project>[]
@@ -34,7 +32,7 @@ const HomeView = ({ projectData, articleData, pageData }: HomeProps) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mt-10">
             <div className="grid md:grid-cols-3 gap-2">
-              <div className='grid md:grid-cols-3 md:col-span-3 gap-2'>
+              <div className="grid md:grid-cols-3 md:col-span-3 gap-2">
                 <div className="md:col-span-2">
                   <RecentArticleList articles={articleData} />
                 </div>
@@ -58,7 +56,6 @@ const HomeView = ({ projectData, articleData, pageData }: HomeProps) => {
   )
 }
 
-
 const CTA = () => {
   return (
     <div className="border-gray-400/40 border-2 rounded-lg bg-c-bg shadow-md shadow-c-bg">
@@ -75,7 +72,10 @@ const CTA = () => {
           >
             Let’s Talk
           </Link>
-          <Link href="/process" className="text-sm font-semibold leading-6 text-gray-300">
+          <Link
+            href="/process"
+            className="text-sm font-semibold leading-6 text-gray-300"
+          >
             Learn more <span aria-hidden="true">→</span>
           </Link>
         </div>
