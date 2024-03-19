@@ -1,6 +1,7 @@
 import '../../styles/globals.css'
 
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from 'next'
 import { SanityDocument } from 'next-sanity'
 import { ReactNode } from 'react'
@@ -55,6 +56,7 @@ export default async function RootLayout({ children }: LayoutProps) {
       <body>
         <MainLayout links={profile.data.links}>{children}</MainLayout>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
