@@ -1,4 +1,4 @@
-import { Card } from '@components/index'
+import { Card } from '@components/molecules'
 import { getBlogLink, getDateStr } from '@helpers/notion'
 import { BookOpenIcon } from '@heroicons/react/24/outline'
 import { SanityDocument } from 'next-sanity'
@@ -36,7 +36,7 @@ const ArticleCard = ({ article }: ArticleProps) => {
 interface ArticleListProps {
   articles: SanityDocument<Post>[]
 }
-export const RecentArticleList = ({ articles }: ArticleListProps) => {
+const RecentArticleList = ({ articles }: ArticleListProps) => {
   return (
     <div className="border-gray-400/40 border-2 rounded-lg p-4 bg-c-bg shadow-md shadow-c-bg">
       <div className="sm:max-w-2xl sm:mx-auto lg:mx-0">
@@ -53,3 +53,5 @@ export const RecentArticleList = ({ articles }: ArticleListProps) => {
     </div>
   )
 }
+
+export default RecentArticleList

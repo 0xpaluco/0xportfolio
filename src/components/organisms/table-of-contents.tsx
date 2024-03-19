@@ -1,8 +1,6 @@
 'use client'
 
-import { Disclosure } from '@headlessui/react'
 import { classNames } from '@helpers/ui'
-import { ArrowDownIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 

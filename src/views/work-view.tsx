@@ -1,6 +1,6 @@
 'use client'
 
-import { ProjectGrid } from '@components/index'
+import { ProjectGrid } from '@components/organisms'
 import { SanityDocument } from 'next-sanity'
 
 import { PageDataType, Project } from '@/sanity/lib/queries'

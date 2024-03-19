@@ -1,6 +1,6 @@
 'use client'
 
-import { Divider } from '@components/shared'
+import { Divider } from '@components/atoms'
 import { Popover, Transition } from '@headlessui/react'
 import { navigation } from '@helpers/routes'
 import { classNames } from '@helpers/ui'

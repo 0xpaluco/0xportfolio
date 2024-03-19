@@ -1,6 +1,5 @@
 'use client'
-
-import { Footer,MainNav } from '@components/shared'
+import { Footer, MainNav } from '@components/organisms'
 import React from 'react'
 
 import { SocialLinkType } from '@/sanity/lib/queries'

@@ -49,6 +49,7 @@ export function LinkedInIcon(
 
 export const icons = {
   twitter: TwitterIcon,
+  x: TwitterIcon,
   instagram: InstagramIcon,
   github: GitHubIcon,
   linkedin: LinkedInIcon,

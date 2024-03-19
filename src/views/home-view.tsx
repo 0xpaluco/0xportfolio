@@ -1,9 +1,8 @@
 'use client'
 
-import { NewsLetterForm } from '@components/newsletter-form'
-import { ProjectList } from '@components/project-list'
-import { RecentArticleList } from '@components/recent-article-list'
-import { icons, SocialLink } from '@components/SocialIcons'
+import { NewsLetterForm } from '@components/molecules'
+import { ProjectList, RecentArticleList } from '@components/organisms'
+import { icons, SocialLink } from '@components/shared/social-icons'
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
 import Link from 'next/link'

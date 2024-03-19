@@ -1,6 +1,6 @@
 'use client'
 
-import { TableOfContents } from '@components/shared'
+import { TableOfContents } from '@components/organisms'
 import React from 'react'
 
 interface Props {

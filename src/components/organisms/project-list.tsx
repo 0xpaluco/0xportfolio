@@ -9,7 +9,7 @@ interface ListProps {
   projects: SanityDocument<Project>[]
 }
 
-export const ProjectList = ({ projects }: ListProps) => {
+const ProjectList = ({ projects }: ListProps) => {
   return (
     <div className="p-4 border-gray-400/40 border-2 rounded-lg bg-c-bg shadow-md shadow-c-bg">
       <div className="mt-2 inline-flex items-center text-c-l-primary">
@@ -53,3 +53,5 @@ export const ProjectList = ({ projects }: ListProps) => {
     </div>
   )
 }
+
+export default ProjectList

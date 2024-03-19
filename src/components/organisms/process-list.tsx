@@ -1,6 +1,7 @@
-import { Container, StylizedImage } from '@components/shared'
-import { FadeIn } from '@components/shared/FadeIn/FadeIn'
-import { TagList, TagListItem } from '@components/shared/TagList/TagList'
+import { Container } from '@components/atoms'
+import { StylizedImage } from '@components/atoms'
+import { FadeIn } from '@components/atoms/fade-In'
+import { TagList, TagListItem } from '@components/atoms/tag-list'
 
 import { urlForImage } from '@/sanity/lib/image'
 import { ProcessStepType } from '@/sanity/lib/queries'

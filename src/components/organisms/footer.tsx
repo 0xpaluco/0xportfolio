@@ -1,5 +1,5 @@
 'use client'
-import { icons, SocialLink } from '@components/SocialIcons'
+import { icons, SocialLink } from '@components/shared/social-icons'
 
 import { SocialLinkType } from '@/sanity/lib/queries'
 

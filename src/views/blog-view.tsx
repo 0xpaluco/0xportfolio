@@ -1,6 +1,6 @@
 'use client'
 
-import { ArticleList } from '@components/index'
+import { ArticleList } from '@components/organisms'
 import { SanityDocument } from 'next-sanity'
 
 import { PageDataType, Post } from '@/sanity/lib/queries'

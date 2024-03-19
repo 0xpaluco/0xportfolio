@@ -1,6 +1,6 @@
 import { EnvelopeIcon } from '@heroicons/react/24/outline'
 
-export const NewsLetterForm = () => {
+const NewsLetterForm = () => {
   return (
     <div className="border-gray-400/40 border-2 rounded-lg p-4 bg-c-bg shadow-md shadow-c-bg">
       <form action="#" className="sm:max-w-xl sm:mx-auto lg:mx-0">
@@ -38,3 +38,5 @@ export const NewsLetterForm = () => {
     </div>
   )
 }
+
+export default NewsLetterForm

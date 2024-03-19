@@ -1,5 +1,5 @@
-import Markdown from '@components/Markdown'
-import { TableOfContents } from '@components/shared'
+import { Markdown } from '@components/organisms'
+import { TableOfContents } from '@components/organisms'
 import { getCategoryLink } from '@helpers/notion'
 import Image from 'next/image'
 import Link from 'next/link'

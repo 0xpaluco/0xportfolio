@@ -1,7 +1,6 @@
 import '../../styles/globals.css'
 
-import { Analytics } from '@vercel/analytics/react';
-
+import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { SanityDocument } from 'next-sanity'
 import { ReactNode } from 'react'
@@ -16,7 +15,12 @@ interface LayoutProps {
 
 const siteURL = process.env.APP_URL
 
+const baseUrl = process.env.APP_URL
+  ? process.env.APP_URL
+  : `http://localhost:${process.env.PORT}`
+
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: {
     default: '0xpaluco',
     template: '%s - 0xpaluco',

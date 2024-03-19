@@ -1,6 +1,6 @@
 'use client'
 
-import { ProcessList } from '@components/index'
+import { ProcessList } from '@components/organisms'
 import { SanityDocument } from 'next-sanity'
 
 import { ProcessPageType, Project } from '@/sanity/lib/queries'

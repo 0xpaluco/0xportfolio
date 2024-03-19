@@ -3,7 +3,7 @@ import {
   InstagramIcon,
   LinkedInIcon,
   TwitterIcon,
-} from '@components/SocialIcons'
+} from '@components/shared/social-icons'
 import { UserGroupIcon } from '@heroicons/react/24/solid'
 
 interface NavItem {

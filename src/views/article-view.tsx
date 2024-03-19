@@ -1,7 +1,7 @@
 'use client'
 
-import { Markdown } from '@components/index'
-import { AlertBanner, TableOfContents } from '@components/shared'
+import { Markdown, TableOfContents } from '@components/organisms'
+import { AlertBanner } from '@components/shared'
 import { getCategoryLink, getDateStr } from '@helpers/notion'
 import Image from 'next/image'
 import Link from 'next/link'

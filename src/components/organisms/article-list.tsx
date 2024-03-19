@@ -1,5 +1,5 @@
 // import { Article } from 'lib/types/cms'
-import { Card } from '@components/index'
+import { Card } from '@components/molecules'
 import { getBlogLink, getDateStr } from '@helpers/notion'
 import { SanityDocument } from 'next-sanity'
 
